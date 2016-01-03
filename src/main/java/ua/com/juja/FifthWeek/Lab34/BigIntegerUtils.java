@@ -17,17 +17,20 @@ public class BigIntegerUtils {
                 .add(new BigInteger("4"))
                 .add(new BigInteger("1"));
         System.out.println(k);
-
         System.out.println(toBitStr(k));
+
+        BigInteger k0 = new BigInteger("0");
+        System.out.println(k0);
+        System.out.println(toBitStr(k0));
     }
 
     public static String toBitStr(BigInteger arg) {
 
-        BigInteger zero = new BigInteger("0");
+        /*BigInteger zero = new BigInteger("0");
         int compare = zero.compareTo(arg);
         if (compare == 0) {
             return "0";
-        }
+        }*/
 
 
         return arg.toString(2);
