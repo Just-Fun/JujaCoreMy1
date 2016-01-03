@@ -15,19 +15,35 @@ public class Main {
         Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/sqlcmd", "postgres",
                 "1qwerty");
-//      insert
-        Statement stmt = connection.createStatement();
 
-        String sql = "INSERT INTO public.user " +
+        String insert =   "INSERT INTO public.user " + // or "INSERT INTO public.user (name, password)"
                 "VALUES ('Stiven11', 'Pupkin11')";
-        stmt.executeUpdate(sql);
+        insert(connection, insert);
 
-        stmt.executeUpdate("INSERT INTO public.user (name, password)" +
-                "VALUES ('Stiven12', 'Pupkin12')");
+        String select = "SELECT * FROM public.user WHERE id > 5";
+        select(connection, select);
 
-//        select
-        stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM public.user WHERE id > 5");
+
+        // delete == insert
+        String delete = "DELETE FROM public.user " +
+                "WHERE id > 10 and id < 100";
+        insert(connection, delete);
+
+        //update
+        String update = "UPDATE public.user SET password = ? WHERE id > 3";
+        PreparedStatement ps = connection.prepareStatement(
+                update);
+        int pass = new Random().nextInt();
+        ps.setString(1, "password_" + pass);
+        ps.executeUpdate();
+        ps.close();
+
+        connection.close();
+    }
+
+    private static void select(Connection connection, String sql1) throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(sql1);
         while (rs.next()) {
             System.out.println("id: " + rs.getString("id"));
             System.out.println("name: " + rs.getString("name"));
@@ -36,21 +52,11 @@ public class Main {
         }
         rs.close();
         stmt.close();
+    }
 
-        // delete
-        stmt = connection.createStatement();
-        stmt.executeUpdate("DELETE FROM public.user " +
-                "WHERE id > 10 and id < 100");
+    private static void insert(Connection connection, String sql) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate(sql);
         stmt.close();
-
-        //update
-        PreparedStatement ps = connection.prepareStatement(
-                "UPDATE public.user SET password = ? WHERE id > 3");
-        int pass = new Random().nextInt();
-        ps.setString(1, "password_" + pass);
-        ps.executeUpdate();
-        ps.close();
-
-        connection.close();
     }
 }
