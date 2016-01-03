@@ -1,6 +1,7 @@
 package ua.com.juja.sqlcmd;
 
 import java.sql.*;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -10,15 +11,30 @@ public class DatabaseManager {
 
     public static void main(String[] argv) throws ClassNotFoundException, SQLException {
 
-        Class.forName("org.postgresql.Driver");
 
-        Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/sqlcmd", "postgres",
-                "1qwerty");
+        String database = "sqlcmd";
+        String user = "postgres";
+        String password = "1qwerty";
 
-        String insert =   "INSERT INTO public.user " + // or "INSERT INTO public.user (name, password)"
+        Connection connection = getConnection(database, user, password);
+
+        String insert = "INSERT INTO public.user " + // or "INSERT INTO public.user (name, password)"
                 "VALUES ('Stiven11', 'Pupkin11')";
         insert(connection, insert);
+
+        // select
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables " +
+                "WHERE table_schema = 'public'AND table_type = 'BASE TABLE'");
+
+        String[] tables = new String[100];
+        int index = 0;
+        while (rs.next()) {
+           tables[index++] = ("table: " + rs.getString("table_name"));
+        }
+        tables = Arrays.copyOf(tables, index + 1, String[].class);
+        rs.close();
+        stmt.close();
 
         String select = "SELECT * FROM public.user WHERE id > 5";
         select(connection, select);
@@ -34,6 +50,13 @@ public class DatabaseManager {
         update(connection, update);
 
         connection.close();
+    }
+
+    private static Connection getConnection(String database, String user, String password) throws ClassNotFoundException, SQLException {
+        Class.forName("org.postgresql.Driver");
+        return DriverManager.getConnection(
+                "jdbc:postgresql://localhost:5432/" + database, user,
+                password);
     }
 
     private static void update(Connection connection, String update) throws SQLException {

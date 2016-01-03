@@ -26,6 +26,7 @@ public class Main {
                 "VALUES ('Stiven12', 'Pupkin12')");
 
 //        select
+
         stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM public.user WHERE id > 5");
         while (rs.next()) {
@@ -33,6 +34,17 @@ public class Main {
             System.out.println("name: " + rs.getString("name"));
             System.out.println("password: " + rs.getString("password"));
             System.out.println("------");
+        }
+        rs.close();
+        stmt.close();
+
+        // table names
+        stmt = connection.createStatement();
+        rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables " +
+                "WHERE table_schema = 'public'AND table_type = 'BASE TABLE'");
+
+        while (rs.next()) {
+            System.out.println("table: " + rs.getString("table_name"));
         }
         rs.close();
         stmt.close();
