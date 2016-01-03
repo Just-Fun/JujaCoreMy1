@@ -9,46 +9,12 @@ import java.sql.SQLException;
  */
 public class Main {
 
-    public static void main(String[] argv) {
+    public static void main(String[] argv) throws ClassNotFoundException, SQLException {
 
-        System.out.println("-------- PostgreSQL "
-                + "JDBC Connection Testing ------------");
+        Class.forName("org.postgresql.Driver");
 
-        try {
-
-            Class.forName("org.postgresql.Driver");
-
-        } catch (ClassNotFoundException e) {
-
-            System.out.println("Where is your PostgreSQL JDBC Driver? "
-                    + "Include in your library path!");
-            e.printStackTrace();
-            return;
-
-        }
-
-        System.out.println("PostgreSQL JDBC Driver Registered!");
-
-        Connection connection = null;
-
-        try {
-
-            connection = DriverManager.getConnection(
+        Connection connection = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/sqlcmd", "postgres",
                     "1qwerty");
-
-        } catch (SQLException e) {
-
-            System.out.println("Connection Failed! Check output console");
-            e.printStackTrace();
-            return;
-
-        }
-
-        if (connection != null) {
-            System.out.println("You made it, take control your database now!");
-        } else {
-            System.out.println("Failed to make connection!");
-        }
     }
 }
