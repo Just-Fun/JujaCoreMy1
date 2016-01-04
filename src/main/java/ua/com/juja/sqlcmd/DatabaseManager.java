@@ -28,13 +28,30 @@ public class DatabaseManager {
         insert(connection, insert);
 
         // select
-        String[] tables = manager.getTables();
-
+        String[] tables = manager.getTablesNames();
         System.out.println(Arrays.toString(tables));
 
-        String select = "SELECT * FROM public.user WHERE id > 5";
-        select(connection, select);
+        String tableName = "user";
 
+        Statement stmt = connection.createStatement();
+        ResultSet rsCount = stmt.executeQuery("SELECT COUNT(*) FROM public." + tableName);
+        rsCount.next();
+        int size = rsCount.getInt(1);
+        System.out.println(size);
+
+        ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        DataSet[] result = new DataSet[size];
+        int index = 0;
+
+//       select(connection, select);
+        while (rs.next()) {
+            DataSet dataSet = new DataSet();
+            result[index++] = dataSet;
+            dataSet.put(rsmd.getColumnName(1), rs.getObject(1));
+        }
+        rs.close();
+        stmt.close();
 
         // delete == insert
         String delete = "DELETE FROM public.user " +
@@ -48,20 +65,38 @@ public class DatabaseManager {
         connection.close();
     }
 
-    public String[] getTables() throws SQLException {
+    /*private static void select(Connection connection, String sql1) throws SQLException {
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables " +
-                "WHERE table_schema = 'public'AND table_type = 'BASE TABLE'");
-
-        String[] tables = new String[100];
-        int index = 0;
+        ResultSet rs = stmt.executeQuery(sql1);
         while (rs.next()) {
-           tables[index++] = ("table: " + rs.getString("table_name"));
+            System.out.println("id: " + rs.getString("id"));
+            System.out.println("name: " + rs.getString("name"));
+            System.out.println("password: " + rs.getString("password"));
+            System.out.println("------");
         }
-        tables = Arrays.copyOf(tables, index + 1, String[].class);
         rs.close();
         stmt.close();
-        return tables;
+    }*/
+
+    public String[] getTablesNames() {
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables " +
+                    "WHERE table_schema = 'public'AND table_type = 'BASE TABLE'");
+
+            String[] tables = new String[100];
+            int index = 0;
+            while (rs.next()) {
+                tables[index++] = (rs.getString("table_name"));
+            }
+            tables = Arrays.copyOf(tables, index, String[].class);
+            rs.close();
+            stmt.close();
+            return tables;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new String[0];
+        }
     }
 
     public void connect(String database, String user, String password) {
@@ -89,19 +124,6 @@ public class DatabaseManager {
         ps.setString(1, "password_" + pass);
         ps.executeUpdate();
         ps.close();
-    }
-
-    private static void select(Connection connection, String sql1) throws SQLException {
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(sql1);
-        while (rs.next()) {
-            System.out.println("id: " + rs.getString("id"));
-            System.out.println("name: " + rs.getString("name"));
-            System.out.println("password: " + rs.getString("password"));
-            System.out.println("------");
-        }
-        rs.close();
-        stmt.close();
     }
 
     private static void insert(Connection connection, String sql) throws SQLException {
