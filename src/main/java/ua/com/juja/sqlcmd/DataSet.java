@@ -30,4 +30,20 @@ public class DataSet {
     public void put(String name, Object value) {
         data[index++] = new Data(name, value);
     }
+
+    public Object[] getValue() {
+        Object[] result = new Object[index];
+        for (int i = 0; i < index; i++) {
+            result[i] = data[i].getValue();
+        }
+        return result;
+    }
+
+    public String[] getNames() {
+        String[] result = new String[index];
+        for (int i = 0; i < index; i++) {;
+            result[i] = data[i].getName();
+        }
+        return result;
+    }
 }
