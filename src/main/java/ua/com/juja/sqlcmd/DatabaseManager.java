@@ -33,25 +33,9 @@ public class DatabaseManager {
 
         String tableName = "user";
 
-        Statement stmt = connection.createStatement();
-        ResultSet rsCount = stmt.executeQuery("SELECT COUNT(*) FROM public." + tableName);
-        rsCount.next();
-        int size = rsCount.getInt(1);
-        System.out.println(size);
+        DataSet[] result = manager.getTableData(tableName);
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName);
-        ResultSetMetaData rsmd = rs.getMetaData();
-        DataSet[] result = new DataSet[size];
-        int index = 0;
-
-//       select(connection, select);
-        while (rs.next()) {
-            DataSet dataSet = new DataSet();
-            result[index++] = dataSet;
-            dataSet.put(rsmd.getColumnName(1), rs.getObject(1));
-        }
-        rs.close();
-        stmt.close();
+        System.out.println(Arrays.toString(result));
 
         // delete == insert
         String delete = "DELETE FROM public.user " +
@@ -63,6 +47,37 @@ public class DatabaseManager {
         update(connection, update);
 
         connection.close();
+    }
+
+    public DataSet[] getTableData(String tableName) throws SQLException {
+        int size = getSize(tableName);
+
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        DataSet[] result = new DataSet[size];
+        int index = 0;
+
+//       select(connection, select);
+        while (rs.next()) {
+            DataSet dataSet = new DataSet();
+            result[index++] = dataSet;
+            for (int i = 1; i < rsmd.getColumnCount(); i++) {
+                dataSet.put(rsmd.getColumnName(1), rs.getObject(1));
+            }
+        }
+        rs.close();
+        stmt.close();
+        return result;
+    }
+
+    private int getSize(String tableName) throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet rsCount = stmt.executeQuery("SELECT COUNT(*) FROM public." + tableName);
+        rsCount.next();
+        int size = rsCount.getInt(1);
+        rsCount.close();
+        return size;
     }
 
     /*private static void select(Connection connection, String sql1) throws SQLException {
