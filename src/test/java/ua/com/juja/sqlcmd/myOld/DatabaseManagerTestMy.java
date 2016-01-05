@@ -1,7 +1,8 @@
-package ua.com.juja.sqlcmd;
+package ua.com.juja.sqlcmd.myOld;
 
 import org.junit.Before;
 import org.junit.Test;
+import ua.com.juja.sqlcmd.myOld.DatabaseManagerMy;
 
 import java.util.Arrays;
 
