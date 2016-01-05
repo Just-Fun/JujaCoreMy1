@@ -2,73 +2,37 @@ package ua.com.juja.sqlcmd;
 
 import java.sql.*;
 import java.util.Arrays;
-import java.util.Random;
 
 /**
- * Created by serzh on 1/3/16.
+ * Created by indigo on 21.08.2015.
  */
 public class DatabaseManager {
 
     private Connection connection;
 
-    public static void main(String[] argv) throws ClassNotFoundException, SQLException {
+    public DataSet[] getTableData(String tableName) {
+        try {
+            int size = getSize(tableName);
 
-
-        String database = "sqlcmd";
-        String user = "postgres";
-        String password = "1qwerty";
-
-        DatabaseManager manager = new DatabaseManager();
-
-        manager.connect(database, user, password);
-        Connection connection = manager.getConnection();
-
-        String insert = "INSERT INTO public.user " + // or "INSERT INTO public.user (name, password)"
-                "VALUES ('Stiven11', 'Pupkin11')";
-        insert(connection, insert);
-
-        // select
-        String[] tables = manager.getTablesNames();
-        System.out.println(Arrays.toString(tables));
-
-        String tableName = "user";
-
-        DataSet[] result = manager.getTableData(tableName);
-
-        System.out.println(Arrays.toString(result));
-
-        // delete == insert
-        String delete = "DELETE FROM public.user " +
-                "WHERE id > 10 and id < 100";
-        insert(connection, delete);
-
-        //update
-        String update = "UPDATE public.user SET password = ? WHERE id > 3";
-        update(connection, update);
-
-        connection.close();
-    }
-
-    public DataSet[] getTableData(String tableName) throws SQLException {
-        int size = getSize(tableName);
-
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName);
-        ResultSetMetaData rsmd = rs.getMetaData();
-        DataSet[] result = new DataSet[size];
-        int index = 0;
-
-//       select(connection, select);
-        while (rs.next()) {
-            DataSet dataSet = new DataSet();
-            result[index++] = dataSet;
-            for (int i = 1; i < rsmd.getColumnCount(); i++) {
-                dataSet.put(rsmd.getColumnName(1), rs.getObject(1));
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM public." + tableName);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            DataSet[] result = new DataSet[size];
+            int index = 0;
+            while (rs.next()) {
+                DataSet dataSet = new DataSet();
+                result[index++] = dataSet;
+                for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+                    dataSet.put(rsmd.getColumnName(i), rs.getObject(i));
+                }
             }
+            rs.close();
+            stmt.close();
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new DataSet[0];
         }
-        rs.close();
-        stmt.close();
-        return result;
     }
 
     private int getSize(String tableName) throws SQLException {
@@ -80,29 +44,14 @@ public class DatabaseManager {
         return size;
     }
 
-    /*private static void select(Connection connection, String sql1) throws SQLException {
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(sql1);
-        while (rs.next()) {
-            System.out.println("id: " + rs.getString("id"));
-            System.out.println("name: " + rs.getString("name"));
-            System.out.println("password: " + rs.getString("password"));
-            System.out.println("------");
-        }
-        rs.close();
-        stmt.close();
-    }*/
-
-    public String[] getTablesNames() {
+    public String[] getTableNames() {
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables " +
-                    "WHERE table_schema = 'public'AND table_type = 'BASE TABLE'");
-
+            ResultSet rs = stmt.executeQuery("SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'");
             String[] tables = new String[100];
             int index = 0;
             while (rs.next()) {
-                tables[index++] = (rs.getString("table_name"));
+                tables[index++] = rs.getString("table_name");
             }
             tables = Arrays.copyOf(tables, index, String[].class);
             rs.close();
@@ -118,36 +67,82 @@ public class DatabaseManager {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
+            System.out.println("Please add jdbc jar to project.");
             e.printStackTrace();
-            System.out.println("Please add jbcd jar to project.");
         }
         try {
             connection = DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/" + database, user,
                     password);
         } catch (SQLException e) {
+            System.out.println(String.format("Cant get connection for database:%s user:%s", database, user));
             e.printStackTrace();
-            System.out.println(String.format("Can't get connection for database:%s user:%s", database, user));
             connection = null;
         }
     }
 
-    private static void update(Connection connection, String update) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(
-                update);
-        int pass = new Random().nextInt();
-        ps.setString(1, "password_" + pass);
-        ps.executeUpdate();
-        ps.close();
+    public void clear(String tableName) {
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("DELETE FROM public." + tableName);
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private static void insert(Connection connection, String sql) throws SQLException {
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate(sql);
-        stmt.close();
+    public void create(DataSet input) {
+        try {
+            Statement stmt = connection.createStatement();
+
+            String tableNames = getNameFormated(input, "%s,");
+            String values = getValuesFormated(input, "'%s',");
+
+            stmt.executeUpdate("INSERT INTO public.user (" + tableNames + ")" +
+                    "VALUES (" + values + ")");
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
-    private Connection getConnection() {
-        return connection;
+    private String getValuesFormated(DataSet input, String format) {
+        String values = "";
+        for (Object value: input.getValues()) {
+            values += String.format(format, value);
+        }
+        values = values.substring(0, values.length() - 1);
+        return values;
+    }
+
+    public void update(String tableName, int id, DataSet newValue) {
+        try {
+            String tableNames = getNameFormated(newValue, "%s = ?,");
+
+            String sql = "UPDATE public." + tableName + " SET " + tableNames + " WHERE id = ?";
+            System.out.println(sql);
+            PreparedStatement ps = connection.prepareStatement(sql);
+
+            int index = 1;
+            for (Object value : newValue.getValues()) {
+                ps.setObject(index, value);
+                index++;
+            }
+            ps.setObject(index, id);
+
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getNameFormated(DataSet newValue, String format) {
+        String string = "";
+        for (String name : newValue.getNames()) {
+            string += String.format(format, name);
+        }
+        string = string.substring(0, string.length() - 1);
+        return string;
     }
 }
