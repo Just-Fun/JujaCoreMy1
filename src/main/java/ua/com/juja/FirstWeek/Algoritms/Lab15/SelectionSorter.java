@@ -1,4 +1,4 @@
-package ua.com.juja.FirstWeek.Algoritms.Lab15SelectionSorter;
+package ua.com.juja.FirstWeek.Algoritms.Lab15;
 
 import java.util.Arrays;
 
@@ -12,27 +12,19 @@ public class SelectionSorter {
         System.out.println(Arrays.toString(ans));
     }
 
-
     public static void sort(int[] arr) {
-        int count = 0;
-        int countFor = 0;
-        int min;
-        int i = 0;
         for (int barrier = 0; barrier < arr.length - 1; barrier++) {
+            int min = arr[barrier];
+            int minIndex = barrier;
             for (int index = barrier + 1; index < arr.length; index++) {
-                countFor++;
-                min = arr[barrier];
                 if (min > arr[index]) {
                     min = arr[index];
-                    i = index;
+                    minIndex = index;
                 }
-                arr[i] = arr[barrier];
-                arr[barrier] =  min;
-                count++;
             }
+            arr[minIndex] = arr[barrier];
+            arr[barrier] = min;
         }
-        System.out.println(count);
-        System.out.println("countFor: " + countFor);
     }
 }
 

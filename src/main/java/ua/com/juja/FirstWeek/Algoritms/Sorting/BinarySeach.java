@@ -11,9 +11,35 @@ public class BinarySeach {
 
     public static void main(String[] args) {
 
-        int[] temp = {1, 2, 3, 4, 5};
-        int ans = binarySearch1(temp, 0, 4, 6);
-        System.out.println(ans);
+        int[][] temp = {{3, 4}, {1, 2, 3, 4, 6}};
+        int[][] temp2 = {{3, 4}, {1, 2, 3, 4, 6}};
+//        int ans = binarySearch1(temp, 0, 4, 6);
+//        int ans = binarySearch2(temp, 5);
+        int[] array = {3, 4};
+        int[] array1 = new int[2];
+        System.arraycopy(array, 1, array1, 0, 1);
+        System.out.println(Arrays.toString(array1));
+//        System.out.println(Arrays.deepToString(temp));
+//        System.out.println(Arrays.deepEquals(temp, temp2));
+
+//        System.out.println(ans);
+    }
+
+    private static int binarySearch2(int[] list, int value) {
+
+        int low = 0;
+        int high = list.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (list[mid] == value) {
+                return mid;
+            } else if (list[mid] < value) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
     }
 
     private static int binarySearch(int[] arr, int num) {
@@ -44,10 +70,11 @@ public class BinarySeach {
         if (list[middle] == query) {
             return middle;
         }
-        if (list[middle] < query ) {
+        if (list[middle] < query) {
             return binarySearch1(list, begin, middle, query);
         }
         return binarySearch1(list, middle, end, query);
     }
+
 
 }
