@@ -15,6 +15,81 @@ public class Main {
         System.out.println(sum1);
     }
 
+    public boolean stringE(String str) {
+
+        int count = 0;
+        for (char c : str.toCharArray()) {
+            if (c == 'e') count++;
+        }
+        if (count > 0 && count < 4) return true;
+        return false;
+    }
+
+
+    public int max1020(int a, int b) {
+
+        if (!(a > 9 && a < 21)) a = 0;
+        if (!(b > 9 && b < 21)) b = 0;
+        if (a > 0 && a > b) {
+            return a;
+        } else if (b > 0 && b > a) {
+            return b;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public boolean in3050(int a, int b) {
+        if ((a > 29 && a < 41 && b > 29 && b < 41) || (a > 39 && a < 51 && b > 39 && b < 51)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    public int close10(int a, int b) {
+
+        int a1 = Math.abs(10 - a);
+        int b1 = Math.abs(10 - b);
+        if (a1 == b1) return 0;
+        if (a1 < b1) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    public int intMax(int a, int b, int c) {
+        int max = Math.max(a, b);
+        return Math.max(max, c);
+    }
+
+    public String startOz(String str) {
+        String result = "";
+        if (str.length() < 1) return result;
+        if (str.length() > 0) {
+            if (str.substring(0, 1).equals("o") || str.substring(0, 1).equals("o")) {
+                result += str.substring(0, 1);
+            }
+        }
+        if (str.length() > 1) {
+            if (str.substring(1, 2).equals("z") || str.substring(1, 2).equals("z")) {
+                result += str.substring(1, 2);
+            }
+        }
+        return result;
+    }
+
+
+    public boolean mixStart(String str) {
+
+        if (str.length() < 3) return false;
+        return (str.substring(1, 3).equals("ix"));
+    }
+
+
     public String delDel(String str) {
         String del = "del";
         if (str.length() < 4) {
@@ -22,7 +97,7 @@ public class Main {
         } else if (str.length() == 4 && str.substring(1, 4).equals(del)) {
             return str.substring(0, 1);
         } else if (str.substring(1, 4).equals(del)) {
-            return str.substring(0,1).concat(str.substring(4));
+            return str.substring(0, 1).concat(str.substring(4));
         } else {
             return str;
         }
