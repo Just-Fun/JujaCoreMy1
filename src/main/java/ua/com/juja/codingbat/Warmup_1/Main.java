@@ -12,8 +12,41 @@ public class Main {
         String sum = a + b;
         String sum1 = a.concat(b);
         String в = sum.charAt(0) + "";
-        System.out.println(sum1);
+//        System.out.println(sum1);
+        System.out.println(everyNth("Miracle", 2));
     }
+
+    public static String everyNth(String str, int n) {
+        String result = str.substring(0, 1);
+        for (int i = n; i < str.length() ; i += n) {
+            result += str.charAt(i);
+        }
+        return result;
+    }
+
+
+    public String endUp(String str) {
+        int size = str.length();
+        if (size == 0) return str;
+        if (size < 4) return str.toUpperCase();
+        return str.substring(0, size - 3).concat(str.substring(size - 3).toUpperCase());
+    }
+
+
+    public boolean lastDigit(int a, int b) {
+
+        for (int i = 0; a > 9; i++) {
+            a = a % 10;
+        }
+
+        for (int i = 0; b > 9; i++) {
+            b = b % 10;
+        }
+
+        if (a == b) return true;
+        return false;
+    }
+
 
     public boolean stringE(String str) {
 
