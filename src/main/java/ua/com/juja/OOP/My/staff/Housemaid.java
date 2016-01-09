@@ -1,7 +1,7 @@
-package ua.com.juja.OOP.staff;
+package ua.com.juja.OOP.My.staff;
 
-import ua.com.juja.OOP.Owner;
-import ua.com.juja.OOP.apartment.Apartment;
+import ua.com.juja.OOP.My.Owner;
+import ua.com.juja.OOP.My.apartment.Apartment;
 
 /**
  * Created by serzh on 12/18/15.

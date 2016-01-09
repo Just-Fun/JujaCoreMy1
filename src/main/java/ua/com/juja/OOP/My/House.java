@@ -1,8 +1,8 @@
-package ua.com.juja.OOP;
+package ua.com.juja.OOP.My;
 
-import ua.com.juja.OOP.apartment.LivingApartment;
-import ua.com.juja.OOP.staff.Clener;
-import ua.com.juja.OOP.staff.Housemaid;
+import ua.com.juja.OOP.My.apartment.LivingApartment;
+import ua.com.juja.OOP.My.staff.Clener;
+import ua.com.juja.OOP.My.staff.Housemaid;
 
 /**
  * Created by serzh on 12/13/15.
