@@ -1,5 +1,6 @@
 package ua.com.juja.tryByMyOneSqlCmd;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -31,6 +32,25 @@ public class EditColumns extends DatManager {
         String query2 = String.format("insert into employees values( %s, '%s', '%s')", id, first_name, last_name);
         executeAndClose(query2); // String query3 = "insert into emp values (1,'ronak','manager')";
 
+    }
+
+    protected void searchTableContents() {
+        String query[] ={"SELECT * FROM emp where id=1",
+                "select name from emp where name like 'ravi_'",
+                "select name from emp where name like 'ravi%'"};
+        for(String q : query){
+            try {
+                ResultSet rs = stmt.executeQuery(q);
+                System.out.println("Names for query "+q+" are");
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    System.out.print(name+"  ");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            System.out.println();
+        }
     }
 
 
