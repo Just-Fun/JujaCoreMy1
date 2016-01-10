@@ -37,7 +37,7 @@ public class DatabaseManagerMy {
 
         System.out.println(Arrays.toString(result));
 
-        // delete == insert
+        // delete == insertDanger
         String delete = "DELETE FROM public.user " +
                 "WHERE id > 10 and id < 100";
         insert(connection, delete);

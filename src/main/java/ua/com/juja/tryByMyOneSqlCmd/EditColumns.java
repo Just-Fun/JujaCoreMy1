@@ -12,21 +12,27 @@ public class EditColumns extends DatManager {
         super(dbname, username, password);
     }
 
-    protected void InsertRecordinTable(String table, String columnA, String columnB, String value1, String valie2) {
+    protected void InsertRecordInTable(String table, String columnA, String columnB, String value1, String valie2) {
         String sql = "INSERT INTO " + table + " (" + columnA + ", " + columnB + ") VALUES ('" + value1 + "', '" + valie2 + "')";
         executeAndClose(sql);
     }
 
-    protected void updateColumnOnId(String table, String column, int id, String newValue) {
-        String query1 = "update " + table + " set " + column + "='" + newValue + "' where id=" + id;
-        executeAndClose(query1);
+    protected void updateValueInColumnOnId(String table, String column, int id, String newValue) {
+        String query1 = "UPDATE " + table + " set " + column + "='" + newValue + "' where id=" + id;
+        executeAndClose(query1); //String query1="update emp set name='ravi' where id=2";
     }
 
-    /*
-    String query1="update emp set name='ravi' where id=2";
-         String query2 = "delete  from emp where id=1";
-         String query3 = "insert into emp values
-     */
+    protected void deleteRowOnId(String table, int id) {
+        String query1 = "DELETE from " + table + " where id=" + id;
+        executeAndClose(query1); // String query2 = "delete  from emp where id=1";
+    }
+
+    protected void insertDanger(String table, int id, String first_name, String last_name) {
+        String query2 = String.format("insert into employees values( %s, '%s', '%s')", id, first_name, last_name);
+        executeAndClose(query2); // String query3 = "insert into emp values (1,'ronak','manager')";
+
+    }
+
 
 
     protected void InsertRecordinTableTest() {

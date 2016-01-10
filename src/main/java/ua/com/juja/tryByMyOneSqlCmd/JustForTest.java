@@ -11,6 +11,10 @@ public class JustForTest {
         String username = "postgres";
         String password = "1qwerty";
         String s = " \"jdbc:postgresql://127.0.0.1:5432/" + dbname + "\", \"" + username + "\", \"" + password + "\" ";
-        System.out.println(s);
+
+        //        String query1 = String.format("INSERT into " + table + " values(" + id + ", " + first_name + ", " + last_name + ")";
+        String s1 = String.format("insert into employees values( %s, '%s', '%s')", dbname, username, password);
+
+        System.out.println(s1);
     }
 }

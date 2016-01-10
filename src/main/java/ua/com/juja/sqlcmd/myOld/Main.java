@@ -15,7 +15,7 @@ public class Main {
         Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/sqlcmd", "postgres",
                 "1qwerty");
-//      insert
+//      insertDanger
         Statement stmt = connection.createStatement();
 
         String sql = "INSERT INTO public.user " +

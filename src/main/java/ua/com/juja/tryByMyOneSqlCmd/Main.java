@@ -16,10 +16,14 @@ public class Main {
         //DatabaseManager manager = new DatabaseManager();
 //        manager.addColumn();
 //        manager.removeColumn("postindex2");
-//        editColumns.InsertRecordinTable("employees" ,"first_name", "last_name", "Vasia8","Pupkin" );
 //        editColumns.InsertRecordinTableTest();
-        editColumns.updateColumnOnId(tableEmployees,columnFirst_name, 5, "Evlantii");
+//        editColumns.updateValueInColumnOnId(tableEmployees,columnFirst_name, 5, "Evlantii");
+//        editColumns.deleteRowOnId(tableEmployees,9);
+        editColumns.insertDanger(tableEmployees, 14, "Elwis", "Preslei");
 
+
+
+//        editColumns.InsertRecordInTable("employees" ,"first_name", "last_name", "Vasia11","Pupkin" );
 
     }
 }
