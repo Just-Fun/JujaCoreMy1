@@ -1,9 +1,9 @@
-package ua.com.juja.OOP.apartment;
+package ua.com.juja.OOP.My.apartment;
 
-import ua.com.juja.OOP.equpment.Bucket;
-import ua.com.juja.OOP.equpment.Equipments;
-import ua.com.juja.OOP.equpment.Extinguisher;
-import ua.com.juja.OOP.equpment.Swob;
+import ua.com.juja.OOP.My.equpment.Bucket;
+import ua.com.juja.OOP.My.equpment.Equipments;
+import ua.com.juja.OOP.My.equpment.Extinguisher;
+import ua.com.juja.OOP.My.equpment.Swob;
 
 import java.util.Arrays;
 

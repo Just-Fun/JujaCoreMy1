@@ -1,4 +1,4 @@
-package ua.com.juja.OOP.apartment;
+package ua.com.juja.OOP.My.apartment;
 
 /**
  * Created by serzh on 12/18/15.

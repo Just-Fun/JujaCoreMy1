@@ -1,7 +1,7 @@
-package ua.com.juja.OOP;
+package ua.com.juja.OOP.My;
 
-import ua.com.juja.OOP.staff.Housemaid;
-import ua.com.juja.OOP.staff.RoboCleaner;
+import ua.com.juja.OOP.My.staff.Housemaid;
+import ua.com.juja.OOP.My.staff.RoboCleaner;
 
 /**
  * Created by serzh on 12/13/15.
