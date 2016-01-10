@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * Created by serzh on 1/10/16.
  */
 public class Connect {
-    public static Connection connect() {
+    public static Connection connect(String dbname, String username, String password) {
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -19,11 +19,10 @@ public class Connect {
         }
 
         Connection connection = null;
+        String hostname = "jdbc:postgresql://127.0.0.1:5432/" + dbname;
         try {
-            connection = DriverManager.getConnection( // "jdbc:postgresql://hostname:port/dbname","username", "password");
-                    "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "1qwerty");
-            // "jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "1qwerty");
-            // dbname,username = postgres, password = 1qwerty
+            connection = DriverManager.getConnection(hostname, username, password);
+
             System.out.println("connection to postgres Ok");
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");

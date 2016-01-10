@@ -13,6 +13,16 @@ public class EditColumns extends DatManager{
         executeAndClose(sql);
     }
 
+    protected void updateColumnOnId(String table,String column, int id, String newValue) {
+        String query1="update " + table + " set " + column + "='" + newValue + "' where id=" + id;
+    }
+
+    /*
+    String query1="update emp set name='ravi' where id=2";
+         String query2 = "delete  from emp where id=1";
+         String query3 = "insert into emp values
+     */
+
 
 
     protected void InsertRecordinTableTest() {

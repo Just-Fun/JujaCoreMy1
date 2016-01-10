@@ -14,7 +14,7 @@ public abstract class DatManager {
 
     public DatManager() {
 
-        this.connection = Connect.connect(/*"postgres", "postgres", "1qwerty"*/);
+        this.connection = Connect.connect("postgres", "postgres", "1qwerty");
 
         try {
             this.stmt = connection.createStatement();

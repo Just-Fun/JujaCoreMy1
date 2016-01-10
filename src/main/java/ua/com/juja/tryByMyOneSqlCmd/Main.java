@@ -13,7 +13,7 @@ public class Main {
 //        manager.addColumn();
 //        manager.removeColumn("postindex2");
         EditColumns editColumns = new EditColumns();
-        editColumns.InsertRecordinTable("employees" ,"first_name", "last_name", "Vasia6","Pupkin" );
+        editColumns.InsertRecordinTable("employees" ,"first_name", "last_name", "Vasia7","Pupkin" );
 //        editColumns.InsertRecordinTableTest();
     }
 }
