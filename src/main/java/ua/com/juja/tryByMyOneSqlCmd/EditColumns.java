@@ -5,16 +5,21 @@ import java.sql.SQLException;
 /**
  * Created by serzh on 1/10/16.
  */
-public class EditColumns extends DatManager{
+public class EditColumns extends DatManager {
 
 
-    protected void InsertRecordinTable(String table,String columnA,String columnB, String value1, String valie2) {
-        String sql = "INSERT INTO " + table + " (" + columnA +", "+ columnB +") VALUES ('" + value1 + "', '" +valie2 + "')";
+    public EditColumns(String dbname, String username, String password) {
+        super(dbname, username, password);
+    }
+
+    protected void InsertRecordinTable(String table, String columnA, String columnB, String value1, String valie2) {
+        String sql = "INSERT INTO " + table + " (" + columnA + ", " + columnB + ") VALUES ('" + value1 + "', '" + valie2 + "')";
         executeAndClose(sql);
     }
 
-    protected void updateColumnOnId(String table,String column, int id, String newValue) {
-        String query1="update " + table + " set " + column + "='" + newValue + "' where id=" + id;
+    protected void updateColumnOnId(String table, String column, int id, String newValue) {
+        String query1 = "update " + table + " set " + column + "='" + newValue + "' where id=" + id;
+        executeAndClose(query1);
     }
 
     /*
@@ -22,7 +27,6 @@ public class EditColumns extends DatManager{
          String query2 = "delete  from emp where id=1";
          String query3 = "insert into emp values
      */
-
 
 
     protected void InsertRecordinTableTest() {

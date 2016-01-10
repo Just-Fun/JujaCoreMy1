@@ -8,6 +8,11 @@ import java.sql.*;
  */
 public class DatabaseManager extends DatManager{
 
+
+    public DatabaseManager(String dbname, String username, String password) {
+        super(dbname, username, password);
+    }
+
     protected void removeTable() throws SQLException {
         String query3 = "drop table employees";
         stmt.execute(query3);

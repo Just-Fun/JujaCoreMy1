@@ -9,11 +9,17 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        DatabaseManager manager = new DatabaseManager();
+        EditColumns editColumns = new EditColumns("postgres", "postgres", "1qwerty");
+        String tableEmployees = "employees";
+        String columnFirst_name = "first_name";
+        //"postgres", "postgres", "1qwerty"
+        //DatabaseManager manager = new DatabaseManager();
 //        manager.addColumn();
 //        manager.removeColumn("postindex2");
-        EditColumns editColumns = new EditColumns();
-        editColumns.InsertRecordinTable("employees" ,"first_name", "last_name", "Vasia7","Pupkin" );
+//        editColumns.InsertRecordinTable("employees" ,"first_name", "last_name", "Vasia8","Pupkin" );
 //        editColumns.InsertRecordinTableTest();
+        editColumns.updateColumnOnId(tableEmployees,columnFirst_name, 5, "Evlantii");
+
+
     }
 }
