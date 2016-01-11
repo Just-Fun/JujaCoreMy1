@@ -35,13 +35,14 @@ public class ColumnsEditor extends AbstractDatabaseManager {
     }
 
     protected void searchColumnOnColumnLike(String table, String column, String seach, String printTo) {
-        String query = "SELECT " + printTo + " from " + table + " where " + column + " like '" + seach + "%'";
+        String query = "SELECT * from " + table + " where " + column + " like '" + seach + "%'";
         try {
             ResultSet rs = stmt.executeQuery(query);
             System.out.println(printTo + " for query " + query + " are");
             while (rs.next()) {
                 String name = rs.getString(printTo);
-                System.out.println(name);
+                String id = rs.getString("id");
+                System.out.println("id#" + id + ": " + name);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,6 +75,7 @@ public class ColumnsEditor extends AbstractDatabaseManager {
             e.printStackTrace();
         }
         try {
+            stmt.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
