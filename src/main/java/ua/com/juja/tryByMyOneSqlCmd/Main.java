@@ -9,11 +9,11 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        EditColumns editColumns = new EditColumns("postgres", "postgres", "1qwerty");
+        ColumnsEditor editColumns = new ColumnsEditor("postgres", "postgres", "1qwerty");
         String tableEmployees = "employees";
         String columnFirst_name = "first_name";
         String columnLast_name = "last_name";
-        editColumns.searchColumnOnColumnLike(tableEmployees, columnLast_name, "Pupk", columnFirst_name);
+        editColumns.seachRowOnId(tableEmployees, 1, columnFirst_name);
 //        editColumns.searchTableContents();
 //        DatabaseManager manager = new DatabaseManager("postgres", "postgres", "1qwerty");
 //        manager.retrieveContentsOfaTable(tableEmployees, columnFirst_name, columnLast_name);

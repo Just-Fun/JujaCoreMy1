@@ -6,10 +6,10 @@ import java.sql.SQLException;
 /**
  * Created by serzh on 1/10/16.
  */
-public class EditColumns extends DatManager {
+public class ColumnsEditor extends AbstractDatabaseManager {
 
 
-    public EditColumns(String dbname, String username, String password) {
+    public ColumnsEditor(String dbname, String username, String password) {
         super(dbname, username, password);
     }
 
@@ -48,30 +48,18 @@ public class EditColumns extends DatManager {
         }
     }
 
-    protected void seachRowOnId(String table, int id) {
-        String query1 = "SELECT * FROM employees where id=" + id;
-        executeAndClose(query1); // String query2 = "delete  from emp where id=1";
-    }
-
-    protected void searchTableContents() {
-        String query[] = {"SELECT * FROM employees where id=1",
-                "select last_name from employees where last_name like 'Pupk_'",
-                "select last_name from employees where last_name like 'Pupki%'"};
-        for (String q : query) {
-            try {
-                ResultSet rs = stmt.executeQuery(q);
-                System.out.println("Names for query " + q + " are");
-                while (rs.next()) {
-                    String name = rs.getString("last_name");
-                    System.out.print(name + " ");
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
+    protected void seachRowOnId(String table, int id, String column) {
+        String query = "SELECT * FROM employees where id=" + id;
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                String name = rs.getString(column);
+                System.out.println(name);
             }
-            System.out.println();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-
 
     protected void InsertRecordinTableTest() {
 

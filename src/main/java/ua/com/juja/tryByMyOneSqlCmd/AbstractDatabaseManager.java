@@ -8,7 +8,7 @@ import java.sql.Statement;
 /**
  * Created by serzh on 1/10/16.
  */
-public abstract class DatManager {
+public abstract class AbstractDatabaseManager {
 
     Connection connection;
     Statement stmt;
@@ -17,7 +17,7 @@ public abstract class DatManager {
     String username;
     String password;
 
-    public DatManager(String dbname, String username, String password) {
+    public AbstractDatabaseManager(String dbname, String username, String password) {
         this.dbname = dbname;
         this.username = username;
         this.password = password;

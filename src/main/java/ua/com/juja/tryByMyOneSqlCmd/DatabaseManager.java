@@ -6,7 +6,7 @@ import java.sql.*;
 /**
  * Created by Oleg on 1/10/2016.
  */
-public class DatabaseManager extends DatManager{
+public class DatabaseManager extends AbstractDatabaseManager {
 
 
     public DatabaseManager(String dbname, String username, String password) {
