@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd;
+package ua.com.juja.sqlcmd.database;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class JDBCDatabaseManagerTest {
 
-    private JDBCDatabaseManager manager;
+    private DatabaseManager manager;
 
     @Before
     public void setup() {
