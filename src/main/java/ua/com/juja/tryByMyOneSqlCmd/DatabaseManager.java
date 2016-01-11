@@ -13,8 +13,8 @@ public class DatabaseManager extends DatManager{
         super(dbname, username, password);
     }
 
-    protected void removeTable() throws SQLException {
-        String query3 = "drop table employees";
+    protected void removeTable(String table) throws SQLException {
+        String query3 = "drop table " + table;
         stmt.execute(query3);
         System.out.println("Employees table removed");
     }

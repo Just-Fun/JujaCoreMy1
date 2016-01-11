@@ -18,7 +18,7 @@ public class EditColumns extends DatManager {
         executeAndClose(sql);
     }
 
-    protected void updateValueInColumnOnId(String table, String column, int id, String newValue) {
+    protected void updateValueInColumnOnId(String table, int id, String column, String newValue) {
         String query1 = "UPDATE " + table + " set " + column + "='" + newValue + "' where id=" + id;
         executeAndClose(query1); //String query1="update emp set name='ravi' where id=2";
     }
@@ -34,17 +34,36 @@ public class EditColumns extends DatManager {
 
     }
 
+    protected void searchColumnOnColumnLike(String table, String column, String seach, String printTo) {
+        String query = "SELECT " + printTo + " from " + table + " where " + column + " like '" + seach + "%'";
+        try {
+            ResultSet rs = stmt.executeQuery(query);
+            System.out.println(printTo + " for query " + query + " are");
+            while (rs.next()) {
+                String name = rs.getString(printTo);
+                System.out.println(name);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void seachRowOnId(String table, int id) {
+        String query1 = "SELECT * FROM employees where id=" + id;
+        executeAndClose(query1); // String query2 = "delete  from emp where id=1";
+    }
+
     protected void searchTableContents() {
-        String query[] ={"SELECT * FROM emp where id=1",
-                "select name from emp where name like 'ravi_'",
-                "select name from emp where name like 'ravi%'"};
-        for(String q : query){
+        String query[] = {"SELECT * FROM employees where id=1",
+                "select last_name from employees where last_name like 'Pupk_'",
+                "select last_name from employees where last_name like 'Pupki%'"};
+        for (String q : query) {
             try {
                 ResultSet rs = stmt.executeQuery(q);
-                System.out.println("Names for query "+q+" are");
+                System.out.println("Names for query " + q + " are");
                 while (rs.next()) {
-                    String name = rs.getString("name");
-                    System.out.print(name+"  ");
+                    String name = rs.getString("last_name");
+                    System.out.print(name + " ");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -52,7 +71,6 @@ public class EditColumns extends DatManager {
             System.out.println();
         }
     }
-
 
 
     protected void InsertRecordinTableTest() {

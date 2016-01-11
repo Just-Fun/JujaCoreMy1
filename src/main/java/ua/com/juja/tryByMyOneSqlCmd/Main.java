@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 /**
  * Created by serzh on 1/10/16.
- */
+ */ //"postgres", "postgres", "1qwerty"
 public class Main {
 
     public static void main(String[] args) throws SQLException {
@@ -12,18 +12,13 @@ public class Main {
         EditColumns editColumns = new EditColumns("postgres", "postgres", "1qwerty");
         String tableEmployees = "employees";
         String columnFirst_name = "first_name";
-        //"postgres", "postgres", "1qwerty"
-        //DatabaseManager manager = new DatabaseManager();
-//        manager.addColumn();
-//        manager.removeColumn("postindex2");
-//        editColumns.InsertRecordinTableTest();
-//        editColumns.updateValueInColumnOnId(tableEmployees,columnFirst_name, 5, "Evlantii");
+        String columnLast_name = "last_name";
+        editColumns.searchColumnOnColumnLike(tableEmployees, columnLast_name, "Pupk", columnFirst_name);
+//        editColumns.searchTableContents();
+//        DatabaseManager manager = new DatabaseManager("postgres", "postgres", "1qwerty");
+//        manager.retrieveContentsOfaTable(tableEmployees, columnFirst_name, columnLast_name);
+//        editColumns.InsertRecordInTable(tableEmployees, columnFirst_name, columnLast_name, "Vasia4", "Pupkin");
 //        editColumns.deleteRowOnId(tableEmployees,9);
-        editColumns.insertDanger(tableEmployees, 14, "Elwis", "Preslei");
-
-
-
-//        editColumns.InsertRecordInTable("employees" ,"first_name", "last_name", "Vasia11","Pupkin" );
 
     }
 }
