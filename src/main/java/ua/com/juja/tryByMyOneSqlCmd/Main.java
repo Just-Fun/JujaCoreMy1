@@ -16,7 +16,7 @@ public class Main {
 //        editColumns.seachRowOnId(tableEmployees, 1, columnFirst_name);
 //        editColumns.searchTableContents();
         editColumns.searchColumnOnColumnLike(tableEmployees,columnLast_name, "Pupk", columnFirst_name);
-//        DatabaseManager manager = new DatabaseManager("postgres", "postgres", "1qwerty");
+//        JDBCDatabaseManager manager = new JDBCDatabaseManager("postgres", "postgres", "1qwerty");
 //        manager.retrieveContentsOfaTable(tableEmployees, columnFirst_name, columnLast_name);
 //        editColumns.InsertRecordInTable(tableEmployees, columnFirst_name, columnLast_name, "Vasia9", "Pupkin");
 //        editColumns.deleteRowOnId(tableEmployees,9);
