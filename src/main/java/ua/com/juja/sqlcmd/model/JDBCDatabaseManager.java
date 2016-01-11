@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.database;
+package ua.com.juja.sqlcmd.model;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -66,21 +66,20 @@ public class JDBCDatabaseManager implements DatabaseManager {
     }
 
     @Override
-    public void connect(String database, String user, String password) {
+    public void connect(String database, String userName, String password) {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Please add jdbc jar to project.");
-            e.printStackTrace();
+            throw new RuntimeException("Please add jdbc jar to project.", e);
         }
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/" + database, user,
+                    "jdbc:postgresql://localhost:5432/" + database, userName,
                     password);
         } catch (SQLException e) {
-            System.out.println(String.format("Cant get connection for database:%s user:%s", database, user));
-            e.printStackTrace();
             connection = null;
+            String s = String.format("Cant get connection for model:%s user:%s", database, userName);
+            throw new RuntimeException(s, e);
         }
     }
 

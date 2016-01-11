@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.database;
+package ua.com.juja.sqlcmd.model;
 
 /**
  * Created by serzh on 1/11/16.
@@ -8,7 +8,7 @@ public interface DatabaseManager {
 
     String[] getTableNames();
 
-    void connect(String database, String user, String password);
+    void connect(String database, String userName, String password);
 
     void clear(String tableName);
 
