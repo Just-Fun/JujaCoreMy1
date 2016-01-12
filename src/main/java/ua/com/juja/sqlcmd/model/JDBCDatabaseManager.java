@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd;
+package ua.com.juja.sqlcmd.model;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -6,10 +6,11 @@ import java.util.Arrays;
 /**
  * Created by indigo on 21.08.2015.
  */
-public class JDBCDatabaseManager {
+public class JDBCDatabaseManager implements DatabaseManager {
 
     private Connection connection;
 
+    @Override
     public DataSet[] getTableData(String tableName) {
         try {
             int size = getSize(tableName);
@@ -44,6 +45,7 @@ public class JDBCDatabaseManager {
         return size;
     }
 
+    @Override
     public String[] getTableNames() {
         try {
             Statement stmt = connection.createStatement();
@@ -63,24 +65,25 @@ public class JDBCDatabaseManager {
         }
     }
 
-    public void connect(String database, String user, String password) {
+    @Override
+    public void connect(String database, String userName, String password) {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Please add jdbc jar to project.");
-            e.printStackTrace();
+            throw new RuntimeException("Please add jdbc jar to project.", e);
         }
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/" + database, user,
+                    "jdbc:postgresql://localhost:5432/" + database, userName,
                     password);
         } catch (SQLException e) {
-            System.out.println(String.format("Cant get connection for database:%s user:%s", database, user));
-            e.printStackTrace();
             connection = null;
+            String s = String.format("Cant get connection for model:%s user:%s", database, userName);
+            throw new RuntimeException(s, e);
         }
     }
 
+    @Override
     public void clear(String tableName) {
         try {
             Statement stmt = connection.createStatement();
@@ -91,6 +94,7 @@ public class JDBCDatabaseManager {
         }
     }
 
+    @Override
     public void create(DataSet input) {
         try {
             Statement stmt = connection.createStatement();
@@ -115,6 +119,7 @@ public class JDBCDatabaseManager {
         return values;
     }
 
+    @Override
     public void update(String tableName, int id, DataSet newValue) {
         try {
             String tableNames = getNameFormated(newValue, "%s = ?,");
