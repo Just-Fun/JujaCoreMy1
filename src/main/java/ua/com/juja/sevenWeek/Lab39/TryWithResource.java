@@ -12,7 +12,7 @@ public class TryWithResource {
 //            body.runBody();
 //        }
         // --- create A ---
-        Throwable myException = null;
+   /*     Throwable myException = null;
         AutoCloseable resource = null;
         AutoCloseable resourceB = null;
 
@@ -20,9 +20,7 @@ public class TryWithResource {
         try {
             resource = factoryA.create();
             resourceB = factoryB.create();
-        } catch (Throwable t) {
-            throw t;
-            try {
+
                 body.runBody();
 
             } catch (Throwable bodyEx2) {
@@ -43,7 +41,41 @@ public class TryWithResource {
             }
             resource.close();
             resourceB.close();
+        }*/
+
+
+        // работает для 1-го теста
+
+        AutoCloseable resource = null;
+        AutoCloseable resourceB = null;
+
+        try {
+            resource = factoryA.create();
+            resourceB = factoryB.create();
+
+            body.runBody();
+
+        } catch (Throwable bodyEx) {
+
+            try {
+
+                resource.close();
+                resourceB.close();
+
+            } catch (Throwable closeEx) {
+
+                bodyEx.addSuppressed(closeEx);
+
+            }
+
+            throw bodyEx;
+
         }
+
+        // --- close ---
+
+        resource.close();
+        resourceB.close();
 
        /* try {
             resource = factoryA.create();
@@ -206,6 +238,7 @@ public class TryWithResource {
 //    resource.close();
 //    resourceB.close();
     }
+}
 
 
     interface AutoCloseableFactory {
