@@ -1,4 +1,4 @@
-package ua.com.juja.sevenWeek.Lab43;
+package ua.com.juja.sevenWeek.Lab38;
 
 import java.util.Arrays;
 
@@ -11,7 +11,9 @@ public class TestMy {
 
         int[] testDelta = {100, 343, 245};
         int[] copy = Arrays.copyOf(testDelta, testDelta.length);
+        testDelta[0] = 5;
+        testDelta = Arrays.copyOf(copy, copy.length);
 
-        System.out.println(Arrays.toString(copy));
+        System.out.println(Arrays.toString(testDelta));
     }
 }

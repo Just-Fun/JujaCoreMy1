@@ -1,6 +1,4 @@
-package ua.com.juja.sevenWeek.Lab43;
-
-import java.util.Arrays;
+package ua.com.juja.sevenWeek.Lab38;
 
 /**
  * Created by serzh on 1/13/16.
@@ -8,9 +6,13 @@ import java.util.Arrays;
 public class AccountManager {
 
     public static boolean transfer(Account[] accounts, int[] delta) {
-        boolean transferAll = false;
 
-        Account[] accounts1 = Arrays.copyOf(accounts, accounts.length);
+        boolean transferAll = false;
+//        Account[] accountsTemp = Arrays.copyOf(accounts, accounts.length);
+        int[] accAmount = new int[accounts.length];
+        for (int i = 0; i < accAmount.length; i++) {
+            accAmount[i] = accounts[i].getAmount();
+        }
 
         for (int i = 0; i < accounts.length; i++) {
             boolean done = false;
@@ -23,8 +25,16 @@ public class AccountManager {
                     done = false;
                     transferAll = false;
                 } catch (BlockAccountException e) {
-                    accounts = Arrays.copyOf(accounts1, accounts.length);
+//                    accounts = Arrays.copyOf(accountsTemp, accounts.length);
+                    for (int j = 0; j < accounts.length; j++) {
+                        accounts[j] = new Account(accAmount[j]) {
+                            @Override
+                            public void change(int delta) throws TryAgainException, BlockAccountException {
+                            }
+                        };
+                    }
                     transferAll = false;
+                    done = true;
                     break;
                 }
             }

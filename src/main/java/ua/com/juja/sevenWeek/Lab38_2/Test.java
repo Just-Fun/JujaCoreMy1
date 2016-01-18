@@ -1,7 +1,7 @@
-package ua.com.juja.sevenWeek.Lab43;
+package ua.com.juja.sevenWeek.Lab38_2;
 
 /**
- * Created by serzh on 1/14/16.
+ * Created by serzh on 1/15/16.
  */
 public class Test {
 
@@ -40,7 +40,7 @@ public class Test {
         testAccounts[2] = blockExceptionAccount;
 
         // call
-        boolean actualResultTransfer = AccountManager.transfer(testAccounts, testDelta);
+        boolean actualResultTransfer = AccountManager2.transfer(testAccounts, testDelta);
 
         //check
         if (actualResultTransfer)
