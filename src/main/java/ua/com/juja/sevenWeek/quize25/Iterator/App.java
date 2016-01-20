@@ -6,4 +6,6 @@ package ua.com.juja.sevenWeek.quize25.Iterator;
 public class App {
 
 
+
+
 }
