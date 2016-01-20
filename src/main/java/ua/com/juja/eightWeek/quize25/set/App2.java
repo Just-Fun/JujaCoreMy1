@@ -1,4 +1,4 @@
-package ua.com.juja.sevenWeek.quize25.set;
+package ua.com.juja.eightWeek.quize25.set;
 
 import java.util.HashSet;
 import java.util.Set;
