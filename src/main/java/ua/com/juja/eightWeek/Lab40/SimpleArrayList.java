@@ -73,10 +73,6 @@ public class SimpleArrayList<E> implements SimpleList<E> {
         }
     }
 
-   /* public Iterator<E> iterator(E[] data) {
-
-        return null;
-    }*/
 
     @Override
     public Iterator<E> iterator() {
@@ -109,7 +105,7 @@ public class SimpleArrayList<E> implements SimpleList<E> {
             @Override
             public void remove() {
                 try {
-//                    data.remove(currentIndex - 1);
+                    SimpleArrayList.this.remove(currentIndex - 1);
                 } catch (Exception e) {
                     throw new IllegalStateException();
                 }
