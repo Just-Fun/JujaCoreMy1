@@ -79,6 +79,7 @@ public class SimpleArrayList <E> implements SimpleList<E> {
 
     @Override
     public Iterator<E> iterator() {
+            final E[] data = this.data;
         Iterator<E> it = new Iterator<E>() {
 
             private int currentIndex = 0;
@@ -91,7 +92,7 @@ public class SimpleArrayList <E> implements SimpleList<E> {
             @Override
             public E next() {
                 E nextE;
-                if (data[currentIndex++] == null) {
+                if (data[currentIndex] == null) {
                     throw new NoSuchElementException();
                 }
                 try {
