@@ -5,6 +5,18 @@ package ua.com.juja.sevenWeek.Lab38;
  */
 public class AccountManager {
 
+    public static void main(String[] args) {
+
+        Account account = new Account(5){
+
+            @Override
+            public void change(int delta) throws TryAgainException, BlockAccountException {
+
+            }
+        };
+        System.out.println();
+    }
+
     public static boolean transfer(Account[] accounts, int[] delta) {
 
         boolean transferAll = false;
