@@ -1,5 +1,6 @@
 package ua.com.juja.eightWeek.Lab40;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
@@ -7,18 +8,18 @@ import java.util.NoSuchElementException;
  * Created by serzh on 1/20/16.
  */
 
-public class SimpleArrayList <E> /*implements SimpleList<E> */{
+public class SimpleArrayList <E> implements SimpleList<E> {
 
-    /*private static final int DEFAULT_INITIAL_CAPACITY = 16;
+    private static final int DEFAULT_INITIAL_CAPACITY = 16;
     private E[] data;
     private int size = 0;
 
-    public SimpleArrayList() {
+    public SimpleArrayList() { // конструктор, если массив пуст
         this(DEFAULT_INITIAL_CAPACITY);
     }
 
     public SimpleArrayList(int initialCapacity) {
-        this.data = (E[]) new Object[initialCapacity];
+        this.data = (E[]) new Object[initialCapacity]; // "копируем" в data переданный в конструктор массив
     }
 
     @Override
@@ -48,20 +49,21 @@ public class SimpleArrayList <E> /*implements SimpleList<E> */{
     @Override
     public E remove(int index) {
         rangeCheck(index);
-        E oldValue = data[index];
-        int numMoved = size - index - 1;
-        System.arraycopy(data, index + 1, data, index, numMoved);
-        data[--size] = null;
+        E oldValue = data[index]; // сохранили значение, которое будем удалять
+        int numMoved = size - index - 1; // узнали длину строки для копирования
+        System.arraycopy(data, index + 1, data, index, numMoved); // скопировали на место удаленного элемента строку,
+        //начиная со следующего элемента до конца
+        data[--size] = null; // последний элемент в массиве data делаем null
         return oldValue;
     }
 
     private void rangeCheck(int index) {
-        if (index < 0 || size < index) {
+        if (index < 0 || size < index) { // если индекс меньше 0 или больше длины массива - кидаем иксепшин.
             throw new ArrayIndexOutOfBoundsException();
         }
     }
 
-    private void ensureCapacity(int minCapacity) {
+    private void ensureCapacity(int minCapacity) { // создаем массив с size + 1
         if (minCapacity > data.length) {
             int newCapacity = Math.max(minCapacity, data.length + (data.length >> 1));
             E[] newData = (E[]) new Object[newCapacity];
@@ -70,8 +72,42 @@ public class SimpleArrayList <E> /*implements SimpleList<E> */{
         }
     }
 
-    *//*BODY*/
+    public Iterator<E> iterator(E[] data) {
 
+        return null;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
+    }
+
+    /*BODY*/
+
+    @Override
+    public String toString() {
+        return Arrays.toString(data);
+    }
+
+    @Override
+    public boolean equals(Object o) { // создал автоматом
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SimpleArrayList<?> that = (SimpleArrayList<?>) o;
+
+        if (size != that.size) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(data, that.data);
+
+    }
+
+    @Override
+    public int hashCode() { // создал автоматом
+        int result = Arrays.hashCode(data);
+        result = 31 * result + size;
+        return result;
+    }
 }
 
 interface SimpleList<E> {
