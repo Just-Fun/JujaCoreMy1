@@ -1,5 +1,6 @@
 package ua.com.juja.eightWeek.Lab40;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ConcurrentModificationException;
@@ -76,8 +77,7 @@ public class SimpleArrayList<E> implements SimpleList<E> {
 
     @Override
     public Iterator<E> iterator() {
-//        final E[] data = this.data;
-//        final Iterator<E> it = new Iterator<E>() {
+
         return new Iterator <E>() {
 
             private int currentIndex = 0;
@@ -111,14 +111,17 @@ public class SimpleArrayList<E> implements SimpleList<E> {
                 }
             }
         };
-//        return it;
     }
-
-    /*BODY*/
 
     @Override
     public String toString() {
-        return Arrays.toString(data);
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (data[i] != null) count++;
+        }
+        SimpleArrayList pr = new SimpleArrayList(count);
+        System.arraycopy(data, 0, pr.data, 0, count);
+        return Arrays.toString(pr.data);
     }
 
     @Override
