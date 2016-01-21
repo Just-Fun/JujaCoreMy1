@@ -4,11 +4,12 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
+
 /**
  * Created by serzh on 1/20/16.
  */
 
-public class SimpleArrayList <E> implements SimpleList<E> {
+public class SimpleArrayList<E> implements SimpleList<E> {
 
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
     private E[] data;
@@ -79,8 +80,9 @@ public class SimpleArrayList <E> implements SimpleList<E> {
 
     @Override
     public Iterator<E> iterator() {
-            final E[] data = this.data;
-        Iterator<E> it = new Iterator<E>() {
+//        final E[] data = this.data;
+//        final Iterator<E> it = new Iterator<E>() {
+        return new Iterator <E>() {
 
             private int currentIndex = 0;
 
@@ -106,10 +108,14 @@ public class SimpleArrayList <E> implements SimpleList<E> {
 
             @Override
             public void remove() {
-                throw new UnsupportedOperationException();
+                try {
+//                    data.remove(currentIndex - 1);
+                } catch (Exception e) {
+                    throw new IllegalStateException();
+                }
             }
         };
-        return it;
+//        return it;
     }
 
     /*BODY*/
@@ -142,9 +148,14 @@ public class SimpleArrayList <E> implements SimpleList<E> {
 
 interface SimpleList<E> {
     public boolean add(E newElement);
+
     public E get(int index);
+
     public Iterator<E> iterator();
+
     public int size();
+
     public boolean isEmpty();
+
     public E remove(int index);
 }
