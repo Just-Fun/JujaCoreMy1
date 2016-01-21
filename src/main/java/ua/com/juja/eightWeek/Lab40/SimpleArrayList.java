@@ -72,14 +72,43 @@ public class SimpleArrayList <E> implements SimpleList<E> {
         }
     }
 
-    public Iterator<E> iterator(E[] data) {
+   /* public Iterator<E> iterator(E[] data) {
 
         return null;
-    }
+    }*/
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        Iterator<E> it = new Iterator<E>() {
+
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size && data[currentIndex] != null;
+            }
+
+            @Override
+            public E next() {
+                E nextE;
+                if (data[currentIndex++] == null) {
+                    throw new NoSuchElementException();
+                }
+                try {
+                    nextE = data[currentIndex++];
+                } catch (NoSuchElementException e) {
+                    throw new NoSuchElementException();
+                }
+
+                return nextE;
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        };
+        return it;
     }
 
     /*BODY*/
