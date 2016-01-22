@@ -112,7 +112,7 @@ public class SimpleLinkedList <E> implements SimpleList<E> {
 
             @Override
             public boolean hasNext() {
-                return currentIndex < size /*&& data[currentIndex] != null*/;
+                return currentIndex < size;
             }
 
             @Override
@@ -122,7 +122,8 @@ public class SimpleLinkedList <E> implements SimpleList<E> {
                     throw new NoSuchElementException();
                 }
                 try {
-                    nextE = (E) last;
+                    nextE = (E) last.item;
+                    currentIndex++;
                 } catch (NoSuchElementException e) {
                     throw new NoSuchElementException();
                 }
