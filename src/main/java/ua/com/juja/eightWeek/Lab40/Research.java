@@ -20,11 +20,15 @@ public class Research {
         list.add("A");
         list.add("B");
         list.add("C");
+        System.out.println(list);
 
-        Iterator<String> it1 = list.iterator();
-//        it1.forEachRemaining(System.out.println());
-//        Iterator it = ints.i
-        System.out.println(Arrays.toString(ints));
-        System.out.println(Arrays.toString(iEmpty));
+//        Iterator<String> it1 = list.iterator();
+////        it1.forEachRemaining(System.out.println());
+////        Iterator it = ints.i
+//        System.out.println(Arrays.toString(ints));
+//        System.out.println(Arrays.toString(iEmpty));
+//
+//        ArrayList arrayList = new ArrayList();
+//
     }
 }

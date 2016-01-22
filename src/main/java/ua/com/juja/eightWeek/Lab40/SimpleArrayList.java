@@ -1,10 +1,7 @@
 package ua.com.juja.eightWeek.Lab40;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Created by serzh on 1/20/16.
@@ -115,13 +112,16 @@ public class SimpleArrayList<E> implements SimpleList<E> {
 
     @Override
     public String toString() {
+        ArrayList arrayList = new ArrayList();
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (data[i] != null) count++;
+            arrayList.add(data[i]);
         }
-        SimpleArrayList pr = new SimpleArrayList(count);
+        /*SimpleArrayList pr = new SimpleArrayList(count);
         System.arraycopy(data, 0, pr.data, 0, count);
-        return Arrays.toString(pr.data);
+        return Arrays.toString(pr.data);*/
+        return arrayList.toString();
     }
 
     @Override
