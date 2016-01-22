@@ -3,6 +3,7 @@ package ua.com.juja.eightWeek.lab41;
 /**
  * Created by serzh on 1/22/16.
  */
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -118,11 +119,11 @@ public class SimpleLinkedList <E> implements SimpleList<E> {
             @Override
             public E next() {
                 E nextE;
-                if (last == null) {
+                if (last == null && first == null) {
                     throw new NoSuchElementException();
                 }
                 try {
-                    nextE = (E) last.item;
+                    nextE = (E) SimpleLinkedList.this.node(currentIndex).item;
                     currentIndex++;
                 } catch (NoSuchElementException e) {
                     throw new NoSuchElementException();
@@ -144,7 +145,12 @@ public class SimpleLinkedList <E> implements SimpleList<E> {
 
     @Override
     public String toString() {
-        return "" + first + last + size;
+        ArrayList<E> arrayList = new ArrayList();
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            arrayList.add(SimpleLinkedList.this.node(i).item);
+        }
+        return arrayList.toString();
     }
 
     @Override
@@ -155,20 +161,20 @@ public class SimpleLinkedList <E> implements SimpleList<E> {
         SimpleLinkedList<?> that = (SimpleLinkedList<?>) o;
 
         if (size != that.size) return false;
-        if (first != null ? !first.equals(that.first) : that.first != null) return false;
-        return last != null ? last.equals(that.last) : that.last == null;
-
+        return this.toString().equals(that.toString());
     }
 
     @Override
     public int hashCode() {
-        int result = first != null ? first.hashCode() : 0;
-        result = 31 * result + (last != null ? last.hashCode() : 0);
-        result = 31 * result + size;
+        int result = 0;
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            E item = SimpleLinkedList.this.node(i).item;
+            result += item.hashCode();
+        }
+        result += size;
         return result;
     }
-
-    // end
 }
 
 interface SimpleList<T> {
