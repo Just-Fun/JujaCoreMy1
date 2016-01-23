@@ -6,17 +6,17 @@ import java.sql.*;
 /**
  * Created by Oleg on 1/10/2016.
  */
-public class DatabaseManager extends AbstractDatabaseManager {
+public class OldDatabaseManager extends AbstractDatabaseManager {
 
 
-    public DatabaseManager(String dbname, String username, String password) {
+    public OldDatabaseManager(String dbname, String username, String password) {
         super(dbname, username, password);
     }
 
     protected void removeTable(String table) throws SQLException {
         String query3 = "drop table " + table;
         stmt.execute(query3);
-        System.out.println("Employees table removed");
+        System.out.println(table + " table removed");
     }
 
     protected void removeColumn(String column) throws SQLException {

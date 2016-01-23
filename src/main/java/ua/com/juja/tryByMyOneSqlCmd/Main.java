@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        ColumnsEditor editColumns = new ColumnsEditor("postgres", "postgres", "1qwerty");
+        DatabaseManagerMy editColumns = new ColumnsEditor("postgres", "postgres", "1qwerty");
         String tableEmployees = "employees";
         String columnFirst_name = "first_name";
         String columnLast_name = "last_name";
