@@ -1,5 +1,8 @@
 package ua.com.juja.sqlcmd.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -14,7 +17,15 @@ public class Console implements View {
     @Override
     public String read() {
 
-        Scanner scanner =  new Scanner(System.in);
-        return scanner.nextLine();
+        /*Scanner scanner =  new Scanner(System.in);
+        return scanner.nextLine();*/
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String line = "";
+        try {
+            line = reader.readLine();
+        } catch (IOException e) {
+            System.out.println("Не считал " + e);
+        }
+        return line;
     }
 }

@@ -4,6 +4,7 @@ package ua.com.juja.sqlcmd.model;
  * Created by serzh on 1/11/16.
  */
 public interface DatabaseManager {
+
     DataSet[] getTableData(String tableName);
 
     String[] getTableNames();
@@ -12,7 +13,9 @@ public interface DatabaseManager {
 
     void clear(String tableName);
 
-    void create(DataSet input);
+    void create(String tableName, DataSet input);
 
     void update(String tableName, int id, DataSet newValue);
+
+    String[] getTableColumns(String tableName);
 }

@@ -78,8 +78,10 @@ public class JDBCDatabaseManager implements DatabaseManager {
                     password);
         } catch (SQLException e) {
             connection = null;
-            String s = String.format("Cant get connection for model:%s user:%s", database, userName);
-            throw new RuntimeException(s, e);
+            throw new RuntimeException(
+                    String.format("Cant get connection for model:%s user:%s",
+                            database, userName),
+                    e);
         }
     }
 
@@ -95,14 +97,14 @@ public class JDBCDatabaseManager implements DatabaseManager {
     }
 
     @Override
-    public void create(DataSet input) {
+    public void create(String tableName, DataSet input) {
         try {
             Statement stmt = connection.createStatement();
 
             String tableNames = getNameFormated(input, "%s,");
             String values = getValuesFormated(input, "'%s',");
 
-            stmt.executeUpdate("INSERT INTO public.user (" + tableNames + ")" +
+            stmt.executeUpdate("INSERT INTO public." + tableName + " (" + tableNames + ")" +
                     "VALUES (" + values + ")");
             stmt.close();
         } catch (SQLException e) {
@@ -125,7 +127,6 @@ public class JDBCDatabaseManager implements DatabaseManager {
             String tableNames = getNameFormated(newValue, "%s = ?,");
 
             String sql = "UPDATE public." + tableName + " SET " + tableNames + " WHERE id = ?";
-            System.out.println(sql);
             PreparedStatement ps = connection.prepareStatement(sql);
 
             int index = 1;
@@ -133,12 +134,32 @@ public class JDBCDatabaseManager implements DatabaseManager {
                 ps.setObject(index, value);
                 index++;
             }
-            ps.setObject(index, id);
+            ps.setInt(index, id);
 
             ps.executeUpdate();
             ps.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String[] getTableColumns(String tableName) {
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '" + tableName + "'");
+            String[] tables = new String[100];
+            int index = 0;
+            while (rs.next()) {
+                tables[index++] = rs.getString("column_name");
+            }
+            tables = Arrays.copyOf(tables, index, String[].class);
+            rs.close();
+            stmt.close();
+            return tables;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new String[0];
         }
     }
 
