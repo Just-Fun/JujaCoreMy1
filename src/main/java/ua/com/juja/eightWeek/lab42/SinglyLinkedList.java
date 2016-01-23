@@ -71,8 +71,10 @@ class FinderElements {
          /*BODY*/
         try {
             ArrayList arrayList = new ArrayList();
-            while (singlyLinkedList.iterator().hasNext()) {
-                arrayList.add(singlyLinkedList.iterator().next());
+
+            Iterator<Integer> iterator = singlyLinkedList.iterator();
+            while (iterator.hasNext()) {
+                arrayList.add(iterator.next());
             }
             int size = arrayList.size();
             int index = size - 1 - k;
