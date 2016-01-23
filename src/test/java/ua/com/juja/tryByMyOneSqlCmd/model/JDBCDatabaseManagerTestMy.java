@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class JDBCDatabaseManagerTestMy {
 
-    /*private DatabaseManager manager;
+    private DatabaseManager manager;
 
     @Before
     public void setup() {
@@ -68,5 +68,5 @@ public class JDBCDatabaseManagerTestMy {
         DataSet user = users[0];
         assertEquals("[name, password, id]", Arrays.toString(user.getNames()));
         assertEquals("[Pup, pass2, 13]", Arrays.toString(user.getValues()));
-    }*/
+    }
 }
