@@ -1,6 +1,5 @@
-package ua.com.juja.sqlcmd.model;
+package ua.com.juja.sqlcmdOld.model;
 
-import java.sql.*;
 import java.util.Arrays;
 
 /**
@@ -55,12 +54,12 @@ public class InMemoryDatabaseManager implements DatabaseManager {
     @Override
     public void update(String tableName, int id, DataSet newValue) {
         validateTable(tableName);
-
+/*
         for (int index = 0; index < freeIndex; index++) {
             if (data[index].get("id") == id) {
                 data[index].updateFrom(newValue);
             }
-        }
+        }*/
     }
 
     @Override

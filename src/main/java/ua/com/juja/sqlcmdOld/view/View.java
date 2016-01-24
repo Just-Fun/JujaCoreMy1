@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.view;
+package ua.com.juja.sqlcmdOld.view;
 
 /**
  * Created by serzh on 1/11/16.

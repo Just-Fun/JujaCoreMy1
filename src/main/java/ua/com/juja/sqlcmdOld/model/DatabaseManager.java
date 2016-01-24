@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.model;
+package ua.com.juja.sqlcmdOld.model;
 
 /**
  * Created by serzh on 1/11/16.

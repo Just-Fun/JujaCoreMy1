@@ -1,10 +1,8 @@
-package ua.com.juja.sqlcmd.Controller;
+package ua.com.juja.sqlcmdOld.Controller;
 
-import ua.com.juja.sqlcmd.model.DataSet;
-import ua.com.juja.sqlcmd.model.DatabaseManager;
-import ua.com.juja.sqlcmd.model.InMemoryDatabaseManager;
-import ua.com.juja.sqlcmd.view.Console;
-import ua.com.juja.sqlcmd.view.View;
+import ua.com.juja.sqlcmdOld.model.DataSet;
+import ua.com.juja.sqlcmdOld.model.DatabaseManager;
+import ua.com.juja.sqlcmdOld.view.View;
 
 import java.util.Arrays;
 

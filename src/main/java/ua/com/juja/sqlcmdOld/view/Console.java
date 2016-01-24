@@ -1,9 +1,8 @@
-package ua.com.juja.sqlcmd.view;
+package ua.com.juja.sqlcmdOld.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 /**
  * Created by serzh on 1/11/16.

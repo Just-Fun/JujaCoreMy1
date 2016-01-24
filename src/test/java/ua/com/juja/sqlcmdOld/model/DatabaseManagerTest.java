@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.model;
+package ua.com.juja.sqlcmdOld.model;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public abstract class DatabaseManagerTest {
     @Before
     public void setup() {
         manager = getDatabaseManager();
-        manager.connect("sqlcmd", "postgres", "1qwerty");
+        manager.connect("sqlcmdOld", "postgres", "postgres");
     }
 
     public abstract DatabaseManager getDatabaseManager();
@@ -38,7 +38,7 @@ public abstract class DatabaseManagerTest {
         input.put("id", 13);
         input.put("name", "Stiven");
         input.put("password", "pass");
-        manager.create(input);
+        manager.create("user", input); // наверное
 
         // then
         DataSet[] users = manager.getTableData("user");
@@ -58,7 +58,7 @@ public abstract class DatabaseManagerTest {
         input.put("id", 13);
         input.put("name", "Stiven");
         input.put("password", "pass");
-        manager.create(input);
+        manager.create("user", input); // наверное
 
         // when
         DataSet newValue = new DataSet();

@@ -1,4 +1,4 @@
-package ua.com.juja.sqlcmd.model;
+package ua.com.juja.sqlcmdOld.model;
 
 import java.sql.*;
 import java.util.Random;
@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] argv) throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
         Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/sqlcmd", "postgres",
+                "jdbc:postgresql://localhost:5432/sqlcmdOld", "postgres",
                 "postgres");
 
         // insert
