@@ -5,7 +5,7 @@ import ua.com.juja.sqlcmd.view.View;
 /**
  * Created by serzh on 1/24/16.
  */
-public class Exit implements Command{
+public class Exit implements Command {
 
     private View view;
 
@@ -21,6 +21,6 @@ public class Exit implements Command{
     @Override
     public void process(String command) {
         view.write("До скорой встречи!");
-        System.exit(0);
+        throw new ExitException();
     }
 }

@@ -28,9 +28,16 @@ public class MainController {
     }
 
     public void run() {
-        view.write("Привет юзер!");
-        view.write("Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password");
+        try {
+            view.write("Привет юзер!");
+            doWork();
+        } catch (ExitException e) {
+            // do nothing
+        }
+    }
 
+    private void doWork() {
+        view.write("Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password");
         while (true) {
             String input = view.read();
             if (input == null) { // null if close application
