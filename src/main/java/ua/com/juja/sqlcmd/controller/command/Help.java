@@ -12,8 +12,6 @@ public class Help implements Command{
 
     public Help(View view) {
         this.view = view;
-
-
     }
 
     @Override
