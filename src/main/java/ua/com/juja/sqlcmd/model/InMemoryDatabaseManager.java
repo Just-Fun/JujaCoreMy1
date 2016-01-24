@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class InMemoryDatabaseManager implements DatabaseManager {
 
-    public static final String TABLE_NAME = "user, test"; // TODO implement multitables
+    public static final String TABLE_NAME = "user"; // TODO implement multitables
 
     private DataSet[] data = new DataSet[1000];
     private int freeIndex = 0;
@@ -27,8 +27,8 @@ public class InMemoryDatabaseManager implements DatabaseManager {
 
     @Override
     public String[] getTableNames() {
-        return new String[] { TABLE_NAME };
-    }
+        return new String[] { TABLE_NAME, "test" };
+    } // TODO remove in///
 
     @Override
     public void connect(String database, String userName, String password) {

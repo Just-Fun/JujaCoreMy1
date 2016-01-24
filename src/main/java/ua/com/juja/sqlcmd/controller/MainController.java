@@ -29,11 +29,13 @@ public class MainController {
 
     public void run() {
         view.write("Привет юзер!");
-        view.write("Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: database|userName|password");
+        view.write("Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password");
 
         while (true) {
-
             String input = view.read();
+            if (input == null) { // null if close application
+                new Exit(view).process(input);
+            }
 
             for (Command command : commands) {
                 if (command.canProcess(input)) {
