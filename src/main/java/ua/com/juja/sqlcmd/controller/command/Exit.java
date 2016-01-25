@@ -3,7 +3,7 @@ package ua.com.juja.sqlcmd.controller.command;
 import ua.com.juja.sqlcmd.view.View;
 
 /**
- * Created by serzh on 1/24/16.
+ * Created by indigo on 28.08.2015.
  */
 public class Exit implements Command {
 

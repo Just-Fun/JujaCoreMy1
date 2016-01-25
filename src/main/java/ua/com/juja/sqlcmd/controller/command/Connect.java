@@ -4,17 +4,16 @@ import ua.com.juja.sqlcmd.model.DatabaseManager;
 import ua.com.juja.sqlcmd.view.View;
 
 /**
- * Created by serzh on 1/24/16.
+ * Created by indigo on 28.08.2015.
  */
 public class Connect implements Command {
 
     private static String COMMAND_SAMPLE = "connect|sqlcmd|postgres|postgres";
 
-    private final DatabaseManager manager;
-    private final View view;
+    private DatabaseManager manager;
+    private View view;
 
     public Connect(DatabaseManager manager, View view) {
-
         this.manager = manager;
         this.view = view;
     }
@@ -27,23 +26,20 @@ public class Connect implements Command {
     @Override
     public void process(String command) {
 
-        try {
-            String[] data = command.split("\\|");
-
-            if (data.length != count()) {
-                throw new IllegalArgumentException(String.format(
-                        "Неверно количество параметров разделенных знаком '|', " +
-                                "ожидается %s, но есть: %s", count(), data.length));
-            }
-            String databaseName = data[1];
-            String userName = data[2];
-            String password = data[3];
-
-            manager.connect(databaseName, userName, password);
-            view.write("Успех!");
-        } catch (Exception e) {
-            printError(e);
+        String[] data = command.split("\\|");
+        if (data.length != count()) {
+            throw new IllegalArgumentException(
+                    String.format("Неверно количество параметров разделенных " +
+                            "знаком '|', ожидается %s, но есть: %s",
+                            count(), data.length));
         }
+        String databaseName = data[1];
+        String userName = data[2];
+        String password = data[3];
+
+        manager.connect(databaseName, userName, password);
+
+        view.write("Успех!");
     }
 
     private int count() {
@@ -51,13 +47,4 @@ public class Connect implements Command {
     }
 
 
-    private void printError(Exception e) {
-        String message = /*e.getClass().getSimpleName() + ": " + */ e.getMessage();
-        Throwable cause = e.getCause();
-        if (cause != null) {
-            message += " " + /*cause.getClass().getSimpleName() + ": " + */ cause.getMessage();
-        }
-        view.write("Неудача! по причине: " + message);
-        view.write("Повтори попытку.");
-    }
 }

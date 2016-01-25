@@ -1,9 +1,7 @@
 package ua.com.juja.sqlcmd.controller.command;
 
 /**
- * Created by serzh on 1/24/16.
+ * Created by indigo on 28.08.2000.
  */
 public class ExitException extends RuntimeException {
-
-
 }

@@ -3,12 +3,11 @@ package ua.com.juja.sqlcmd.controller.command;
 import ua.com.juja.sqlcmd.view.View;
 
 /**
- * Created by serzh on 1/24/16.
+ * Created by indigo on 28.08.2015.
  */
-public class Help implements Command{
+public class Help implements Command {
 
-
-    private final View view;
+    private View view;
 
     public Help(View view) {
         this.view = view;
@@ -23,11 +22,17 @@ public class Help implements Command{
     public void process(String command) {
         view.write("Существующие команды:");
 
-        view.write("\tconnect|databaseName|usserName|password");
+        view.write("\tconnect|databaseName|userName|password");
         view.write("\t\tдля подключения к базе данных, с которой будем работать");
 
         view.write("\tlist");
         view.write("\t\tдля получения списка всех таблиц базы, к которой подключились");
+
+        view.write("\tclear|tableName");
+        view.write("\t\tдля очистки всей таблицы"); // TODO а если юзер случайно ввел команду? Может переспросить его?
+
+        view.write("\tcreate|tableName|column1|value1|column2|value2|...|columnN|valueN");
+        view.write("\t\tдля создания записи в таблице");
 
         view.write("\tfind|tableName");
         view.write("\t\tдля получения содержимого таблицы 'tableName'");

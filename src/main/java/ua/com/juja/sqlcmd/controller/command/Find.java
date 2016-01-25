@@ -5,7 +5,7 @@ import ua.com.juja.sqlcmd.model.DatabaseManager;
 import ua.com.juja.sqlcmd.view.View;
 
 /**
- * Created by serzh on 1/24/16.
+ * Created by indigo on 28.08.2015.
  */
 public class Find implements Command {
 
@@ -19,12 +19,13 @@ public class Find implements Command {
 
     @Override
     public boolean canProcess(String command) {
-        return command.startsWith("find|");    }
+        return command.startsWith("find|");
+    }
 
     @Override
     public void process(String command) {
         String[] data = command.split("\\|");
-        String tableName = data[1];
+        String tableName = data[1]; // TODO to add validation
 
         String[] tableColumns = manager.getTableColumns(tableName);
         printHeader(tableColumns);
@@ -33,11 +34,11 @@ public class Find implements Command {
         printTable(tableData);
     }
 
-
     private void printTable(DataSet[] tableData) {
         for (DataSet row : tableData) {
             printRow(row);
         }
+        view.write("--------------------");
     }
 
     private void printRow(DataSet row) {

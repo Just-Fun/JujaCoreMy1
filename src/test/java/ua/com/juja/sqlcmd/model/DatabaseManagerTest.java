@@ -1,6 +1,5 @@
 package ua.com.juja.sqlcmd.model;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -90,8 +89,10 @@ public abstract class DatabaseManagerTest {
     }
 
     @Test
-    public void testIsConnected() {
-
+    public void testisConnected() {
+        // given
+        // when
+        // then
         assertTrue(manager.isConnected());
     }
 }
