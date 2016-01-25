@@ -3,7 +3,9 @@ package ua.com.juja.sqlcmd.controler.command;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
+
 import static org.mockito.Mockito.*;
+
 import ua.com.juja.sqlcmd.controller.command.Command;
 import ua.com.juja.sqlcmd.controller.command.Find;
 import ua.com.juja.sqlcmd.model.DataSet;
@@ -19,17 +21,19 @@ public class FindTest {
 
     private DatabaseManager manager;
     private View view;
+    private Command command;
 
     @Before
     public void setup() {
         manager = mock(DatabaseManager.class);
         view = mock(View.class);
+        command = new Find(manager, view);
+
     }
 
     @Test
     public void testPrintTableData() {
         //given
-        Command command = new Find(manager, view);
         when(manager.getTableColumns("user")).
                 thenReturn(new String[]{"id", "name", "password"});
 
@@ -51,11 +55,34 @@ public class FindTest {
         command.process("find|user");
 
         //then
+
+        shpuldPrint("[--------------------, |id|name|password|, --------------------, " +
+                "|12|Stiven|*****|, " +
+                "|13|Eva|+++++|]");
+    }
+
+    @Test
+    public void testPrintTableDataEmptyUsers() {
+        //given
+        when(manager.getTableColumns("user")).
+                thenReturn(new String[]{"id", "name", "password"});
+
+        DataSet[] data = new DataSet[]{};
+        when(manager.getTableData("user")).
+                thenReturn(data);
+
+        //when
+        command.process("find|user");
+
+        //then
+        String expected = "[--------------------, |id|name|password|, --------------------]";
+
+        shpuldPrint(expected);
+    }
+
+    private void shpuldPrint(String expected) {
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(view, atLeastOnce()).write(captor.capture());
-        assertEquals("[--------------------, |id|name|password|, --------------------, " +
-                "|12|Stiven|*****|, " +
-                "|13|Eva|+++++|]",
-                captor.getAllValues().toString());
+        assertEquals(expected, captor.getAllValues().toString());
     }
 }
