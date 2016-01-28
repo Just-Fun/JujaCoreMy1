@@ -1,4 +1,4 @@
-package ua.com.juja.A9nineWeek.quiz29;
+package ua.com.juja.A9nineWeek.quiz29.TREEMAP;
 
 import java.util.NavigableSet;
 import java.util.TreeSet;
@@ -14,7 +14,9 @@ public class App {
         users.add(new User(25, "Sara"));
         users.add(new User(26, "Sara"));
         System.out.println(users);
-        System.out.println(users.descendingIterator().next());
+
+
+        System.out.println(users.descendingSet().descendingIterator().next());
     }
 }
 class User implements Comparable<User> {
@@ -33,11 +35,11 @@ class User implements Comparable<User> {
 
     @Override
     public int compareTo(User that) {
-        int result = this.name.compareTo(that.name);
+        int result = that.name.compareTo(this.name);
         if (result != 0) {
             return result;
         } else {
-            return that.age - this.age;
+            return this.age - that.age;
         }
     }
 }
