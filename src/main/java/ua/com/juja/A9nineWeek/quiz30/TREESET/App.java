@@ -17,7 +17,8 @@ public class App {
         set.add("BA");
         set.add("B");
 
-        System.out.println(set.floor("BB"));
+        System.out.println(set.lower("BB"));
+
 
         System.out.println(set);
     }
