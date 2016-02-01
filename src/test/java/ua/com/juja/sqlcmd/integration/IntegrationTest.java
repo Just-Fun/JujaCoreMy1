@@ -99,13 +99,13 @@ public class IntegrationTest {
         Main.main(new String[0]);
 
         // then
-        assertEquals("Привет юзер!\r\n" +
-                "Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password\r\n" +
+        assertEquals("Привет юзер!\n" +
+                "Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password\n" +
                 // list
-                "Вы не можете пользоваться командой 'list' пока не подключитесь с помощью комманды connect|databaseName|userName|password\r\n" +
-                "Введи команду (или help для помощи):\r\n" +
+                "Вы не можете пользоваться командой 'list' пока не подключитесь с помощью комманды connect|databaseName|userName|password\n" +
+                "Введи команду (или help для помощи):\n" +
                 // exit
-                "До скорой встречи!\r\n", getData());
+                "До скорой встречи!\n", getData());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class IntegrationTest {
         Main.main(new String[0]);
 
         // then
-        assertEquals("Привет юзер!\r\n" +
+        assertEquals("Привет юзер!\n" +
                 "Введи, пожалуйста имя базы данных, имя пользователя и пароль в формате: connect|database|userName|password\n" +
                 // find|user
                 "Вы не можете пользоваться командой 'find|user' пока не подключитесь с помощью комманды connect|databaseName|userName|password\n" +
