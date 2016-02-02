@@ -13,7 +13,7 @@ public class Main3 {
         Process p = pb.start();
         try {
             InputStream is = p.getInputStream();
-            InputStreamReader isr = new InputStreamReader(is, "CP866");
+            InputStreamReader isr = new InputStreamReader(is,   "CP866");
             BufferedReader br = new BufferedReader(isr);
             OutputStream os = p.getOutputStream();
             Writer w = new PrintWriter(os);
