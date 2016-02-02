@@ -7,8 +7,8 @@ import java.util.Scanner;
  * Created by serzh on 2/2/16.
  */
 public class Main3 {
-    public static void main(String[] args) throws Exception {
-        ProcessBuilder pb = new ProcessBuilder("/usr/bin/pgadmin3");
+    public static void main(String[] args) throws Exception { //C:\Windows\system32\cmd.exe
+        ProcessBuilder pb = new ProcessBuilder("/usr/bin/mate-terminal"); // /usr/bin/mate-terminal
         pb.redirectErrorStream(true);
         Process p = pb.start();
         try {
