@@ -8,10 +8,8 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System.out.println("Hello World!");
+        Strategy strategy = new ConsoleStrategy();
+        new Runner(strategy).run();
     }
 
-    public void forTest() {
-
-    }
 }
