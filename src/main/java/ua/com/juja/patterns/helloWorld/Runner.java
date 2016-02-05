@@ -7,7 +7,7 @@ public class Runner {
 
     private Strategy strategy;
 
-    public Runner(Strategy strategy) {
+    public Runner(Target strategy) {
         this.strategy = strategy;
     }
 
