@@ -6,5 +6,12 @@ package ua.com.juja.patterns.Strategy.Game;
 public class Queen extends Character {
     public Queen() {
         weapon = new KnifeBehavior();
+        walkBehavior = new Walk();
+    }
+
+
+    @Override
+    public void display() {
+        System.out.println("Красива!");
     }
 }

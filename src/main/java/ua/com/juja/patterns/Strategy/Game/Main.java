@@ -11,11 +11,14 @@ public class Main {
         king.fight();
         king.setWeapon(new KnifeBehavior());
         king.fight();
+        king.display();
 
         Character queen = new Queen();
         queen.fight();
         queen.setWeapon(new SwordBehavior());
         queen.fight();
+        queen.walk();
+        queen.display();
 
     }
 }
