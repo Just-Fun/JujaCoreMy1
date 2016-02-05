@@ -6,6 +6,6 @@ package ua.com.juja.patterns.Strategy.Game;
 public class SwordBehavior implements WeaponBehavior {
     @Override
     public void useWeapon() {
-        System.out.println("Sword!");
+        System.out.println("use Sword!");
     }
 }

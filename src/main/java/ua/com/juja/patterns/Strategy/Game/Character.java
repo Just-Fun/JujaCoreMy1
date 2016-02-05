@@ -8,6 +8,7 @@ public abstract class Character {
     WeaponBehavior weapon;
 
     public void fight() {
+        System.out.print(this.getClass().getSimpleName());
         weapon.useWeapon();
     };
 

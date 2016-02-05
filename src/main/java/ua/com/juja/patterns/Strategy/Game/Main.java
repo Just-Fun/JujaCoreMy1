@@ -12,5 +12,10 @@ public class Main {
         king.setWeapon(new KnifeBehavior());
         king.fight();
 
+        Character queen = new Queen();
+        queen.fight();
+        queen.setWeapon(new SwordBehavior());
+        queen.fight();
+
     }
 }
