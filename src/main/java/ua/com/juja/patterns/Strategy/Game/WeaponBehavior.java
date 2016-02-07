@@ -5,5 +5,6 @@ package ua.com.juja.patterns.Strategy.Game;
  */
 public interface WeaponBehavior {
 
+    public int damage();
     public void useWeapon();
 }

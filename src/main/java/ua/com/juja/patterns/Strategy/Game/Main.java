@@ -13,6 +13,7 @@ public class Main {
         king.fight();
         king.display();
 
+        System.out.println();
         Character queen = new Queen();
         queen.fight();
         queen.setWeapon(new SwordBehavior());

@@ -5,7 +5,13 @@ package ua.com.juja.patterns.Strategy.Game;
  */
 public class KnifeBehavior implements WeaponBehavior {
     @Override
+    public int damage() {
+        return 2;
+    }
+
+    @Override
     public void useWeapon() {
-        System.out.println(" use Knife!");
+
+        System.out.println(" use Knife!" + " damage " + this.damage());
     }
 }

@@ -5,8 +5,11 @@ package ua.com.juja.A2SecondWeek.Matrix.Lab21;
  */
 public class MatrixUtilsWithEx {
     public static void main(String[] args) {
-        int[][] m1 = {{1, 2}, {7, 8}, {3, 4}};
-        int[][] m2 = {{3, 4, 5, 6}, {9, 0, 1, 2}};
+        /*int[][] m1 = {{1, 2}, {7, 8}, {3, 4}};
+        int[][] m2 = {{3, 4, 5, 6}, {9, 0, 1, 2}};*/
+
+        int[][] m1 = {{10}};
+        int[][] m2 = {{100}};
         int[][] out = mul(m1, m2);
         for (int i = 0; i < out.length; i++) {
             for (int j = 0; j < out[0].length; j++) {

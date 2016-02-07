@@ -7,6 +7,7 @@ public final class ConsoleStrategy implements Strategy {
     private static Strategy instance;
 
     public static Strategy getInstance() {
+
         return instance = (instance == null ? new ConsoleStrategy() : instance);
     }
 

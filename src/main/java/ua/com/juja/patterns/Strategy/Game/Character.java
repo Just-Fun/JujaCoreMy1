@@ -11,6 +11,7 @@ public abstract class Character {
     public void fight() {
         System.out.print(this.getClass().getSimpleName());
         weapon.useWeapon();
+        weapon.damage();
     }
 
     public void setWeapon(WeaponBehavior weapon) {

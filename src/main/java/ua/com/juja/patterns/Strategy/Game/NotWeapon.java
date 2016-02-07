@@ -6,7 +6,12 @@ package ua.com.juja.patterns.Strategy.Game;
 public class NotWeapon implements WeaponBehavior {
 
     @Override
+    public int damage() {
+        return 0;
+    }
+
+    @Override
     public void useWeapon() {
-        System.out.println("Don't have any weapon");
+        System.out.println("Don't have any weapon" + " damage " + this.damage());
     }
 }
