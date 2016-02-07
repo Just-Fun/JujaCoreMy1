@@ -1,8 +1,8 @@
 package ua.com.juja.patterns.helloWorld;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.AbstractList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,15 +14,14 @@ import static org.junit.Assert.assertEquals;
  */
 public class RunnerTest {
 
-
     @Test
     public void test() {
         //given
         InMemoryStrategy strategy= new InMemoryStrategy();
-        Runner runner = new Runner(new Adapter(strategy));
+        Component component = new Runner(new Adapter(strategy));
 
         //when
-        runner.run();
+        component.run("Hello World!");
 
         //then
         assertEquals("[Hello World!]", strategy.getMessages().toString());
@@ -33,7 +32,7 @@ public class RunnerTest {
     @Test
     public void test2() {
         //given
-        Runner runner = new Runner(new Target() {
+        Component component = new Runner(new Target() {
             @Override
             public void addMessages(String... messages) {
                 RunnerTest.this.messages.addAll(Arrays.asList(messages));
@@ -41,7 +40,7 @@ public class RunnerTest {
         });
 
         //when
-        runner.run();
+        component.run("Hello World!");
 
         //then
         assertEquals("[Hello World!]", messages.toString());

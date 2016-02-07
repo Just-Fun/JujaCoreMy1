@@ -3,7 +3,7 @@ package ua.com.juja.patterns.helloWorld;
 /**
  * Created by serzh on 2/4/16.
  */
-public class Runner {
+public class Runner implements Component {
 
     private Target target;
 
@@ -11,7 +11,8 @@ public class Runner {
         this.target = target;
     }
 
-    public void run() {
-        target.addMessages("Hello World!");
+    @Override
+    public void run(String message) {
+        target.addMessages(message);
     }
 }

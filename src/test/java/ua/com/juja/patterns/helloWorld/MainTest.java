@@ -18,7 +18,7 @@ public class MainTest {
         Main.main(new String[0]);
 
         //then
-        assertEquals("Hello World!\n", console.getOut());
+        assertEquals("HELLO-WORLD!\n", console.getOut());
 
     }
 }
