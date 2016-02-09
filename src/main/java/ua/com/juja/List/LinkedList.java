@@ -136,7 +136,8 @@ public class LinkedList implements MyList {
             curr = curr.next;
             i++;
         }
-        return null;    }
+        return null;
+    }
 
     @Override
     public void add(int index, Object element) {
@@ -168,33 +169,17 @@ public class LinkedList implements MyList {
         int i = 0;
         Node curr = root;
 
-     /*   while (curr != null) {
-            if (curr.value.equals(o)) {
-                size--;
-                if (root == curr) {
-                    root = null;
-                    return true;
-                } else if (tail == curr) {
-                    curr.prev.next = null;
-                    return true;
-                } else {
-                    curr.next.prev = curr.prev;
-                    curr.prev.next = curr.next;
-                    return true;
-                }
-            }
-            curr = curr.next;
-        }*/
-
         if (index == 0) {
-            root = null;
+            root = curr.next;
+            root.prev = null;
         } else if (index == size - 1) {
-            tail = null;
+            tail = tail.prev;
+            tail.next = null;
         } else {
             while (curr != null) {
                 if (i == index) {
-                    curr.next.prev = curr.prev.next;
-                    curr.prev.next = curr.next.prev;
+                    curr.next.prev = curr.prev;
+                    curr.prev.next = curr.next;
                 }
                 curr = curr.next;
                 i++;

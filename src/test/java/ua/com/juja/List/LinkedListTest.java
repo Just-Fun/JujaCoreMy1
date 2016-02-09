@@ -150,10 +150,14 @@ public class LinkedListTest {
     @Test
     public void testRemove1() throws Exception {
         setup();
-       /* list.remove(0);
-        assertEquals("2, 3, 4, 5", list.toString());*/
-    /*    list.remove(2);
-        assertEquals("1, 2, 4, 5", list.toString());*/
+        list.remove(0);
+        assertEquals("2, 3, 4, 5", list.toString());
+        setup();
+        list.remove(4);
+        assertEquals("1, 2, 3, 4", list.toString());
+        setup();
+        list.remove(2);
+        assertEquals("1, 2, 4, 5", list.toString());
     }
 
 /*    @Test
