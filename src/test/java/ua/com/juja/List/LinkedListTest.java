@@ -67,40 +67,94 @@ public class LinkedListTest {
         list.add("2");
         assertEquals(true, list.remove("2"));
         assertEquals(1, list.size());
-        /*setup();
-        list.remove("4");
-        assertEquals("[1, 2, 3, 5]", list.toString());
-        assertEquals(true, list.remove("5"));
-        assertEquals(false, list.remove("-5"));*/
     }
 
- /*   @Test
+    @Test
+    public void testRemoveMiddle() throws Exception {
+        setup();
+        list.remove("4");
+        assertEquals("1, 2, 3, 5", list.toString());
+        assertEquals(true, list.remove("5"));
+        assertEquals(false, list.remove("-5"));
+    }
+
+    @Test
     public void testGet() throws Exception {
         setup();
         assertEquals("1", list.get(0));
         assertEquals("2", list.get(1));
-        System.out.println(list.toString());
+    }
+
+    @Test
+    public void testGetExeption() throws Exception {
+        setup();
+        try {
+            list.get(9);
+            fail("Expected Exceptions");
+        } catch (IllegalArgumentException e) {
+        assertEquals("Index can't be more than list size. Size: , index: 9", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testGetIndexNegativ() throws Exception {
+        setup();
+        try {
+            list.get(-1);
+            fail("Expected Exceptions");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Index can't be negative, index: -1", e.getMessage());
+        }
     }
 
     @Test
     public void testSet() throws Exception {
         setup();
-        assertEquals("0", list.set(0, "0"));
-    }*/
+        assertEquals("10", list.set(0, "10"));
+        assertEquals("30", list.set(2, "30"));
+    }
 
-    /*@Test
+    @Test
+    public void testSetExeption() throws Exception {
+        setup();
+        try {
+            list.set(10, "10");
+            fail("Expected Exceptions");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Index can't be more than list size. Size: , index: 10", e.getMessage());
+        }
+    }
+
+    @Test
     public void testAdd() throws Exception {
         setup();
-        list.add(1, "1");
-        assertEquals("[1, 1, 2, 3, 4, 5]", list.toString());
-    }*/
+        list.add(1, "10");
+        assertEquals("1, 10, 3, 4, 5", list.toString());
+        list.add(0,"100");
+        assertEquals("100, 10, 3, 4, 5", list.toString());
+        list.add(4,"50");
+        assertEquals("100, 10, 3, 4, 50", list.toString());
+    }
 
-  /*  @Test
+    @Test
+    public void testAddExeption() throws Exception {
+        setup();
+        try {
+            list.add(10, "10");
+            fail("Expected Exceptions");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Index can't be more than list size. Size: , index: 10", e.getMessage());
+        }
+    }
+
+    @Test
     public void testRemove1() throws Exception {
         setup();
-        list.remove(2);
-        assertEquals("[1, 2, 4, 5]", list.toString());
-    }*/
+       /* list.remove(0);
+        assertEquals("2, 3, 4, 5", list.toString());*/
+    /*    list.remove(2);
+        assertEquals("1, 2, 4, 5", list.toString());*/
+    }
 
 /*    @Test
     public void testRemoveNegativeIndexException() throws Exception {
@@ -118,11 +172,12 @@ public class LinkedListTest {
         setup();
         assertEquals(0, list.indexOf("1"));
         assertEquals(4, list.indexOf("5"));
-    }
+    }*/
 
     @Test
     public void testClear() throws Exception {
+        setup();
         list.clear();
-        assertEquals("[]", list.toString());
-    }*/
+        assertEquals("", list.toString());
+    }
 }
