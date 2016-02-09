@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Created by serzh on 2/8/16.
  */
 public class ArrayList implements MyList {
+
     Object[] array;
 
     public ArrayList(/*Object[] array*/) {
@@ -69,6 +70,9 @@ public class ArrayList implements MyList {
 
     @Override
     public Object remove(int removeIndex) {
+        if (removeIndex < 0) {
+            throw new IllegalArgumentException("Unexpected index - must be positiv, but was: " + removeIndex);
+        }
         Object[] newArray = new Object[size() - 1];
         int index = 0;
         for (; index < removeIndex; index++) {
