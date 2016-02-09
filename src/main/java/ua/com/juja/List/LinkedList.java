@@ -21,13 +21,6 @@ public class LinkedList implements MyList {
 
     @Override
     public int size() {
-       /* Node curr = root;
-        int count = 0;
-
-        while (curr != null) {
-            count++;
-            curr = curr.next;
-        }*/
         return size;
     }
 
@@ -192,7 +185,22 @@ public class LinkedList implements MyList {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        if (o == null) {
+            throw new IllegalArgumentException("Argument can't be null.");
+        }
+        Node curr = root;
+        if (curr == null) {
+            throw new IllegalArgumentException("Array is empty.");
+        }
+        int index = 0;
+        while (curr != null) {
+            if(curr.value.equals(o)) {
+                return index;
+            }
+            curr = curr.next;
+            index++;
+        }
+        return -1;
     }
 
 

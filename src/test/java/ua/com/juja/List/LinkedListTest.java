@@ -160,23 +160,37 @@ public class LinkedListTest {
         assertEquals("1, 2, 4, 5", list.toString());
     }
 
-/*    @Test
+    @Test
     public void testRemoveNegativeIndexException() throws Exception {
         setup();
         try {
             list.remove(-4);
             fail("Expected Exceptions");
         } catch (IllegalArgumentException e) {
-            assertEquals("Unexpected index - must be positiv, but was: -4", e.getMessage());
+            assertEquals("Index can't be negative, index: -4", e.getMessage());
         }
-    }*/
+    }
 
-  /*  @Test
+    @Test
     public void testIndexOf() throws Exception {
         setup();
         assertEquals(0, list.indexOf("1"));
         assertEquals(4, list.indexOf("5"));
-    }*/
+        assertEquals(-1, list.indexOf("6"));
+        assertEquals(-1, list.indexOf(""));
+    }
+
+
+    @Test
+    public void testIndexOfException() throws Exception {
+        setup();
+        try {
+            list.indexOf(null);
+            fail("Expected Exceptions");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Argument can't be null.", e.getMessage());
+        }
+    }
 
     @Test
     public void testClear() throws Exception {
