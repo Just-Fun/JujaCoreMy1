@@ -134,15 +134,12 @@ class EntityInputReader implements EntityInput {
             if (chars[i] == '<') {
                 countEnd++;
             }
-
             if (countBegin > 1 && countEnd < 3) {
                 age += Character.toString(chars[i]);
             }
-
             if (countBegin > 3 && countEnd < 5) {
                 name += Character.toString(chars[i]);
             }
-
             if (chars[i] == '>') {
                 countBegin++;
             }
@@ -154,6 +151,57 @@ class EntityInputReader implements EntityInput {
 
     @Override
     public Point readPoint() throws IOException {
-        return null;
+        //<point x=1 y=2></point>n
+        Point point = null;
+        String s = "";
+        try {
+            boolean end = false;
+            while (!end) {
+                int read = in.read();
+                if (read == -1) {
+                    end = true;
+                    continue;
+                }
+                char c = (char) read;
+                s += c;
+
+            }
+            in.close();
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        char[] chars = s.toCharArray();
+
+
+        String x = "";
+        String y = "";
+        int countEq = 0;
+        int countSpace = 0;
+        boolean rightUgol = false;
+        //<point x=1 y=2></point>n
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ' ') {
+                countSpace++;
+            }
+            if (chars[i] == '>') {
+                rightUgol = true;
+            }
+            if (countEq > 0 && countSpace < 2) {
+                x += Character.toString(chars[i]);
+            }
+            if (countEq > 1 && !rightUgol) {
+                y += Character.toString(chars[i]);
+            }
+            if (chars[i] == '=') {
+                countEq++;
+            }
+        }
+        int x1 = Integer.valueOf(x);
+        int y1 = Integer.valueOf(y);
+        point= new Point(x1, y1);
+
+        return point;
     }
 }
