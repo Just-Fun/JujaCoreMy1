@@ -1,6 +1,7 @@
 package ua.com.juja.A91tenWeek.Lab43;
 
 import java.io.*;
+
 /**
  * Created by serzh on 2/10/16.
  */
@@ -32,11 +33,13 @@ public class EntityOutputStream implements EntityOutput {
 
 interface EntityInput {
     public Person readPerson() throws IOException;
+
     public Point readPoint() throws IOException;
 }
 
 interface EntityOutput {
     public void writePerson(Person person) throws IOException;
+
     public void writePoint(Point point) throws IOException;
 }
 
@@ -59,7 +62,7 @@ class Person {
 
     @Override
     public String toString() {
-        return "Person{name=" + name  + ", age=" + age + "}";
+        return "Person{name=" + name + ", age=" + age + "}";
     }
 }
 
@@ -102,29 +105,25 @@ class EntityInputStream implements EntityInput {
     @Override
     public Person readPerson() throws IOException {
 
-      /*  int i = in.readInt();
+        Person person = null;
+        int i = in.readInt();
+        boolean b = in.readBoolean();
+        String s = in.readUTF();
         if (i != 0) {
-            Person person = new Person(i);
-        }*/
-      /*  out.writeInt(person.getAge());
-        if (person.getName() == null) {
-            out.writeBoolean(false);
-        } else {
-            out.writeBoolean(true);
-            out.writeUTF(person.getName());
-        }*/
-        return null;
+            person = new Person(s, i);
+        }
+        return person;
     }
 
     @Override
     public Point readPoint() throws IOException {
-
-        return null;
+        Point point = null;
+        int value = in.readByte();
+        int x = value >> 4;
+        int y = value - (x << 4);
+        point = new Point(x, y);
+        return point;
     }
-
-    /*int value = point.getX() << 4 | point.getY();
-    out.writeByte(value);*/
-
 }
 
 
