@@ -1,10 +1,11 @@
-package ua.com.juja.List;
+package ua.com.juja.A91tenWeek.Lab44;
 
-import java.io.*;
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * Created by serzh on 2/8/16.
+ * Created by serzh on 2/11/16.
  */
 public class Main {
 
@@ -13,7 +14,8 @@ public class Main {
 
      /*   String i = "3";
         int i1 = Integer.valueOf(i);
-        System.out.println(i1)*/;
+        System.out.println(i1)*/
+        ;
 
 
         String s = "";
@@ -24,7 +26,32 @@ public class Main {
         s += "    <name>" + name + "</name>n";
         s += "</person>n";
         System.out.println(s); // <person>n    <age>4</age>n    <name>Vasia</name>n</person>n
-        char[] chars = s.toCharArray();
+
+
+        int x = 0;
+        String string = "";
+
+        String regex = "(\\D+)(\\d+)(\\D+)";
+        String regex1 = "(<name>)(\\w*)(</name>n)";
+
+
+        x = Integer.valueOf(parseString(s, regex, 2));
+        string += parseString(s, regex1, 2);
+
+        System.out.println(x);
+        System.out.println(string);
+    }
+
+    private static String parseString(String input, String regex, int num) {
+        String result = "";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) {
+            result += matcher.group(num);
+        }
+        return result;
+
+        /*char[] chars = s.toCharArray();
         String ageToString = "";
         String nameToString = "";
         int countBegin = 0;
@@ -48,24 +75,7 @@ public class Main {
         }
 
         System.out.println(ageToString);
-        System.out.println(nameToString);
-
-
-//       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//       BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-
-       /* FileReader reader = new FileReader("/home/serzh/Videos/text.txt");
-        char[] buffer = new char[1];
-        StringBuilder builder = new StringBuilder();
-        while (reader.read(buffer) != -1) {
-            builder.append(buffer);
-            System.out.println(builder);
-            System.out.println(Arrays.toString(buffer));
-            System.out.println(new String(buffer));
-            buffer = new char[32];
-        }
-        System.out.println("Whole: " + builder);*/
+        System.out.println(nameToString);*/
 
     }
-
 }
