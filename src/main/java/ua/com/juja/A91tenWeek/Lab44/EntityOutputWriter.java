@@ -1,6 +1,8 @@
 package ua.com.juja.A91tenWeek.Lab44;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by serzh on 2/11/16.
@@ -152,6 +154,7 @@ class EntityInputReader implements EntityInput {
     @Override
     public Point readPoint() throws IOException {
         //<point x=1 y=2></point>n
+
         Point point = null;
         String s = "";
         try {
@@ -174,6 +177,10 @@ class EntityInputReader implements EntityInput {
 
         char[] chars = s.toCharArray();
 
+        s.replaceAll("\\D", "");
+
+        /*Pattern pattern = Pattern.compile("\\d");
+        Matcher matcher = pattern.matcher(s);*/
 
         String x = "";
         String y = "";
