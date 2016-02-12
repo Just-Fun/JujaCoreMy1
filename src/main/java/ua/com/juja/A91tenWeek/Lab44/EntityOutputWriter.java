@@ -1,6 +1,8 @@
 package ua.com.juja.A91tenWeek.Lab44;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by serzh on 2/11/16.
@@ -103,7 +105,7 @@ class EntityInputReader implements EntityInput {
 
     @Override
     public Person readPerson() throws IOException {
-        Person person = null;
+
         String s = "";
 
         try {
@@ -123,7 +125,7 @@ class EntityInputReader implements EntityInput {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
+/*
         char[] chars = s.toCharArray();
 
         String age = "";
@@ -144,17 +146,35 @@ class EntityInputReader implements EntityInput {
                 countBegin++;
             }
         }
-        int age1 = Integer.valueOf(age);
-        person = new Person(name, age1);
+        int age1 = Integer.valueOf(age);*/
+
+        String ageP = "(\\D+)(\\d+)(\\D+)";
+        String nameP = "(<name>)(\\w*)(</name>n)";
+
+
+        int age = Integer.valueOf(parseString(s, ageP, 2));
+        String name = parseString(s, nameP, 2);
+        Person person = new Person(name, age);
         return person;
     }
+    private static String parseString(String input, String regex, int num) {
+        String result = "";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        if (matcher.find()) {
+            result += matcher.group(num);
+        }
+        return result;
+    }
+
+
 
     @Override
     public Point readPoint() throws IOException {
         //<point x=1 y=2></point>n
 
-        Point point = null;
         String s = "";
+
         try {
             boolean end = false;
             while (!end) {
@@ -173,7 +193,18 @@ class EntityInputReader implements EntityInput {
             ex.printStackTrace();
         }
 
-        char[] chars = s.toCharArray();
+        int x = 0;
+        int y = 0;
+
+        String regex = "(\\D+)(\\d+)(\\D+)(\\d+)(\\D+)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(s);
+
+        if (matcher.find()) {
+            x = Integer.valueOf(matcher.group(2));
+            y = Integer.valueOf(matcher.group(4));
+        }
+       /* char[] chars = s.toCharArray();
 
 
         String x = "";
@@ -198,10 +229,11 @@ class EntityInputReader implements EntityInput {
             if (chars[i] == '=') {
                 countEq++;
             }
-        }
-        int x1 = Integer.valueOf(x);
-        int y1 = Integer.valueOf(y);
-        point= new Point(x1, y1);
+        }*/
+//        int x1 = Integer.valueOf(x);
+//        int y1 = Integer.valueOf(y);
+//        point= new Point(x1, y1);
+        Point point = new Point(x, y);
 
         return point;
     }

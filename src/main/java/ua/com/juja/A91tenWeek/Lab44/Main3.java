@@ -17,12 +17,12 @@ public class Main3 {
 
 //        String expressionPointX = "(<point x=)(\\w*)(\\W*y=)(\\w*)(></point>n)";
 //        String expressionPointY = "(<point x=)(\\w*)(\\W*y=)(\\w*)(></point>n)";
-        String expressionPointX = "(\\D+)(\\d+)(\\D+)(\\d+)(\\D+)";
-        String expressionPointY = "(\\D+)(\\d+)(\\D+)(\\d+)(\\D+)";
-
-        int i1 = Integer.valueOf(parseString(string, expressionPointX, 2));
-        int i2 = Integer.valueOf(parseString(string, expressionPointY, 4));
-        System.out.println(i1 + ", " + i2);
+     /*   String expressionPointX = "(\\D+)(\\d+)(\\D+)(\\d+)(\\D+)";
+        String expressionPointY = "(\\D+)(\\d+)(\\D+)(\\d+)(\\D+)";*/
+//
+//        int i1 = Integer.valueOf(parseString(string, expressionPointX, 2));
+//        int i2 = Integer.valueOf(parseString(string, expressionPointY, 4));
+//        System.out.println(i1 + ", " + i2);
     }
 
     private static String parseString(String string, String expression, int numberGroup) {
