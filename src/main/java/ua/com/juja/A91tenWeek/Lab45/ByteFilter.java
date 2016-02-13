@@ -25,31 +25,45 @@ public class ByteFilter {
 
     public static void filter(InputStream src, OutputStream dst, int bufferSize, byte filterCriteria) throws IOException {
 
+//        byte[] bytes = IOUtils.toByteArray(is);
+//        src.available();
+
         byte[] buffer = new byte[bufferSize];
         int begin = 0;
         int size = 0;
-        while (src.read(buffer) != -1) {
-            for (int i = 0; i < bufferSize; i++) {
-                if (buffer[i] == filterCriteria) {
-                    if (size > 0 && begin < i) {
-                        dst.write(buffer, begin, size);
-                        begin += size;
-                        size = 0;
-                    }
-                    begin += 1;
-                } else {
-                    size += 1;
+//        while (src.read(buffer) != -1) {
 
-                    if (i == (bufferSize - 1)) {
-                        dst.write(buffer, begin, size);
+        while (src.available() > 0) {
+            if (src.available() > (bufferSize - 1)) {
+                src.read(buffer);
+            } else {
+                int available = src.available();
+                bufferSize = available;
+                buffer = new byte[available];
+                src.read(buffer);
+            }
+                for (int i = 0; i < bufferSize; i++) {
+                    if (buffer[i] == filterCriteria) {
+                        if (size > 0 && begin < i) {
+                            dst.write(buffer, begin, size);
+                            begin += size;
+                            size = 0;
+                        }
+                        begin += 1;
+                    } else {
+                        size += 1;
+
+                        if (i == (bufferSize - 1)) {
+                            dst.write(buffer, begin, size);
+                            size = 0;
+                            begin = 0;
+                        }
+                    }
+                    if (i == bufferSize - 1) {
                         size = 0;
                         begin = 0;
                     }
-                }
-                if (i == bufferSize - 1) {
-                    size = 0;
-                    begin = 0;
-                }
+
             }
         }
     }
