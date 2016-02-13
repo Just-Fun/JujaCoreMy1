@@ -39,51 +39,19 @@ public class ByteFilter {
                     begin += 1;
                 } else {
                     size += 1;
+
+                    if (i == (bufferSize - 1)) {
+                        dst.write(buffer, begin, size);
+                        size = 0;
+                        begin = 0;
+                    }
                 }
-            }
-            if (begin < bufferSize) {
-                dst.write(buffer, begin, size);
-                size = 0;
-                if (begin == 3) {
+                if (i == bufferSize - 1) {
+                    size = 0;
                     begin = 0;
                 }
             }
-            /*for (byte b : buffer) {
-                if (b != filterCriteria) {
-                    dst.write(b);
-                }
-            }*/
         }
-
-      /*  String s = "";
-        int c;
-        while ((c = src.read()) != -1 ) {
-            if (c != filterCriteria) {
-             s += c;
-            }
-        }
-        String result = "";
-        char[] chars = new char[s.length()];
-        for (int i = 0; i < chars.length; i++) {
-//            chars[i] = s.charAt(i);
-            result += s.charAt(i);
-//            System.out.print(s.charAt(i));
-        }
-
-//        System.out.println(result);
-        byte[] bytes = result.getBytes();
-        dst.write(bytes);*/
-
-
-           /*
-        char[] buffer = new char[1];
-       StringBuilder string = new StringBuilder();
-       while (in.read(buffer) != -1){
-           string.append(new String(buffer));
-           buffer = new char[1];
-       }         */
-
     }
-
 }
 
