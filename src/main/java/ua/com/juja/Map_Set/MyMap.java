@@ -55,6 +55,11 @@ public class MyMap<K, V> extends AbstractMap<K, V> {
             result = 31 * result + (key != null ? key.hashCode() : 0);
             return result;
         }
+
+        @Override
+        public String toString() {
+            return "{" + key + "=" + value + '}';
+        }
     }
 
     @Override
@@ -75,4 +80,12 @@ public class MyMap<K, V> extends AbstractMap<K, V> {
         entries.add(newEntry);
         return oldValue;
     }
+
+//    @Override
+//    public V remove(Object key) {
+//        V remove = super.remove(key);
+//        EntryImpl<K, V> newEntry = new EntryImpl<K, V>((K) key, remove);
+//        entries.remove(newEntry);
+//        return remove;
+//    }
 }

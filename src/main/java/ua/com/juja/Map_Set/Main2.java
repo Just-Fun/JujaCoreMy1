@@ -94,7 +94,7 @@ public class Main2 {
     }
 
     public static void main(String[] args) {
-        Map<User, Account> debts = new HashMap<User, Account>();
+        Map<User, Account> debts = new MyMap<>() ;
         User stiven = new User("Stiven Pupkn");
         debts.put(stiven, new Account(-30));
         User eva = new User("Eva Pupka");
