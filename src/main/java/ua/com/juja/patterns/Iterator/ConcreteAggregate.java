@@ -10,6 +10,7 @@ public class ConcreteAggregate<T> implements Aggregate<T> {
 
     public ConcreteAggregate(int count) {
         this.array = new Object[count];
+
     }
 
     public void set(int index, T value) {
