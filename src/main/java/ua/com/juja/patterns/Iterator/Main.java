@@ -18,7 +18,7 @@ public class Main {
     }
 
     private static void printAggregate(Aggregate aggregate) {
-        Iterator<String> iterator = aggregate.createIterator;
+        Iterator<String> iterator = aggregate.createIterator();
 
         while (!iterator.isDone()) {
             String value = iterator.currentItem();

@@ -4,7 +4,7 @@ package ua.com.juja.patterns.Iterator;
  */
 public interface Aggregate<T> {
 
-    Iterator<T> createIterator;
+    Iterator<T> createIterator();
 
-    void set(int i, String one);
+
 }

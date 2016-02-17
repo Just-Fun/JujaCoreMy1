@@ -3,13 +3,21 @@ package ua.com.juja.patterns.Iterator;
 /**
  * Created by serzh on 16.02.16.
  */
-public class ConcreteAggregate<T> implements Aggregate {
+public class ConcreteAggregate<T> implements Aggregate<T> {
+
+    final Object[] array;
 
 
-    private int i;
+    public ConcreteAggregate(int count) {
+        this.array = new Object[count];
+    }
 
-    public ConcreteAggregate(int i) {
+    public void set(int index, T value) {
+        array[index] = value;
+    }
 
-        this.i = i;
+    @Override
+    public Iterator<T> createIterator() {
+        return new ConcreteIterator<T>(this);
     }
 }

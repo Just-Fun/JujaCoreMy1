@@ -10,5 +10,6 @@ public interface Iterator<T> {
     void next();
 
     boolean isDone();
+
     T currentItem();
 }
