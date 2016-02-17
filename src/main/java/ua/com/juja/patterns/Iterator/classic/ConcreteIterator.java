@@ -1,4 +1,4 @@
-package ua.com.juja.patterns.Iterator;
+package ua.com.juja.patterns.Iterator.classic;
 
 import java.util.NoSuchElementException;
 
