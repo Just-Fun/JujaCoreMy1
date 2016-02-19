@@ -6,7 +6,7 @@ package ua.com.juja.patterns.Iterator.sample;
  */
 public class Main {
     public static void main(String[] args) {
-        List list = new ArrayList<String>();
+//        List list = new ArrayList<String>();
 
 
     }

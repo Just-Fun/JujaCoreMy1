@@ -10,8 +10,13 @@ public class ArrayList<T> implements List {
     Object[] list;
     int modCount;
 
+    public ArrayList(Object[] list) {
+        this.list = list;
+    }
+
     @Override
     public int size() {
+        int size = 0;
         return list.length;
     }
 
@@ -43,6 +48,7 @@ public class ArrayList<T> implements List {
             newList[i] = list[i];
         }
         newList[size()] = object;
+        list = newList;
         return true;
     }
 
@@ -87,7 +93,9 @@ public class ArrayList<T> implements List {
         noSuchElement(index);
         for (int i = 0; i < list.length; i++) {
             if (i == index) {
+                Object remove = list[i];
                 list[i] = object;
+                return remove;
             }
         }
         return null;
@@ -95,7 +103,9 @@ public class ArrayList<T> implements List {
 
     @Override
     public void add(int index, Object object) {
-        noSuchElement(index);
+        if (index < 0 || index > size()) {
+            throw new NoSuchElementException();
+        }
         Object[] newList = new Object[size() + 1];
         for (int i = 0; i < index; i++) {
             newList[i] = list[i];
@@ -140,6 +150,31 @@ public class ArrayList<T> implements List {
         if (index < 0 || index >= size()) {
             throw new NoSuchElementException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArrayList<?> arrayList = (ArrayList<?>) o;
+
+//        if (modCount != arrayList.modCount) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(list, arrayList.list);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(list);
+        result = 31 * result + modCount;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(list);
     }
 }
 
