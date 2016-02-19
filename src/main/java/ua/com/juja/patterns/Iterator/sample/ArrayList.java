@@ -38,7 +38,8 @@ public class ArrayList<T> implements List {
 
     @Override
     public Iterator iterator() {
-        return null;
+
+        return new ArrayListIterator();
     }
 
     @Override
@@ -175,6 +176,23 @@ public class ArrayList<T> implements List {
     @Override
     public String toString() {
         return Arrays.toString(list);
+    }
+
+    private class ArrayListIterator<T> implements Iterator {
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public Object next() {
+            return null;
+        }
+
+        @Override
+        public void remove() {
+
+        }
     }
 }
 

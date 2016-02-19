@@ -34,8 +34,8 @@ public class ArrayListTest {
         list.add(new Integer(2));
         assertFalse(list.isEmpty());
     }
-/*
-    @Test
+
+    /*@Test
     public void testContains() throws Exception { // пока не знаю как
         list.add(new Integer(2));
         assertTrue(list.contains(new Integer(2)));
