@@ -16,24 +16,49 @@ public class Main2 {
 
         }
         arr2[3] = 7;*/
-        int object = 2;
-        int newList[] = new int[list.length - 1];;
-
+       /* int object = 2;
+        int[] newList = null;
         for (int i = 0; i < list.length; i++) {
             if (object == (list[i])) {
+                newList = new int[list.length - 1];
 
                 for (int j = 0; j < i; j++) {
                     newList[j] = list[j];
                 }
                 for (int k = i + 1; k < list.length; k++) {
-                    newList[k] = list[k - 1];
+                    newList[k - 1] = list[k];
                 }
+                list = newList;
 
             }
         }
+*/
+        /*int index = 1;
+        int object = 5;
+        int[] newList = new int[list.length + 1];
+        for (int i = 0; i < index; i++) {
+            newList[i] = list[i];
+        }
+        newList[index] = object;
+        for (int j = index + 1; j < newList.length; j++) {
+            newList[j] = list[j - 1];
 
-        for (int i = 0; i < list.length - 1; i++) {
-            System.out.println(newList[i]);
+        }
+        list = newList;*/
+
+        int[] newList = new int[list.length - 1];
+        int index = 1;
+        for (int i = 0; i < index; i++) {
+            newList[i] = list[i];
+        }
+        for (int j = index; j < newList.length; j++) {
+            newList[j] = list[j + 1];
+
+        }
+        list = newList;
+
+        for (int i = 0; i < list.length; i++) {
+            System.out.println(list[i]);
         }
 
     }
