@@ -17,11 +17,11 @@ public class Test{
         try {
             iterator = simpleArrayList.iterator();
         } catch (UnsupportedOperationException u) {
-            throw new AssertionError("Iterator not implemented");
+            throw new AssertionError("iterator not implemented");
         }
 
         if (iterator == null)
-            throw new AssertionError("Iterator must be no equals null");
+            throw new AssertionError("iterator must be no equals null");
 
         if (iterator.hasNext())
             throw new AssertionError("hasNext() must be returned false if no element");

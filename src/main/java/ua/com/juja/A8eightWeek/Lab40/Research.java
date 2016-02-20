@@ -21,9 +21,9 @@ public class Research {
         list.add("C");
         System.out.println(list);
 
-//        Iterator<String> it1 = list.iterator();
+//        iterator<String> it1 = list.iterator();
 ////        it1.forEachRemaining(System.out.println());
-////        Iterator it = ints.i
+////        iterator it = ints.i
 //        System.out.println(Arrays.toString(ints));
 //        System.out.println(Arrays.toString(iEmpty));
 //
