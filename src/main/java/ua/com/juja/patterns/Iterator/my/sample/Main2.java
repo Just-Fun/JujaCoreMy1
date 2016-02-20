@@ -1,4 +1,4 @@
-package ua.com.juja.patterns.Iterator.sample;
+package ua.com.juja.patterns.Iterator.my.sample;
 
 import java.util.*;
 
@@ -9,6 +9,15 @@ public class Main2 {
     public static void main(String[] args) {
         int[] list = {1, 2, 3};
         int[] arr2 = new int[4];
+
+        int[] copy = Arrays.copyOf(list, 4);
+        copy[3] = 7;
+        arr2 = Arrays.copyOfRange(list, 0, 2);
+
+        for (int i = 0; i < arr2.length; i++) {
+            System.out.println(arr2[i]);
+        }
+
 //        arr2 = Arrays.copyOf(arr1,3);
 //        arr2 = Arrays.copyOfRange(arr1, 0, arr1.length);
       /*  for (int i = 0; i < arr1.length; i++) {
@@ -46,7 +55,7 @@ public class Main2 {
         }
         list = newList;*/
 
-        int[] newList = new int[list.length - 1];
+    /*    int[] newList = new int[list.length - 1];
         int index = 1;
         for (int i = 0; i < index; i++) {
             newList[i] = list[i];
@@ -60,6 +69,6 @@ public class Main2 {
         for (int i = 0; i < list.length; i++) {
             System.out.println(list[i]);
         }
-
+*/
     }
 }

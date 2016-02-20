@@ -1,8 +1,8 @@
-package ua.com.juja.patterns.Iterator.classic;
+package ua.com.juja.patterns.Iterator.my.classic;
 
 import org.junit.Test;
-import ua.com.juja.patterns.Iterator.classic.ConcreteAggregate;
-import ua.com.juja.patterns.Iterator.classic.Iterator;
+import ua.com.juja.patterns.Iterator.my.classic.ConcreteAggregate;
+import ua.com.juja.patterns.Iterator.my.classic.Iterator;
 
 import java.util.NoSuchElementException;
 

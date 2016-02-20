@@ -1,6 +1,5 @@
-package ua.com.juja.patterns.Iterator.sample;
+package ua.com.juja.patterns.Iterator.my.sample;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;

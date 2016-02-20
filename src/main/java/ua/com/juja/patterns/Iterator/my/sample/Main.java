@@ -1,4 +1,4 @@
-package ua.com.juja.patterns.Iterator.sample;
+package ua.com.juja.patterns.Iterator.my.sample;
 
 
 /**

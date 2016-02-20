@@ -1,17 +1,17 @@
-package ua.com.juja.patterns.Iterator.sample;
+package ua.com.juja.patterns.Iterator.my.sample;
 
 /**
  * Created by serzh on 2/17/16.
  */
 public interface List<T> extends Iterable<T> {
 
+    Iterator<T> iterator();
+
     int size();
 
     boolean isEmpty();
 
     boolean contains(Object o);
-
-    Iterator<T> iterator();
 
     boolean add(T object);
 
