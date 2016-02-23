@@ -1,7 +1,7 @@
-package ua.com.juja.patterns.Iterator.my.classic;
+package ua.com.juja.patterns.iterator.classic;
 
 /**
- * Created by serzh on 16.02.16.
+ * Created by oleksandr.baglai on 16.09.2015.
  */
 public interface Iterator<T> {
 

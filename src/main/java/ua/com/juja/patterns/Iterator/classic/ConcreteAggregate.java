@@ -1,16 +1,14 @@
-package ua.com.juja.patterns.Iterator.my.classic;
+package ua.com.juja.patterns.iterator.classic;
 
 /**
- * Created by serzh on 16.02.16.
+ * Created by oleksandr.baglai on 16.09.2015.
  */
 public class ConcreteAggregate<T> implements Aggregate<T> {
 
     final Object[] array;
-    Iterator<T> iterator;
 
     public ConcreteAggregate(int count) {
         this.array = new Object[count];
-        iterator = new ConcreteIterator<T>(this);
     }
 
     public void set(int index, T value) {

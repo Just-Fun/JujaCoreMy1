@@ -1,12 +1,13 @@
-package ua.com.juja.patterns.Iterator.my.classic;
+package ua.com.juja.patterns.iterator.classic;
 
 /**
- * Created by serzh on 16.02.16.
+ * Created by oleksandr.baglai on 16.09.2015.
  */
 public class Main {
 
     public static void main(String[] args) {
         ConcreteAggregate aggregate = new ConcreteAggregate<String>(5);
+
         aggregate.set(0, "one");
         aggregate.set(1, "two");
         aggregate.set(2, "three");
@@ -14,7 +15,6 @@ public class Main {
         aggregate.set(4, "five");
 
         printAggregate(aggregate);
-        System.out.println();
     }
 
     private static void printAggregate(Aggregate aggregate) {

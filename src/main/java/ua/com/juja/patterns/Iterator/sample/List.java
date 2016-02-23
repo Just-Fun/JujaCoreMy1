@@ -1,17 +1,17 @@
-package ua.com.juja.patterns.Iterator.my.sample;
+package ua.com.juja.patterns.iterator.sample;
 
 /**
- * Created by serzh on 2/17/16.
+ * Created by oleksandr.baglai on 16.09.2015.
  */
 public interface List<T> extends Iterable<T> {
-
-    Iterator<T> iterator();
 
     int size();
 
     boolean isEmpty();
 
     boolean contains(Object o);
+
+    Iterator<T> iterator();
 
     boolean add(T object);
 
@@ -28,4 +28,5 @@ public interface List<T> extends Iterable<T> {
     T remove(int index);
 
     int indexOf(Object object);
+
 }

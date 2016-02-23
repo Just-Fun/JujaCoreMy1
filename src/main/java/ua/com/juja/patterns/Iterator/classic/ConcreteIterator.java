@@ -1,9 +1,9 @@
-package ua.com.juja.patterns.Iterator.my.classic;
+package ua.com.juja.patterns.iterator.classic;
 
 import java.util.NoSuchElementException;
 
 /**
- * Created by serzh on 2/17/16.
+ * Created by oleksandr.baglai on 16.09.2015.
  */
 public class ConcreteIterator<T> implements Iterator<T> {
 
@@ -39,6 +39,7 @@ public class ConcreteIterator<T> implements Iterator<T> {
         if (isDone()) {
             throw new NoSuchElementException();
         }
+
         return (T)aggregate.array[index];
     }
 }
