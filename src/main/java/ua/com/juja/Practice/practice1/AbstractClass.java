@@ -7,15 +7,15 @@ public abstract class AbstractClass {
 
     int i = 9;
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         AbstractClass abstractClass = new AbstractClass() {
         };
         int result = abstractClass.i;
 
         System.out.println(result);
-    }
+    }*/
 
-    public AbstractClass() {
+   /* public AbstractClass() {
 
-    }
+    }*/
 }

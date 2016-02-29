@@ -9,7 +9,6 @@ public class Main {
         AbstractClass aClass = new AbstractClass() {
         };
 
-
         System.out.println(aClass.i);
     }
 }
