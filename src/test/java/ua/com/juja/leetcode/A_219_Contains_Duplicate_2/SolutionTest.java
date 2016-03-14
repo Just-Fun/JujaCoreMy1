@@ -1,5 +1,6 @@
 package ua.com.juja.leetcode.A_219_Contains_Duplicate_2;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,16 +13,27 @@ public class SolutionTest {
     @Test
     public void testContainsNearbyDuplicateFalse() {
         int[] array = {1, 2, 3, 4};
-        assertEquals(false, new Solution().containsNearbyDuplicate(array, 5));
+        assertEquals(false, new Solution3().containsNearbyDuplicate(array, 5));
     }
 
     @Test
+    public void testContainsNearbyDuplicateFalse2() {
+        int[] array = {1, 4, 3, 4};
+        assertEquals(false, new Solution3().containsNearbyDuplicate(array, 1));
+    }
+    @Test
     public void testContainsNearbyDuplicateTrue() {
         int[] array = {1, 2, 1, 4};
-        assertEquals(true, new Solution().containsNearbyDuplicate(array, 2));
+        assertEquals(true, new Solution3().containsNearbyDuplicate(array, 2));
     }
 
+    @Test
+    public void testContainsNearbyDuplicateTwo() {
+        int[] array = {-1, -1};
+        assertEquals(true, new Solution3().containsNearbyDuplicate(array, 1));
+    }
 
+    @Ignore
     @Test
     public void testContainsNearbyDuplicate() {
 
