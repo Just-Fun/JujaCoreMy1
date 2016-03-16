@@ -5,38 +5,45 @@ package ua.com.juja.leetcode.A_13_Roman_to_Integer;
  */
 public class Solution {
     public static void main(String[] args) {
-        int ans = romanToInt("XLIX");
+        int ans = romanToInt("IV");
         System.out.println(ans);
     }
 
     public static int romanToInt(String s) {
-        String[] characters = s.split("");
-        String ans = "";
-        String temp = "";
-        for (int i = characters.length - 1; i >= 0; i--) {
-            ans += characters[i];
-        }
-        char[] chars = ans.toCharArray();
-        int integer = 0;
-        for (char c : chars) {
-            if (c == 'I') {
-                integer += 1;
-            } else if (c == 'V') {
-                integer += 5;
-            } else if (c == 'X') {
-                integer += 10;
-            } else if (c == 'L') {
-                integer += 50;
-            } else if (c == 'C') {
-                integer += 100;
-            } else if (c == 'D') {
-                integer += 500;
-            } else if (c == 'M') {
-                integer += 1000;
-            }
+        char[] chars = s.toCharArray();
 
+        int ans = 0;
+        int temp = 0;
+        for (int i = chars.length - 1; i >= 0; i--) {
+           int integer = getInteger(chars[i]);
+            if (temp > integer) {
+                ans -= integer;
+            } else {
+                ans += integer;
+            }
+            temp = integer;
         }
-        return integer;
+        return ans;
+    }
+
+    private static int getInteger(char c) {
+        if (c == 'I') {
+            return 1;
+        } else if (c == 'V') {
+            return 5;
+        } else if (c == 'X') {
+            return 10;
+        } else if (c == 'L') {
+            return 50;
+        } else if (c == 'C') {
+            return 100;
+        } else if (c == 'D') {
+            return 500;
+        } else if (c == 'M') {
+            return 1000;
+        } else {
+            throw new IllegalArgumentException("Wrong number...");
+        }
     }
 }
 
