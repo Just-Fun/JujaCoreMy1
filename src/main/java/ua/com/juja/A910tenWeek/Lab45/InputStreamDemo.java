@@ -1,4 +1,4 @@
-package ua.com.juja.A91tenWeek.Lab45;
+package ua.com.juja.A910tenWeek.Lab45;
 
 /**
  * Created by serzh on 13.02.16.

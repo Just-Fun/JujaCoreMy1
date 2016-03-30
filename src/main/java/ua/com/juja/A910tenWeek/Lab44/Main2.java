@@ -1,4 +1,4 @@
-package ua.com.juja.A91tenWeek.Lab44;
+package ua.com.juja.A910tenWeek.Lab44;
 
 import java.io.IOException;
 import java.io.StringReader;

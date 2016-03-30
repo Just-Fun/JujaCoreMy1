@@ -1,29 +1,30 @@
-package ua.com.juja.A91tenWeek.Lab44;
+package ua.com.juja.A910tenWeek.Lab43;
 
 /**
- * Created by serzh on 2/11/16.
+ * Created by serzh on 2/10/16.
  */
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.StringReader;
-import java.io.StringWriter;
 
 public class Test {
     public static void main(String[] args) throws IOException {
+
         Person expectedPerson = new Person("John", 32);
 
-        StringWriter outStringWriter = new StringWriter();
-        EntityOutputWriter writer = new EntityOutputWriter(outStringWriter);
+        ByteArrayOutputStream outByteArray = new ByteArrayOutputStream();
+        EntityOutputStream outEntity = new EntityOutputStream(outByteArray);
 
-        writer.writePerson(expectedPerson);
-        String rawString = outStringWriter.toString();
+        outEntity.writePerson(expectedPerson);
+
+        byte[] rawByteArray = outByteArray.toByteArray();
 
 
         //call
-        StringReader inStringReader = new StringReader(rawString);
+        ByteArrayInputStream in = new ByteArrayInputStream(rawByteArray);
+        EntityInputStream stream = new EntityInputStream(in);
 
-        EntityInputReader reader = new EntityInputReader(inStringReader);
-
-        Person actualPerson = reader.readPerson();
+        Person actualPerson = stream.readPerson();
 
         //check
 
@@ -32,7 +33,6 @@ public class Test {
 
         if (actualPerson.getAge() != expectedPerson.getAge())
             throw new AssertionError("Expected Person age equals " + expectedPerson.getAge() + " but found " + actualPerson.getAge());
-
 
         System.out.print("OK");
     }

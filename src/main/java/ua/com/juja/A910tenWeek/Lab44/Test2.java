@@ -1,34 +1,27 @@
-package ua.com.juja.A91tenWeek.Lab43;
+package ua.com.juja.A910tenWeek.Lab44;
 
 /**
  * Created by serzh on 2/11/16.
  */
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 public class Test2 {
     public static void main(String[] args) throws IOException {
         Point expectedPoint = new Point(5, 10);
+        StringWriter outStringWriter = new StringWriter();
+        EntityOutputWriter writer = new EntityOutputWriter(outStringWriter);
 
-
-        ByteArrayOutputStream outByteArray = new ByteArrayOutputStream();
-        EntityOutputStream outEntity = new EntityOutputStream(outByteArray);
-
-        outEntity.writePoint(expectedPoint);
-
-        byte[] rawByteArray = outByteArray.toByteArray();
-
+        writer.writePoint(expectedPoint);
+        String rawString = outStringWriter.toString();
 
         //call
-        ByteArrayInputStream in = new ByteArrayInputStream(rawByteArray);
-        EntityInputStream stream = new EntityInputStream(in);
+        StringReader inStringReader = new StringReader(rawString);
+        EntityInputReader reader = new EntityInputReader(inStringReader);
+        Point actualPoint = reader.readPoint();
 
-        Point actualPoint = stream.readPoint();
-
-        //check
-
+        // check
         if (actualPoint.getX() != expectedPoint.getX())
             throw new AssertionError("Expected Point X equals " + expectedPoint.getX() + " but found " + actualPoint.getX());
 

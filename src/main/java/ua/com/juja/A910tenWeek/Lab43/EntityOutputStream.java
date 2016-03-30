@@ -1,4 +1,4 @@
-package ua.com.juja.A91tenWeek.Lab43;
+package ua.com.juja.A910tenWeek.Lab43;
 
 import java.io.*;
 
