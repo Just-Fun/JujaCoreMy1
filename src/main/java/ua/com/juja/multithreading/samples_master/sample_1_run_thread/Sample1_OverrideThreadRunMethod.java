@@ -17,7 +17,7 @@ public class  Sample1_OverrideThreadRunMethod {
             while (true) {
                 print(message);
 
-                sleepRandom(2000);
+                sleepRandom(1000);
             }
         }
     }

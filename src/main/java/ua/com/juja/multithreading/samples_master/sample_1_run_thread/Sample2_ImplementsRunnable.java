@@ -26,10 +26,11 @@ public class Sample2_ImplementsRunnable {
     }
 
     public static void main(String[] args) {
-        Runnable task1 = new MyRunnable("Я круче!");
+//        Runnable task1 = new MyRunnable("Я круче!");
         Runnable task2 = new MyRunnable("Нет Я!");
 
-        Thread thread1 = new Thread(task1);
+//        Thread thread1 = new Thread(task1);
+        Thread thread1 = new Thread(new MyRunnable("Я круче!"));
         Thread thread2 = new Thread(task2);
 
         thread1.start();
