@@ -17,7 +17,7 @@ public class Sample4_ToUseExecutorWithCallable {
         private String message;
 
         public IAmTheBest(String message) {
-            this.count = new Random().nextInt(20);
+            this.count = new Random().nextInt(10);
             this.message = message;
         }
 
@@ -26,7 +26,7 @@ public class Sample4_ToUseExecutorWithCallable {
             for (int i = 0; i < count; i++) {
                 print(message);
 
-               sleepRandom(2000);
+               sleep(1000);
             }
             return count;
         }

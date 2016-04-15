@@ -19,7 +19,6 @@ public class Sample8_Blocked {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
                 print("Running");
             }
         }

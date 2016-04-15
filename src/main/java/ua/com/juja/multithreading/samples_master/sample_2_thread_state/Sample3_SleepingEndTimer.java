@@ -32,7 +32,7 @@ public class Sample3_SleepingEndTimer {
     }
 
     private static long now() {
-        return Calendar.getInstance().getTimeInMillis();
+        return System.currentTimeMillis()/*Calendar.getInstance().getTimeInMillis()*/;
     }
 
 }
