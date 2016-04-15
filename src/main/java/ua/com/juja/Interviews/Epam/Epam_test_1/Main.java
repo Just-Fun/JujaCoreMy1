@@ -26,7 +26,7 @@ public class Main {
             ;
         } // TEST TEST  */
 
-        // #6
+        // #6 // Программа выведет на экран содержимое файла
         /*try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("/home/serzh/Desktop/text.txt")));
             String str;
