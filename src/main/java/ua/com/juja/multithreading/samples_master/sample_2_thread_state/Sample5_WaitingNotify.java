@@ -12,7 +12,7 @@ import static ua.com.juja.multithreading.samples_master.ThreadUtils.*;
  */
 public class Sample5_WaitingNotify {
     static Object monitor = new Object();
-//    static boolean ready = false;
+    static boolean ready = false;
 
     public static void main(String[] args) {
 
@@ -20,7 +20,8 @@ public class Sample5_WaitingNotify {
             @Override
             public void run() {
                 synchronized (monitor) {
-                    try {
+                    while (!ready) {
+                        try {
 //                        if (!ready) {
                             print("Waiting...");
                             monitor.wait();
@@ -29,8 +30,9 @@ public class Sample5_WaitingNotify {
 //                        if (!ready) {
 //                            print("ERROR!!! Data not ready");
 //                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
@@ -45,7 +47,7 @@ public class Sample5_WaitingNotify {
 //                if (!ready) {
                     synchronized (monitor) {
                         print("Ready = true. Try to notify...");
-//                        ready = true;
+                        ready = true;
                         monitor.notify();
                         print("After notify");
                     }
