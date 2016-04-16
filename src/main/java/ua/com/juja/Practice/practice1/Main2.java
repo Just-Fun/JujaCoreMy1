@@ -5,6 +5,7 @@ package ua.com.juja.Practice.practice1;
  */
 public class Main2 {
     public static void main(String[] args) {
+
         f(1);
     }
 
