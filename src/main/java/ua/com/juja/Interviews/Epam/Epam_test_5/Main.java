@@ -41,20 +41,48 @@ public class Main {
         /*int a = 10;
         int b = 100;
         int temp = a/b;
-        System.out.println(temp);
-        double c = (double) (a/b); // 0
+        System.out.println(temp); // 0
+        double c = (double) (a/b);
         String str = String.format("%1.4f", c);
         System.out.println(str); // 0.0000
         String str2 = String.format("%1.2f", c);
         System.out.println(str2); // 0.00*/
 
+        //#7
+        /*int[] array = {1, 2};
+        int x;
+        for (x: array){ //ошибка компиляции, с одной стороны надо писать for (int x: array),
+            // с другой - variable x is already defined in method main
+            System.out.println(x);
+        }*/
+
+        //№8
+        /*Animal cat = new Cat();
+        Animal cat2 = new Cat();
+        Animal dog = new Dog();
+        Animal dog2 = new Dog();
+        //вывод:
+//        Inside Animal
+//        Inside Cat
+//        Inside Dog
+*/
+
+        //№9
+        float f = 29.1f;
+        double d = 29.1;
+        System.out.println(f == d); // false, why?
+        System.out.println(f); //29.1
+        System.out.println(d); //29.1
+        f = 29.1f;
+        d = 29.1f;
+        System.out.println(f); //29.1
+        System.out.println(d); //29.100000381469727
+        System.out.println(f == d); // true, why?
+        int i = 1;
+        long l = 1L;
+        System.out.println(i == l); // true
+
     }
-
-
-
-
-
-
 
 
 }
