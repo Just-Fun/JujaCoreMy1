@@ -15,25 +15,37 @@ public class Sample5_Join {
 
         @Override
         public void run() {
-            while (--count > 0) {
-                print(String.valueOf(count));
+            while (count-- > 0) {
+                print(String.valueOf(count + 1));
             }
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread thread2 = new Thread(new MyRunnable(20));
-        Thread thread1 = new Thread(new MyRunnable(10));
+
+       /* ThreadGroup threadGroup = new ThreadGroup("Parent ThreadGroup");
+        Thread thread2 = new Thread(threadGroup, new MyRunnable(2));
+        Thread thread3 = new Thread(threadGroup, new MyRunnable(2));*/
+
+        Thread thread2 = new Thread(new MyRunnable(2));
+        Thread thread3 = new Thread(new MyRunnable(2));
+
+        Thread thread1 = new Thread(new MyRunnable(4));
         thread1.setDaemon(true);
 
-        thread1.start();
         thread2.start();
+        thread3.start();
+        thread1.start();
+//        System.out.println("active threads in threadGroup: " + threadGroup.activeCount());
+
+        thread1.join();
+        print("Thread 1 finished");
 
         thread2.join();
         print("Thread 2 finished");
 
-        thread1.join();
-        print("Thread 1 finished");
+        thread3.join();
+        print("Thread 2 finished");
     }
 
 }
