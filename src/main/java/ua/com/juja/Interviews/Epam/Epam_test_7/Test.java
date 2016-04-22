@@ -73,14 +73,35 @@ public class Test {
 //        new String("123").intern() == "123"     // true
 */
 
-        //#
+        //#5
+       /* Outer outer = new Outer();
+        outer.test(); // 5 раз выведет outer_x = 100;*/
 
+        //#6
+        /*String s;
+        System.out.println(s + args); // ошибка компиляции - variable s might not have been initialized*/
+
+        //#8
+        /*m(1, 2);// Error:(85, 9) java: reference to m is ambiguous - двусмысленный
+        // both method m(int...) and method m(java.lang.Integer...) match*/
+
+        //#
 
 
     }
 
+    static void m(int ... a) {
+        System.out.println("1");
+    }
+
+    static void m(Integer ... a) {
+        System.out.println("2");
+    }
+
 
 }
+
+
 
 class ElectricInverter {
     public static final int AC = ~220;
