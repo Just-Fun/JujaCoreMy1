@@ -7,9 +7,9 @@ public class JustForTest {
 
     public static void main(String[] args) {
 
-        String dbname = "postgres";
+        String dbname = "sqlsmd";
         String username = "postgres";
-        String password = "1qwerty";
+        String password = "postgres";
         String s = " \"jdbc:postgresql://127.0.0.1:5432/" + dbname + "\", \"" + username + "\", \"" + password + "\" ";
 
         //        String query1 = String.format("INSERT into " + table + " values(" + id + ", " + first_name + ", " + last_name + ")";
