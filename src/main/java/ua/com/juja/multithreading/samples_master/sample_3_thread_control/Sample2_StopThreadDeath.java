@@ -15,7 +15,7 @@ public class Sample2_StopThreadDeath {
         thread.start();
 
         Thread.sleep(1000);
-        thread.stop();
+//        thread.stop();
     }
 
 }
