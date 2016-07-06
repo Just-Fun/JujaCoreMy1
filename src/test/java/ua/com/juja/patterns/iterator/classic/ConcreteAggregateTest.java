@@ -4,9 +4,9 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by oleksandr.baglai on 16.09.2015.
