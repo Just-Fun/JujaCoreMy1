@@ -40,13 +40,13 @@ public class StreamVsObservable {
 
         // === RxJava Observable
 
-        Observable<Beer> observableBeer = null;
-
         System.out.println("\n== Subscribing to Observable ");
+
+        Observable<Beer> observableBeer = null;
 
         observableBeer = Observable.from(beers);
 
-        observableBeer
+        observableBeer // последние 3 строки можно заменить одной -> Observable.from(beers)
                 .skip(1)
                 .take(3)
                 .filter(b -> "USA".equals(b.country))
