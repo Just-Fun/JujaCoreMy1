@@ -16,8 +16,7 @@ POI работает с форматом xls через HSSF, а с xlsx чер�
  */
 public class Parser {
 
-    public static String parse(String name) {
-
+    public static String parseAndRead(String name) {
 
         String result = "";
         InputStream in;

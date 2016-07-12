@@ -1,4 +1,4 @@
-package ua.com.juja.ReguliarnyeVarazhenia;
+package ua.com.juja.Validations;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

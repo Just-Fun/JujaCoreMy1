@@ -5,9 +5,9 @@ package ua.com.juja.FromExcel;
  */
 public class Main {
 
-    public static void main(String... args){
+    public static void main(String[] args){
 
-        System.out.println(Parser.parse("/home/serzh/Desktop/testfile.xlsx"));
+        System.out.println(Parser.parseAndRead("/home/serzh/Desktop/testfile.xlsx"));
 
     }
 }
