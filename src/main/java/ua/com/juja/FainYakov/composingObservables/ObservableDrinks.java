@@ -32,6 +32,15 @@ public class ObservableDrinks {
 
     public static Observable<List<Drink>> getDrinks(){
 
+        return Observable.create(subscriber -> {
+
+            subscriber.onNext(loadBeers());   // push the beers pallet
+
+            subscriber.onNext(loadSoftDrinks()); // push the soft drink pallet
+
+            subscriber.onCompleted();
+        });
+/*
         Observable<List<Drink>> beerPallets = Observable.create(subscriber -> {
 
             subscriber.onNext(loadBeers());   // push the beers pallet
@@ -41,7 +50,7 @@ public class ObservableDrinks {
             subscriber.onCompleted();
         });
 
-        return beerPallets;
+        return beerPallets;*/
     }
 
     public static void main(String[] args) {
