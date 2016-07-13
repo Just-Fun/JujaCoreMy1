@@ -5,5 +5,9 @@ package ua.com.juja.EmailHideTest;
  */
 public class PathToEmailStatic {
 
-    public static String myEmail = "serzh@gmail.com";
+    private static String myEmail = "serzh@gmail.com";
+
+    public static String getMyEmail() {
+        return myEmail;
+    }
 }

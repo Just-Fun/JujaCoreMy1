@@ -1,4 +1,4 @@
-package ua.com.juja.List;
+package ua.com.juja.Collections.List;
 
 /**
  * Created by serzh on 2/8/16.

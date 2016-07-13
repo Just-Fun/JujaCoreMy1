@@ -1,4 +1,4 @@
-package ua.com.juja.List;
+package ua.com.juja.Collections.List;
 
 import java.util.Arrays;
 

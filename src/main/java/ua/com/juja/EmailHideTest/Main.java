@@ -7,9 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String myEmail = null;
+        String myEmail;
         try {
-            myEmail = PathToEmailStatic.myEmail;
+            myEmail = PathToEmailStatic.getMyEmail();
         } catch (Exception e) {
             myEmail = "example@mail.com";
         }

@@ -1,7 +1,6 @@
-package ua.com.juja.List;
+package ua.com.juja.Collections.List;
 
 import java.io.*;
-import java.util.Arrays;
 
 /**
  * Created by serzh on 2/8/16.
@@ -11,11 +10,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
+        LinkedList linkedList = new LinkedList();
+        System.out.println(linkedList.toString());
+
      /*   String i = "3";
         int i1 = Integer.valueOf(i);
         System.out.println(i1)*/;
 
-
+/*
         String s = "";
         s += "<person>n";
         int age = 4;
@@ -48,7 +50,7 @@ public class Main {
         }
 
         System.out.println(ageToString);
-        System.out.println(nameToString);
+        System.out.println(nameToString);*/
 
 
 //       BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

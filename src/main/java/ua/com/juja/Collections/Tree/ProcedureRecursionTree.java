@@ -1,4 +1,4 @@
-package ua.com.juja.Practice.DelegInstedOfRecurs;
+package ua.com.juja.Collections.Tree;
 
 /**
  * Created by serzh on 2/15/16.

@@ -1,7 +1,4 @@
-package ua.com.juja.List;
-
-import java.util.*;
-import java.util.ArrayList;
+package ua.com.juja.Collections.List;
 
 /**
  * Created by serzh on 2/9/16.
@@ -96,8 +93,7 @@ public class LinkedList implements MyList {
 
     @Override
     public Object get(int index) {
-        sizeMoreThanIndex(index);
-        negativIndex(index);
+        checkValidIndex(index);
 
         int i = 0;
         Node curr = root;
@@ -116,7 +112,7 @@ public class LinkedList implements MyList {
 
     @Override
     public Object set(int index, Object element) {
-        sizeMoreThanIndex(index);
+        checkValidIndex(index);
         int i = 0;
         Node curr = root;
 
@@ -134,8 +130,7 @@ public class LinkedList implements MyList {
 
     @Override
     public void add(int index, Object element) {
-        sizeMoreThanIndex(index);
-        negativIndex(index);
+        checkValidIndex(index);
 
         int i = 0;
         Node curr = root;
@@ -156,11 +151,18 @@ public class LinkedList implements MyList {
 
     @Override
     public Object remove(int index) {
-        sizeMoreThanIndex(index);
-        negativIndex(index);
+        checkValidIndex(index);
 
         int i = 0;
         Node curr = root;
+
+        if (size == 0) {
+            return null;
+        }
+        if (size == 1) {
+            root = null;
+            return null;
+        }
 
         if (index == 0) {
             root = curr.next;
@@ -204,17 +206,20 @@ public class LinkedList implements MyList {
     }
 
 
-    private void negativIndex(int index) {
+    private void checkValidIndex(int index) {
         if (index < 0) {
             throw new IllegalArgumentException("Index can't be negative, index: " + index);
         }
-    }
-
-    private void sizeMoreThanIndex(int index) {
         if (index >= size) {
-            throw new IllegalArgumentException("Index can't be more than list size. Size: " + ", index: " + index);
+            throw new IllegalArgumentException(String.format("Index can't be more than list size. Size: %d, index: %d", size, index));
         }
     }
+
+   /* private void sizeMoreThanIndex(int index) {
+        if (index >= size) {
+            throw new IllegalArgumentException(String.format("Index can't be more than list size. Size: %d, index: %d", size, index));
+        }
+    }*/
 
     @Override
     public String toString() {

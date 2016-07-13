@@ -1,4 +1,4 @@
-package ua.com.juja.Map_Set;
+package ua.com.juja.Collections.Map_Set;
 
 import java.util.HashMap;
 import java.util.Map;

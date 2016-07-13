@@ -6,6 +6,7 @@ import java.util.Properties;
 /**
  * Created by serzh on 12/29/15.
  */
+// Работает :)
 public class PathToEmailProperties {
 
     public static void main(String[] args) throws IOException {
@@ -13,7 +14,7 @@ public class PathToEmailProperties {
         String email = null;
         Properties properties = new Properties();
         try {
-            FileInputStream fileInputStream = new FileInputStream("/home/serzh/Downloads/Pr");
+            FileInputStream fileInputStream = new FileInputStream("/home/serzh/Desktop/text2.txt");
             properties.load(fileInputStream);
             email = properties.getProperty("email", "example@mail.com");
         } catch (FileNotFoundException e) {

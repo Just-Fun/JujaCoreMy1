@@ -1,4 +1,4 @@
-package ua.com.juja.Map_Set;
+package ua.com.juja.Collections.Map_Set;
 
 import java.util.*;
 
@@ -10,9 +10,8 @@ public class MyMap<K, V> extends AbstractMap<K, V> {
 
     private class EntryImpl<K, V> implements Entry<K, V> {
 
-
-        private V value;
         private K key;
+        private V value;
 
         public EntryImpl(K key, V value) {
 
