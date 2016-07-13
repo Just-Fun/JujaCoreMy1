@@ -3,19 +3,21 @@ package ua.com.juja.Validations;
 /**
  * Created by serzh on 7/12/16.
  */
-import org.junit.*;
+//import org.junit.*;
+import org.junit.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
 
 
 public class EmailValidatorTest {
 
     private static EmailValidator emailValidator;
 
-   /* @BeforeClass
+    @BeforeClass
     public static void initData() {
         emailValidator = new EmailValidator();
-    }*/
+    }
 
     @DataProvider
     public Object[][] ValidEmailProvider() {
@@ -61,8 +63,6 @@ public class EmailValidatorTest {
 
     @Test(dataProvider = "ValidEmailProvider")
     public void ValidEmailTest(String[] Email) {
-        emailValidator = new EmailValidator();
-
         for (String temp : Email) {
             boolean valid = emailValidator.validate(temp);
             System.out.println("Email: " + temp + " -> " + valid);
@@ -73,8 +73,6 @@ public class EmailValidatorTest {
 
     @Test(dataProvider = "InvalidEmailProvider", dependsOnMethods = "ValidEmailTest")
     public void InValidEmailTest(String[] Email) {
-        emailValidator = new EmailValidator();
-
         for (String temp : Email) {
             boolean valid = emailValidator.validate(temp);
             System.out.println("Email: " + temp + " -> " + valid);
