@@ -69,7 +69,7 @@ public class MyMap<K, V> extends AbstractMap<K, V> {
 
     @Override
     public V put(K key, V value) {
-        EntryImpl<K, V> newEntry = new EntryImpl<K, V>(key, value);
+        EntryImpl<K, V> newEntry = new EntryImpl<>(key, value);
         V oldValue = null;
         for (Map.Entry<K, V> entry : entries) {
             if (entry.getKey().equals(key)) {
@@ -79,11 +79,11 @@ public class MyMap<K, V> extends AbstractMap<K, V> {
         entries.add(newEntry);
         return oldValue;
     }
-
+//
 //    @Override
 //    public V remove(Object key) {
 //        V remove = super.remove(key);
-//        EntryImpl<K, V> newEntry = new EntryImpl<K, V>((K) key, remove);
+//        EntryImpl<K, V> newEntry = new EntryImpl<>((K) key, remove);
 //        entries.remove(newEntry);
 //        return remove;
 //    }

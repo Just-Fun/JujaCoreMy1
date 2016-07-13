@@ -36,8 +36,7 @@ public  class TreeTest {
         node.addValue(12);
         node.addValue(3);
 
-        assertEquals("(5, (3, null, null), " +
-                "(6, null, (12, null, null)))", node.toString());
+        assertEquals("(5, (3, null, null), (6, null, (12, null, null)))", node.toString());
     }
 
     @Test
