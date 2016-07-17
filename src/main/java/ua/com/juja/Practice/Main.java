@@ -1,6 +1,6 @@
 package ua.com.juja.Practice;
 
-import java.text.DateFormatSymbols;
+import ua.com.juja.OOP.Example.Cello;
 
 /**
  * Created by serzh on 17.07.16.
@@ -9,15 +9,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int a = sum(1,3,6);
-        int i = 7 / 2;
-        System.out.println(a);
+        Cello cello = new Cello();
+        cello.getString()[0] = "F";
+        System.out.println(cello.getString()[0]);
 
     }
 
     private static int sumLambda(int... num) {
         int result = 0;
-        return  result;
+        return result;
     }
 
     private static int sum(int... num) {
