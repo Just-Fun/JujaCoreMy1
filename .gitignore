@@ -3,3 +3,5 @@ libs
 .idea
 jujaCoreMy.iml
 target/
+vcs.xml 
+.idea/vcs.xml 
