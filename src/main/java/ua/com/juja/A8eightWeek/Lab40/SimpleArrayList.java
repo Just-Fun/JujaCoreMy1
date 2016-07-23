@@ -111,16 +111,16 @@ public class SimpleArrayList<E> implements SimpleList<E> {
 
     @Override
     public String toString() {
-        ArrayList arrayList = new ArrayList();
-        int count = 0;
+      /*  ArrayList arrayList = new ArrayList();
         for (int i = 0; i < size; i++) {
-            if (data[i] != null) count++;
             arrayList.add(data[i]);
         }
-        /*SimpleArrayList pr = new SimpleArrayList(count);
+        *//*SimpleArrayList pr = new SimpleArrayList(count);
         System.arraycopy(data, 0, pr.data, 0, count);
-        return Arrays.toString(pr.data);*/
-        return arrayList.toString();
+        return Arrays.toString(pr.data);*//*
+        return arrayList.toString();*/
+        return Arrays.toString(Arrays.copyOf(data, size));
+
     }
 
     @Override

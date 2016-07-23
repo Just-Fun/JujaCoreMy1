@@ -3,11 +3,13 @@ package ua.com.juja.Practice;
 /**
  * Created by serzh on 23.07.16.
  */
+
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ConcurrentModificationException;
 import java.util.NoSuchElementException;
 
-public class SimpleArrayList <E> implements SimpleList<E> {
+public class SimpleArrayList<E> implements SimpleList<E> {
 
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
     private E[] data;
@@ -37,7 +39,28 @@ public class SimpleArrayList <E> implements SimpleList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Iterator<E>() {
+            int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                if (index < size) {
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public E next() {
+                index++;
+                return data[index];
+            }
+
+            @Override
+            public void remove() {
+                SimpleArrayList.this.remove(index - 1);
+            }
+        };
     }
 
     @Override
@@ -75,15 +98,42 @@ public class SimpleArrayList <E> implements SimpleList<E> {
         }
     }
 
-    /*BODY*/
+    @Override
+    public String toString() {
+        return Arrays.toString(data);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SimpleArrayList<?> that = (SimpleArrayList<?>) o;
+
+        if (size != that.size) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(data, that.data);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(data);
+        result = 31 * result + size;
+        return result;
+    }
 }
 
 interface SimpleList<E> {
     public boolean add(E newElement);
+
     public E get(int index);
+
     public Iterator<E> iterator();
+
     public int size();
+
     public boolean isEmpty();
+
     public E remove(int index);
 }
