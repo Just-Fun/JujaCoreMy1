@@ -1,14 +1,11 @@
-package ua.com.juja.A7sevenWeek.Lab38;
+package ua.com.juja.Practice;
 
 /**
- * Created by serzh on 1/13/16.
+ * Created by serzh on 23.07.16.
  */
 public class AccountManager {
-
     public static void main(String[] args) {
-
-        Account account = new Account(5){
-
+        Account account = new Account(5) {
             @Override
             public void change(int delta) throws TryAgainException, BlockAccountException {
 
@@ -16,6 +13,7 @@ public class AccountManager {
         };
         System.out.println();
     }
+
 
     public static boolean transfer(Account[] accounts, int[] delta) {
 
@@ -49,7 +47,7 @@ public class AccountManager {
     }
 }
 
-abstract class Account {
+abstract class Account implements Cloneable {
     protected int amount;
 
     public Account(int amount) {
