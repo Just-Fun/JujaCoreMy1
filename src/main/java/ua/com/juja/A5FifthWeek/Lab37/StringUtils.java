@@ -18,8 +18,21 @@ public class StringUtils {
 
 
     public static String rightShift(String arg, int delta) {
+        if (arg.equals("") || arg.equals(null)) {
+            return "";
+        }
+        if (delta == 0) return arg;
+        int length = arg.length();
+        int shift = delta % length;
 
-        if (delta == 0) {
+        if (delta >= 0) {
+            return arg.substring(length - shift, length) + arg.substring(0, length - shift);
+        } else {
+            shift = Math.abs(shift);
+            return arg.substring(shift, length) + arg.substring(0, shift);
+        }
+
+        /*if (delta == 0) {
             return arg;
         } else if (arg.equals("")) {
             return "";
@@ -45,7 +58,7 @@ public class StringUtils {
                 arg = getStringNegativ(arg, num);
             }
         }
-        return arg;
+        return arg;*/
     }
 
     private static String getStringNegativ(String arg, int num) {

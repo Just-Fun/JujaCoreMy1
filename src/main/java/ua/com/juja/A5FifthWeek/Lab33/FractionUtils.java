@@ -22,14 +22,14 @@ public class FractionUtils {
         BigInteger y1 = y[0];
         BigInteger y2 = y[1];
 
+        BigInteger xTemp = x1.multiply(y2).add(y1.multiply(x2));
+        BigInteger yTemp = x2.multiply(y2);
+
+        BigInteger greatestCommonDivisor = xTemp.gcd(yTemp);
+
         BigInteger[] result = new BigInteger[2];
-        result[0] = (x1.multiply(y2)).add(y1.multiply(x2));
-        result[1] = x2.multiply(y2);
-
-        BigInteger greatestCommonDivisor = result[0].gcd(result[1]);
-
-        result[0] = result[0].divide(greatestCommonDivisor);
-        result[1] = result[1].divide(greatestCommonDivisor);
+        result[0] = xTemp.divide(greatestCommonDivisor);
+        result[1] = yTemp.divide(greatestCommonDivisor);
 
         return result;
     }
