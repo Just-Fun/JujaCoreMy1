@@ -1,4 +1,4 @@
-package ua.com.juja.A910tenWeek.Lab43;
+package ua.com.juja.InputOutput.Lab43;
 
 /**
  * Created by serzh on 2/11/16.

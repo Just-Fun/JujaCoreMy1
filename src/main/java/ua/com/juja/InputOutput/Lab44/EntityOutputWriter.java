@@ -1,4 +1,4 @@
-package ua.com.juja.A910tenWeek.Lab44;
+package ua.com.juja.InputOutput.Lab44;
 
 import java.io.*;
 import java.util.regex.Matcher;

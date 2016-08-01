@@ -1,33 +1,31 @@
-package ua.com.juja.A910tenWeek.Lab43;
-
-import java.io.*;
+package ua.com.juja.Practice;
 
 /**
- * Created by serzh on 2/10/16.
+ * Created by Oleg on 8/1/2016.
  */
+import java.io.*;
 
-public class EntityOutputStream implements EntityOutput {
-    private final DataOutput out;
+public class EntityOutputWriter implements EntityOutput {
+    private final Writer out;
 
-    public EntityOutputStream(OutputStream out) {
-        this.out = new DataOutputStream(out);
+    public EntityOutputWriter(Writer out) {
+        this.out = out;
     }
 
-    @Override
     public void writePerson(Person person) throws IOException {
-        out.writeInt(person.getAge());
-        if (person.getName() == null) {
-            out.writeBoolean(false);
-        } else {
-            out.writeBoolean(true);
-            out.writeUTF(person.getName());
-        }
+        int age = person.getAge();
+        String name = person.getName();
+        out.write("<person>n");
+        out.write("    <age>" + age + "</age>n");
+        out.write("    <name>" + name + "</name>n");
+        out.write("</person>n");
+        out.flush();
     }
 
     @Override
     public void writePoint(Point point) throws IOException {
-        int value = point.getX() << 4 | point.getY();
-        out.writeByte(value);
+        out.write("<point x=" + point.getX() + " y=" + point.getY() + "/>n");
+        out.flush();
     }
 }
 
@@ -62,7 +60,7 @@ class Person {
 
     @Override
     public String toString() {
-        return "Person{name=" + name + ", age=" + age + "}";
+        return "Person{name=" + name  + ", age=" + age + "}";
     }
 }
 
@@ -95,35 +93,31 @@ class Point {
     }
 }
 
-class EntityInputStream implements EntityInput {
-    private DataInput in;
+class EntityInputReader implements EntityInput {
+    private Reader in;
 
-    public EntityInputStream(InputStream in) {
-        this.in = new DataInputStream(in);
+    public EntityInputReader(Reader in) {
+        this.in = in;
     }
 
     @Override
     public Person readPerson() throws IOException {
-
-        Person person = null;
-        int i = in.readInt();
-        boolean b = in.readBoolean();
-        String s = in.readUTF();
-        if (i != 0) {
-            person = new Person(s, i);
-        }
-        return person;
+        /*int age = person.getAge();
+        String name = person.getName();
+        out.write("<person>n");
+        out.write("    <age>" + age + "</age>n");
+        out.write("    <name>" + name + "</name>n");
+        out.write("</person>n");
+        out.flush();*/
+        int age = in.read();
+        return null;
     }
 
     @Override
     public Point readPoint() throws IOException {
-        Point point = null;
-        int value = in.readByte();
-        int x = value >> 4;
-        int y = value - (x << 4);
-        point = new Point(x, y);
-        return point;
+        return null;
     }
-}
 
+  /*BODY*/
+}
 

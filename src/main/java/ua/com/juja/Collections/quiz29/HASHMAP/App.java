@@ -1,4 +1,4 @@
-package ua.com.juja.A9nineWeek.quiz29.HASHMAP;
+package ua.com.juja.Collections.quiz29.HASHMAP;
 
 import java.util.*;
 
