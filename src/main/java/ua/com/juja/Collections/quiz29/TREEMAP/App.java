@@ -1,4 +1,4 @@
-package ua.com.juja.A9nineWeek.quiz29.TREEMAP;
+package ua.com.juja.Collections.quiz29.TREEMAP;
 
 import java.util.NavigableSet;
 import java.util.TreeSet;
