@@ -7,7 +7,7 @@ import java.io.File;
  */
 public class FileSystemDemo {
     public static void main(String[] args) {
-        File rootFile = new File("H:\\Резюме");
+        File rootFile = new File("/Users/Serzh/Prog");
         printFileTree(rootFile, "");
     }
 
@@ -16,7 +16,7 @@ public class FileSystemDemo {
         File[] files = rootFile.listFiles(); // listFiles() возвращает null, если это не директория, а файл
         if (files == null) return;
         for (int i = 0; i < files.length; i++) {
-            printFileTree(files[i], offset + "");
+            printFileTree(files[i], offset + "  ");
         }
     }
 }
