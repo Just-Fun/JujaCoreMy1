@@ -10,10 +10,10 @@ public class Main {
     // Если всем ссылкам на объект присвоить null, то сам объект станет доступным для сборщика мусора
 
     public static void main(String[] args) {
-        /*Main main = new Main();
-        System.out.println(main.getClass()); // class ua.com.juja.Interviews.Epam.Epam_test_6.Main
-        System.out.println(Main.class);      // class ua.com.juja.Interviews.Epam.Epam_test_6.Main
-        System.out.println(main.getClass() == Main.class); // true*/
+        /*SynchDirectories main = new SynchDirectories();
+        System.out.println(main.getClass()); // class ua.com.juja.Interviews.Epam.Epam_test_6.SynchDirectories
+        System.out.println(SynchDirectories.class);      // class ua.com.juja.Interviews.Epam.Epam_test_6.SynchDirectories
+        System.out.println(main.getClass() == SynchDirectories.class); // true*/
 
         //№2
         /*char ch = '0';

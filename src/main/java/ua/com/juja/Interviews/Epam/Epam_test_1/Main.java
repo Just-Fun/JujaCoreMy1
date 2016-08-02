@@ -68,7 +68,7 @@ public class Main {
 
 
 //#3
-/*public class Main {
+/*public class SynchDirectories {
     public static void main(String[] args) {
         impl test = new impl();
         I_A a;
