@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 
 /**
  * Created by Serzh on 8/2/16.
@@ -16,9 +15,9 @@ public class SynchDirectories {
         File[] srcFiles = src.listFiles();
         File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
 
-        if (srcFiles == null & destFiles == null) {        // если src, File dest - это файлы, а не папки
+        if (srcFiles == null & destFiles == null) {         // если src и File dest - это файлы, а не папки
             replaceIfFilesDifferent(src, dest);
-        } else if (srcFiles == null) {                   // если src - это файл, а не папка, а dest - папка или папки
+        } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка или папки
             File parent = new File(dest.getParent());
             FileUtils.cleanDirectory(parent);
             FileUtils.copyFileToDirectory(src, parent);
@@ -30,15 +29,15 @@ public class SynchDirectories {
                     FileUtils.copyDirectoryToDirectory(from, dest);
                 }
             }
-        } else if (srcFiles.length == 0) {                       // если папка src пуста
+        } else if (srcFiles.length == 0) {                   // если папка src пуста
             FileUtils.cleanDirectory(dest);
         } else {                                             // если в src есть папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
-            findSameCheckCopyAndSoOn(dest, srcFiles, destFiles);
+            CheckCopyAndSoOn(dest, srcFiles, destFiles);
         }
     }
 
-    private static void findSameCheckCopyAndSoOn(File dest, File[] srcFiles, File[] destFiles) throws IOException {
+    private static void CheckCopyAndSoOn(File dest, File[] srcFiles, File[] destFiles) throws IOException {
         first:
         for (File from : srcFiles) {
             for (File to : destFiles) {
