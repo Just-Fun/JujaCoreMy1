@@ -8,9 +8,9 @@ import java.io.IOException;
 /**
  * Created by Serzh on 8/2/16.
  */
-public class SynchDirectories {
+public class SynchronizationDirectories {
 
-    public static void fileSynch(File src, File dest) throws IOException {
+    public static void synchDirs(File src, File dest) throws IOException {
         File[] srcFiles = src.listFiles();
         File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
 
@@ -42,7 +42,7 @@ public class SynchDirectories {
             for (File to : destFiles) {
                 if (from.getName().equals(to.getName())) {
                     if (from.isDirectory()) {
-                        fileSynch(from, to);
+                        synchDirs(from, to);
                     } else {
                         replaceIfFilesDifferent(from, to);
                     }
