@@ -8,7 +8,6 @@ import java.io.IOException;
 /**
  * Created by Serzh on 8/2/16.
  */
-// TODO переработать
 public class SynchDirectories {
 
     public static void fileSynch(File src, File dest) throws IOException {
@@ -31,7 +30,7 @@ public class SynchDirectories {
             }
         } else if (srcFiles.length == 0) {                   // если папка src пуста
             FileUtils.cleanDirectory(dest);
-        } else {                                             // если в src есть папки(файлы)
+        } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
             CheckCopyAndSoOn(dest, srcFiles, destFiles);
         }
@@ -42,8 +41,10 @@ public class SynchDirectories {
         for (File from : srcFiles) {
             for (File to : destFiles) {
                 if (from.getName().equals(to.getName())) {
-                    if (from.length() != to.length()) {
+                    if (from.isDirectory()) {
                         fileSynch(from, to);
+                    } else {
+                        replaceIfFilesDifferent(from, to);
                     }
                     continue first;
                 }
