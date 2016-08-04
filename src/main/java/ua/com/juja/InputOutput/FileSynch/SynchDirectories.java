@@ -32,11 +32,11 @@ public class SynchDirectories {
             FileUtils.cleanDirectory(dest);
         } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
-            CheckCopyAndSoOn(dest, srcFiles, destFiles);
+            CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
         }
     }
 
-    private static void CheckCopyAndSoOn(File dest, File[] srcFiles, File[] destFiles) throws IOException {
+    private static void CheckIfHaveSameNameFoldersOrFiles(File dest, File[] srcFiles, File[] destFiles) throws IOException {
         first:
         for (File from : srcFiles) {
             for (File to : destFiles) {
