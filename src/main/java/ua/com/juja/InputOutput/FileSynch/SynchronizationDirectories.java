@@ -29,7 +29,9 @@ public class SynchronizationDirectories {
                 }
             }
         } else if (srcFiles.length == 0) {                   // если папка src пуста
-            FileUtils.cleanDirectory(dest);
+            if (dest.length() != 0) {
+                FileUtils.cleanDirectory(dest);
+            }
         } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
