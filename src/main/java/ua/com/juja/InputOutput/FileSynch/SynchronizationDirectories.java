@@ -18,7 +18,7 @@ public class SynchronizationDirectories {
             replaceIfFilesDifferent(src, dest);
         } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка или папки
             File parent = new File(dest.getParent());
-            FileUtils.cleanDirectory(parent);
+            FileUtils.cleanDirectory(parent);              // TODO в идеале, сделать проверку, нет ли такого же файла в dest
             FileUtils.copyFileToDirectory(src, parent);
         } else if (destFiles == null) {                     // если dest - это файл, а не папка
             for (File from : srcFiles) {
