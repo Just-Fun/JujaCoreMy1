@@ -14,7 +14,8 @@ public class SynchronizationDirectories {
         File[] srcFiles = src.listFiles();
         File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
 
-        if (srcFiles == null & destFiles == null) {         // если src и File dest - это файлы, а не папки
+        // походу этих вариантов не  будет
+       /* if (srcFiles == null & destFiles == null) {         // если src и File dest - это файлы, а не папки
             replaceIfFilesDifferent(src, dest);
         } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка(+файл(ы)) или папки(+файл(ы))
             removeAllExceptSrcFile(src, dest, destFiles);
@@ -26,29 +27,15 @@ public class SynchronizationDirectories {
                     FileUtils.copyDirectoryToDirectory(from, dest);
                 }
             }
-        } else if (srcFiles.length == 0) {                   // если папка src пуста
+        } else */
+
+       if (srcFiles.length == 0) {                   // если папка src пуста
             if (dest.length() != 0) {
                 FileUtils.cleanDirectory(dest);
             }
         } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
-        }
-    }
-
-    private static void removeAllExceptSrcFile(File src, File dest, File[] destFiles) throws IOException {
-        File parentDest = new File(dest.getParent());
-        for (File file : destFiles) {
-            if (file.getName().equals(src.getName())) {
-                replaceIfFilesDifferent(src, file);
-            } else {
-                file.delete();
-            }
-            if (parentDest.listFiles().length == 0) {
-                FileUtils.cleanDirectory(parentDest);
-                FileUtils.copyFileToDirectory(src, parentDest);
-            }
-
         }
     }
 
@@ -94,4 +81,20 @@ public class SynchronizationDirectories {
             FileUtils.deleteQuietly(dest);
         }
     }
+
+    /*private static void removeAllExceptSrcFile(File src, File dest, File[] destFiles) throws IOException {
+        File parentDest = new File(dest.getParent());
+        for (File file : destFiles) {
+            if (file.getName().equals(src.getName())) {
+                replaceIfFilesDifferent(src, file);
+            } else {
+                file.delete();
+            }
+            if (parentDest.listFiles().length == 0) {
+                FileUtils.cleanDirectory(parentDest);
+                FileUtils.copyFileToDirectory(src, parentDest);
+            }
+
+        }
+    }*/
 }
