@@ -16,10 +16,8 @@ public class SynchronizationDirectories {
 
         if (srcFiles == null & destFiles == null) {         // если src и File dest - это файлы, а не папки
             replaceIfFilesDifferent(src, dest);
-        } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка или папки
-            File parent = new File(dest.getParent());
-            FileUtils.cleanDirectory(parent);              // TODO в идеале, сделать проверку, нет ли такого же файла в dest
-            FileUtils.copyFileToDirectory(src, parent);
+        } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка(+файл(ы)) или папки(+файл(ы))
+            removeAllExceptSrcFile(src, dest, destFiles);
         } else if (destFiles == null) {                     // если dest - это файл, а не папка
             for (File from : srcFiles) {
                 if (from.getName().equals(dest.getName())) {
@@ -35,6 +33,22 @@ public class SynchronizationDirectories {
         } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
             deleteIfNotInSource(srcFiles, destFiles);
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
+        }
+    }
+
+    private static void removeAllExceptSrcFile(File src, File dest, File[] destFiles) throws IOException {
+        File parentDest = new File(dest.getParent());
+        for (File file : destFiles) {
+            if (file.getName().equals(src.getName())) {
+                replaceIfFilesDifferent(src, file);
+            } else {
+                file.delete();
+            }
+            if (parentDest.listFiles().length == 0) {
+                FileUtils.cleanDirectory(parentDest);
+                FileUtils.copyFileToDirectory(src, parentDest);
+            }
+
         }
     }
 
