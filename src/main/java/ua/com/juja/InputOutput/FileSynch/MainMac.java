@@ -2,7 +2,6 @@ package ua.com.juja.InputOutput.FileSynch;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 /**
  * Created by Serzh on 8/2/16.
@@ -25,8 +24,8 @@ public class MainMac {
 //        File test2 = new File(test1.getParent() + "//2");
 //        test2.mkdir();
 
-        SynchronizationDirectories.synchDirs(testEmpty, test);
-        SynchronizationDirectories.synchDirs(tempDir, test1);
+        SynchronizationDirectories.synchronization(testEmpty, test);
+        SynchronizationDirectories.synchronization(tempDir, test1);
 //        System.out.println(tempFileAndDirsTest1_rtf.getName());
 //        System.out.println(ds.getName().equals(".DS_Store"));
 

@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public class SynchronizationDirectories {
 
-    public static void synchDirs(File src, File dest) throws IOException {
+    public static void synchronization(File src, File dest) throws IOException {
         if (!src.isDirectory()) {
             throw new RuntimeException("Путь '" + src.getName() + "' ведет к файлу, а должен вести к папке.");
         }
@@ -40,7 +40,7 @@ public class SynchronizationDirectories {
             for (File to : destFiles) {
                 if (from.getName().equals(to.getName())) {
                     if (from.isDirectory()) {
-                        synchDirs(from, to);
+                        synchronization(from, to);
                     } else {
                         replaceIfFilesDifferent(from, to);
                     }

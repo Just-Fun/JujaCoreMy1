@@ -17,6 +17,6 @@ public class Main {
         File test = new File("H:\\TestIn");
 //        System.out.println(test.length());
 
-        SynchronizationDirectories.synchDirs(tempFileAndDirs, test);
+        SynchronizationDirectories.synchronization(tempFileAndDirs, test);
     }
 }
