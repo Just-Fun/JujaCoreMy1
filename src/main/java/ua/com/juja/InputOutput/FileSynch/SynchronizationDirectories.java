@@ -11,29 +11,24 @@ import java.io.IOException;
 public class SynchronizationDirectories {
 
     public static void synchDirs(File src, File dest) throws IOException {
-        File[] srcFiles = src.listFiles();
-        File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
+        if (!src.isDirectory()) {
+            throw new RuntimeException("Путь '" + src.getName() + "' ведет к файлу, а должен вести к папке.");
+        }
 
-        // походу этих вариантов не  будет
-       /* if (srcFiles == null & destFiles == null) {         // если src и File dest - это файлы, а не папки
-            replaceIfFilesDifferent(src, dest);
-        } else if (srcFiles == null) {                      // если src - это файл, а не папка, а dest - папка(+файл(ы)) или папки(+файл(ы))
-            removeAllExceptSrcFile(src, dest, destFiles);
-        } else if (destFiles == null) {                     // если dest - это файл, а не папка
-            for (File from : srcFiles) {
-                if (from.getName().equals(dest.getName())) {
-                    replaceIfFilesDifferent(from, dest);
-                } else {
-                    FileUtils.copyDirectoryToDirectory(from, dest);
-                }
-            }
-        } else */
+        if (!dest.exists() || !dest.isDirectory() || dest.getName().equals(".DS_Store")) {
+            File destNew = new File(dest.getParent() + "//dest");
+            destNew.mkdir();
+            dest = destNew;
+        }
+//        File[] srcFiles = src.listFiles();
+        File[] srcFiles = src.listFiles((dir, name) -> !name.equals(".DS_Store")); // для мака :)
+        File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
 
        if (srcFiles.length == 0) {                           // если папка src пуста
             if (dest.length() != 0) {
                 FileUtils.cleanDirectory(dest);
             }
-        } else {                                             // если в src есть папки(файлы) и в dest папки(файлы)
+        } else {
             deleteIfNotInSource(srcFiles, destFiles);
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
         }
@@ -81,20 +76,4 @@ public class SynchronizationDirectories {
             FileUtils.deleteQuietly(dest);
         }
     }
-
-    /*private static void removeAllExceptSrcFile(File src, File dest, File[] destFiles) throws IOException {
-        File parentDest = new File(dest.getParent());
-        for (File file : destFiles) {
-            if (file.getName().equals(src.getName())) {
-                replaceIfFilesDifferent(src, file);
-            } else {
-                file.delete();
-            }
-            if (parentDest.listFiles().length == 0) {
-                FileUtils.cleanDirectory(parentDest);
-                FileUtils.copyFileToDirectory(src, parentDest);
-            }
-
-        }
-    }*/
 }
