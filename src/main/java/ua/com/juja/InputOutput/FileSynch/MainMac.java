@@ -20,7 +20,7 @@ public class MainMac {
         File tempFileAndDirsTest1_rtf = new File("/Users/Serzh/Prog/TempFileAndDirs/Test1.rtf");
         File testTest1_rtf = new File("/Users/Serzh/Prog/test/Test1.rtf");
 
-        SynchronizationDirectories.synchDirs(tempFileAndDirs, test);
+        SynchronizationDirectories.synchDirs(testEmpty, test);
 //        System.out.println(tempFileAndDirsTest1_rtf.getName());
 //        File[] list = ds.listFiles();
 //        System.out.println(list);

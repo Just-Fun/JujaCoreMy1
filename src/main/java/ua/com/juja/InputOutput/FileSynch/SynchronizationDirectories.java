@@ -29,7 +29,7 @@ public class SynchronizationDirectories {
             }
         } else */
 
-       if (srcFiles.length == 0) {                   // если папка src пуста
+       if (srcFiles.length == 0) {                           // если папка src пуста
             if (dest.length() != 0) {
                 FileUtils.cleanDirectory(dest);
             }
