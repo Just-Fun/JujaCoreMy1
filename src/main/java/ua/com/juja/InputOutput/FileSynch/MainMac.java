@@ -9,6 +9,7 @@ import java.io.IOException;
 public class MainMac {
     public static void main(String[] args) throws IOException {
         File temp1File = new File("/Users/Serzh/Prog/Temp1File");
+        File file = new File("/Users/Serzh/Prog/Temp1File/Test1.rtf");
         File tempDir = new File("/Users/Serzh/Prog/TempDir");
         File tempFileAndDirs = new File("/Users/Serzh/Prog/TempFileAndDirs");
         File testEmpty = new File("/Users/Serzh/Prog/testEmpty");
@@ -24,8 +25,9 @@ public class MainMac {
 //        File test2 = new File(test1.getParent() + "//2");
 //        test2.mkdir();
 
-        SynchronizationDirectories.synchronization(testEmpty, test);
-        SynchronizationDirectories.synchronization(tempDir, test1);
+//        System.out.println(test.getAbsolutePath());
+        SynchronizationDirectories.synchronization(tempFileAndDirs, test);
+//        SynchronizationDirectories.synchronization(tempFileAndDirs, test1);
 //        System.out.println(tempFileAndDirsTest1_rtf.getName());
 //        System.out.println(ds.getName().equals(".DS_Store"));
 
