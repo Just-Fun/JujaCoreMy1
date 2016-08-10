@@ -8,7 +8,13 @@ import java.io.IOException;
 /**
  * Created by Serzh on 8/2/16.
  */
+// TODO обработать исключения, добавить логирование, переименовать и переупорядочить аргументы
 public class SynchronizationDirectories {
+    public static void main(String[] args) throws IOException {
+        File src = new File("/Users/Serzh/Prog/TempFileAndDirs");
+        File dest = new File("/Users/Serzh/Prog/test");
+        synchronization(src, dest);
+    }
 
     public static void synchronization(File src, File dest) throws IOException {
         if (!src.isDirectory()) {
@@ -32,6 +38,7 @@ public class SynchronizationDirectories {
             deleteIfNotInSource(srcFiles, destFiles);
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
         }
+        System.out.println("Done");
     }
 
     private static void CheckIfHaveSameNameFoldersOrFiles(File dest, File[] srcFiles, File[] destFiles) throws IOException {
