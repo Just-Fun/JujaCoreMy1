@@ -8,6 +8,11 @@ public class HelloRunnable implements Runnable {
     public void run() {
         while (true) {
             System.out.println("Hello from a thread! " + Thread.currentThread().getName());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

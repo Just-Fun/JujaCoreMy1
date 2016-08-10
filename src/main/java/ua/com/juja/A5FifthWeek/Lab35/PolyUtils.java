@@ -10,14 +10,21 @@ import java.math.BigInteger;
 public class PolyUtils {
     public static void main(String[] args) {
 
-        BigInteger[] bigIntegers = {
+        /*BigInteger[] bigIntegers = {
                 new BigInteger("2"),
                 new BigInteger("0"),
                 new BigInteger("-3"),
                 new BigInteger("0"),
-        };
-        BigInteger bigInteger = eval(bigIntegers, BigInteger.valueOf(100));
-        System.out.println(bigInteger);
+        };*/
+//        BigInteger bigInteger = eval(bigIntegers, BigInteger.valueOf(100));
+
+      /*  BigInteger[] poly = {new BigInteger("1")};
+        BigInteger arg = new BigInteger("10");
+        BigInteger bigInteger = eval(poly, arg);
+
+        System.out.println(bigInteger);*/
+        int i = 6;
+        System.out.println(Math.pow(6, 0));
     }
 
     public static BigInteger eval(BigInteger[] poly, BigInteger arg) {
@@ -25,7 +32,8 @@ public class PolyUtils {
         BigInteger result = new BigInteger("0");
 
         for (int i = 0; i < poly.length; i++) {
-            BigInteger val = poly[i].multiply((arg.pow(poly.length - 1 - i)));
+            BigInteger pow = arg.pow(poly.length - 1 - i);
+            BigInteger val = poly[i].multiply(pow);
             result = result.add(val);
         }
 

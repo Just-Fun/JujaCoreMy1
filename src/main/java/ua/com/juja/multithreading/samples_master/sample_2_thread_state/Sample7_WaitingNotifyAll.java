@@ -35,33 +35,27 @@ public class Sample7_WaitingNotifyAll {
         Thread main2 = new Thread(new MyRunnable());
         Thread main3 = new Thread(new MyRunnable());
 
-        Thread notifier = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    synchronized (monitor) {
-                        ready = true;
-                        print("Ready = true. Try to notify all...");
-                        monitor.notifyAll();
-                        print("After notify ");
-                    }
-
-                    sleep(3000);
+        Thread notifier = new Thread(() -> {
+            while (true) {
+                synchronized (monitor) {
+                    ready = true;
+                    print("Ready = true. Try to notify all...");
+                    monitor.notifyAll();
+                    print("After notify ");
                 }
+
+                sleep(3000);
             }
         });
 
-        Thread releaser = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    synchronized (monitor) {
-                        ready = false;
-                        print("Ready = false");
-                    }
-
-                    sleep(3000);
+        Thread releaser = new Thread(() -> {
+            while (true) {
+                synchronized (monitor) {
+                    ready = false;
+                    print("Ready = false");
                 }
+
+                sleep(3000);
             }
         });
 

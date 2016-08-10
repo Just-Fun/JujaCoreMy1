@@ -9,23 +9,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    System.out.println("1. Runnable < - > Running");
+        Thread thread = new Thread(() -> {
+            while (true) {
+                System.out.println("1. Runnable < - > Running");
 
-                    try {
-                        System.out.println("1. Before sleep");
+                try {
+                    System.out.println("1. Before sleep");
 //                        long time = Calendar.getInstance().getTimeInMillis();
-                        long time = System.currentTimeMillis();
+                    long time = System.currentTimeMillis();
 
-                        Thread.sleep(1000);
+                    Thread.sleep(1000);
 
-                        System.out.println("1. After sleep: " + (System.currentTimeMillis() - time) + " millisec");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("1. After sleep: " + (System.currentTimeMillis() - time) + " millisec");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -52,7 +49,7 @@ public class Main {
         });
 
         thread.start();
-//        thread1.start();
+        thread1.start();
         thread.interrupt();
 //        thread.run();
 //        thread1.run();
