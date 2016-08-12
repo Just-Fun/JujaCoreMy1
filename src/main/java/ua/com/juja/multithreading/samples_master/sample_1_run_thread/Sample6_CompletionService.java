@@ -5,6 +5,9 @@ import ua.com.juja.multithreading.samples_master.ThreadUtils;
 import java.util.Random;
 import java.util.concurrent.*;
 
+import static ua.com.juja.multithreading.samples_master.ThreadUtils.print;
+import static ua.com.juja.multithreading.samples_master.ThreadUtils.sleep;
+
 // thanks http://blog.teamlazerbeez.com/2009/04/29/java-completionservice/
 public class Sample6_CompletionService {
 
@@ -14,9 +17,9 @@ public class Sample6_CompletionService {
         public Object call() {
             int count = new Random().nextInt(10);
             while (--count > 0) {
-                ThreadUtils.print("Я тут!");
+                print("Я тут!");
 
-                ThreadUtils.sleep(500);
+                sleep(500);
             }
             return Thread.currentThread().getId();
         }
@@ -37,7 +40,7 @@ public class Sample6_CompletionService {
             Future completed = completion.take();
 
             try {
-                ThreadUtils.print("Finished: " + completed.get());
+              print("Finished: " + completed.get());
                 remainingFutures--;
             } catch (ExecutionException e) {
                 e.printStackTrace();

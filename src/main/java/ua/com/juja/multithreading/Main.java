@@ -22,6 +22,7 @@ public class Main {
 
                     System.out.println("1. After sleep: " + (System.currentTimeMillis() - time) + " millisec");
                 } catch (InterruptedException e) {
+                    System.out.println("1. Interrupnuli");
                     e.printStackTrace();
                 }
             }
@@ -51,17 +52,5 @@ public class Main {
         thread.start();
         thread1.start();
         thread.interrupt();
-//        thread.run();
-//        thread1.run();
-
-        /*while (true) {
-            long time = Calendar.getInstance().getTimeInMillis();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(Calendar.getInstance().getTimeInMillis() - time);
-        }*/
     }
 }

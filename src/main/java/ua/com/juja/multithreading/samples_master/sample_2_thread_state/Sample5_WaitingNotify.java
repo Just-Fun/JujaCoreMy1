@@ -31,8 +31,10 @@ public class Sample5_WaitingNotify {
 //                            print("ERROR!!! Data not ready");
 //                        }
                         } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            print("Waiting interrupted");
+//                            e.printStackTrace();
                         }
+                        print("Done");
                     }
                 }
 
@@ -72,8 +74,22 @@ public class Sample5_WaitingNotify {
 //        });
 //        releaser.setDaemon(true);
 
+        Thread interrupter = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    print("Try to interrupt..");
+
+                    main.interrupt();
+
+                    sleep(1000);
+                }
+            }
+        });
+
         main.start();
         notifier.start();
+//        interrupter.start();
 //        releaser.start();
     }
 

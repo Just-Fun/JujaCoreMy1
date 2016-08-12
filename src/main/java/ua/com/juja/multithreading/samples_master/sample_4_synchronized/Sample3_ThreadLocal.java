@@ -6,7 +6,7 @@ import static ua.com.juja.multithreading.samples_master.ThreadUtils.*;
 // thanks http://samolisov.blogspot.com/2011/04/threadlocal.html
 public class Sample3_ThreadLocal {
 
-    private static ThreadLocal<String> shared = new ThreadLocal<String>();
+    private static ThreadLocal<String> shared = new ThreadLocal<>();
 
     static class MyRunnable implements Runnable {
 
@@ -36,9 +36,5 @@ public class Sample3_ThreadLocal {
 
         thread1.start();
         thread2.start();
-
-        thread1.join();
-        thread2.join();
     }
-
 }

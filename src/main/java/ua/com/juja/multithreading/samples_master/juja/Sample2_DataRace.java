@@ -7,33 +7,34 @@ import static ua.com.juja.multithreading.samples_master.ThreadUtils.print;
 
 public class Sample2_DataRace {
 
+//    private static int count = 0; // shared state
 
     static class MyRunnable implements Runnable {
+        private int count = 0;
+
         public int getCount() {
             return count;
         }
 
-        private int count = 0; // shared state
+        private static final Object monitor = new Object();
 
-//        private static final Object monitor = new Object();
-
-        public void run() {
+        public /*synchronized*/ void run() {
 //            synchronized (monitor) {
-                print("Enter: " + count);
+            print("Enter: " + count);
 
-                int y = count;
+            int y = count;
              /*   Thread thread = Thread.currentThread();
                 System.out.println("id: " + thread.getId());
                 System.out.println("name: " + thread.getName());
                 System.out.println("stacktrace: " + Arrays.toString(thread.getStackTrace()));*/
 
-                print("Read: " + y);
+            print("Read: " + y);
 
-                count = y + 1;
-
-                print("Sum: " + count);
-            }
-//        }
+//                count = y + 1;
+//                count++;
+            print("Sum: " + count);
+//            }
+        }
     }
 
     public static void main(String[] args) throws InterruptedException {

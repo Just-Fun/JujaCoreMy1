@@ -17,14 +17,11 @@ public class Sample3_SetPriority {
             }
         });
 
-        Thread thread2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    print("Нет я!");
+        Thread thread2 = new Thread(() -> {
+            while (true) {
+                print("Нет я!");
 
-                    someLogic(1000000);
-                }
+                someLogic(1000000);
             }
         });
 

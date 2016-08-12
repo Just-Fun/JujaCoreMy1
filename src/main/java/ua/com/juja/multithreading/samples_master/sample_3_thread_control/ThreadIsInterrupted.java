@@ -1,11 +1,13 @@
 package ua.com.juja.multithreading.samples_master.sample_3_thread_control;
 
+import static ua.com.juja.multithreading.samples_master.ThreadUtils.print;
+
 /**
  * Created by serzh on 16.04.16.
  */
 public class ThreadIsInterrupted implements Runnable {
 
-    Thread t;
+    private Thread t;
 
     ThreadIsInterrupted() {
 
@@ -18,10 +20,13 @@ public class ThreadIsInterrupted implements Runnable {
         if (!t.isInterrupted()) {
             t.interrupt();
         }
+
         // block until other threads finish
         try {
             t.join();
-        } catch(InterruptedException e) {}
+        } catch(InterruptedException e) {
+             print("In InterruptedException");
+        }
     }
 
     public void run() {
@@ -30,7 +35,7 @@ public class ThreadIsInterrupted implements Runnable {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            System.out.print(t.getName() + " interrupted:");
+            System.out.print(t.getName() + " interrupted: ");
             System.out.println(e.toString());
         }
     }

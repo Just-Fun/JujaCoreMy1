@@ -36,10 +36,12 @@ public class Sample1_ImplementsRunnable {
         thread1.setDaemon(true);
         Thread thread2 = new Thread(task2);
         Thread thread3 = new Thread(task3);
+        Thread thread = new Thread(new MyRunnable(4, "Ну-ну..."));
 
         thread1.start();
         thread2.start();
         thread3.start();
+        thread.start();
         System.out.println("Вышли из main");
 
       /*  thread1.run();

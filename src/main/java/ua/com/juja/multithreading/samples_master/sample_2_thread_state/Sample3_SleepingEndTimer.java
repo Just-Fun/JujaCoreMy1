@@ -20,7 +20,7 @@ public class Sample3_SleepingEndTimer {
 
                         print("After sleep: " + (now() - time) + "ms");
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        print("sleep interrupted");
                     }
                 }
             }

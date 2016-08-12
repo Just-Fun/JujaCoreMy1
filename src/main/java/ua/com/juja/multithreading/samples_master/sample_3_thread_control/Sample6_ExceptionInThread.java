@@ -15,11 +15,8 @@ public class Sample6_ExceptionInThread {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                throw new RuntimeException("Упс!");
-            }
+        Thread thread = new Thread(() -> {
+            throw new RuntimeException("Упс!");
         });
 
         Thread.setDefaultUncaughtExceptionHandler(new ExceptionListener());

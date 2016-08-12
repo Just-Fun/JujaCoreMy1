@@ -13,9 +13,11 @@ public class Sample2_DeadLock {
             @Override
             public void run() {
                 synchronized (object1) {
+                    print("thread1 in synchronized (object1)");
                     sleep(100);
 
                     synchronized (object2) {
+                        print("thread1 in synchronized (object2)");
                         print("Done1!");
                     }
                 }
@@ -25,9 +27,11 @@ public class Sample2_DeadLock {
             @Override
             public void run() {
                 synchronized (object2) {
+                    print("thread2 in synchronized (object2)");
                     sleep(100);
 
                     synchronized (object1) {
+                        print("thread2 in synchronized (object1)");
                         print("Done2!");
                     }
                 }
@@ -40,5 +44,4 @@ public class Sample2_DeadLock {
         thread1.join();
         thread2.join();
     }
-
 }

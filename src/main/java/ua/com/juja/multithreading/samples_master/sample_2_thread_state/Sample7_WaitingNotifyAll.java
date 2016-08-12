@@ -11,6 +11,7 @@ public class Sample7_WaitingNotifyAll {
     static class MyRunnable implements Runnable {
         @Override
         public void run() {
+            print("Before while");
             while (true) {
                 synchronized (monitor) {
                     try {
@@ -24,8 +25,7 @@ public class Sample7_WaitingNotifyAll {
                     }
                 }
                 print("Do my work");
-
-                sleep(1000);
+                sleep(2000);
             }
         }
     }
@@ -43,8 +43,7 @@ public class Sample7_WaitingNotifyAll {
                     monitor.notifyAll();
                     print("After notify ");
                 }
-
-                sleep(3000);
+                sleep(2000);
             }
         });
 
@@ -54,8 +53,7 @@ public class Sample7_WaitingNotifyAll {
                     ready = false;
                     print("Ready = false");
                 }
-
-                sleep(3000);
+                sleep(2000);
             }
         });
 

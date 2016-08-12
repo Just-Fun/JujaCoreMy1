@@ -1,10 +1,11 @@
 package ua.com.juja.multithreading.samples_master.sample_3_thread_control;
 
+import static ua.com.juja.multithreading.samples_master.ThreadUtils.sleep;
+
 /**
  * Created by serzh on 16.04.16.
  */
-public class ThreadGroupDemo implements Runnable
-{
+public class ThreadGroupDemo implements Runnable {
     public static void main(String[] args) {
         ThreadGroupDemo tg = new ThreadGroupDemo();
         tg.func();
@@ -35,8 +36,7 @@ public class ThreadGroupDemo implements Runnable
             // block until the other threads finish
             t1.join();
             t2.join();
-        }
-        catch (InterruptedException ex) {
+        } catch (InterruptedException ex) {
             System.out.println(ex.toString());
         }
     }
@@ -44,9 +44,10 @@ public class ThreadGroupDemo implements Runnable
     // implements run()
     public void run() {
 
-        for(int i=0;i<1000;i++) {
+        for (int i = 0; i < 1000; i++) {
             i++;
         }
+        sleep(1000);
         System.out.println(Thread.currentThread().getName() +
                 " finished executing.");
     }

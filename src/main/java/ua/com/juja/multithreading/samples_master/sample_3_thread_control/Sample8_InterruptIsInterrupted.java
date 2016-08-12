@@ -21,6 +21,7 @@ public class Sample8_InterruptIsInterrupted {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
+                    print("interrupt() in exeption");
                     Thread.currentThread().interrupt();
                 }
             }
@@ -37,9 +38,15 @@ public class Sample8_InterruptIsInterrupted {
 
         Thread.sleep(3000);
 
+        /*if (thread1.isInterrupted()) {
         thread1.interrupt();
+        }*/
+//        thread1.interrupt();
         thread2.interrupt();
 
+        if (thread2.isInterrupted()) {
+            thread1.start();
+        }
         print("Exit main");
     }
 

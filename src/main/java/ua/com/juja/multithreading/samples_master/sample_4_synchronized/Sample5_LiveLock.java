@@ -75,11 +75,8 @@ public class Sample5_LiveLock {
 
         final Spoon s = new Spoon(husband);
 
-        new Thread(new Runnable() {
-            public void run() {
-                husband.eatWith(s, wife);
-            }
-        }).start();
+        new Thread(() ->
+                husband.eatWith(s, wife)).start();
 
         new Thread(new Runnable() {
             public void run() {

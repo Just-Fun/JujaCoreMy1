@@ -53,11 +53,15 @@ public class Sample9_SpuriousWakeup_Object {
         new Thread(consumer1).start();
         sleep(500);
 
+        new Thread(consumer2).start();
+        sleep(500);
+
         synchronized (monitor) {
             // make condition true and signal one (!) consumer
             print("Producer: fill queue");
             itemsReady = 1;
             monitor.notify();
+            monitor.notifyAll();
             sleep(500);
             print("Producer: released lock");
         }

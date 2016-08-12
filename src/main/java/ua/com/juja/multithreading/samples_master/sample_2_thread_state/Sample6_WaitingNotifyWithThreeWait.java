@@ -10,11 +10,12 @@ public class Sample6_WaitingNotifyWithThreeWait {
     static class MyRunnable implements Runnable {
         @Override
         public void run() {
+            print("Before while");
             while (true) {
-
                 synchronized (monitor) {
                     try {
                         while (!ready) {
+                            print("wait");
                             monitor.wait();
                             print("Wakeup");
                         }

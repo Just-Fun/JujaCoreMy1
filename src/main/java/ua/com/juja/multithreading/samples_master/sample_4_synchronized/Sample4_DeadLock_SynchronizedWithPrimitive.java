@@ -5,7 +5,7 @@ import ua.com.juja.multithreading.samples_master.ThreadUtils;
 
 public class Sample4_DeadLock_SynchronizedWithPrimitive {
 
-    //    private static String monitor = "12";
+//        private static String monitor = "12";
     private static Integer monitor = 12;
 //    private static Boolean monitor = true;
 
@@ -37,17 +37,14 @@ public class Sample4_DeadLock_SynchronizedWithPrimitive {
         Thread thread1 = new Thread(target);
         Thread thread2 = new Thread(target);
 
-        new Thread(new Runnable() { // захватываем монитор примитива
-            @Override
-            public void run() {
+        new Thread(() -> {
 //                synchronized ("12") {
-                synchronized (Integer.valueOf(12)) {
+            synchronized (Integer.valueOf(12)) { // захватываем монитор примитива
 //                synchronized (Boolean.TRUE) {
-                    try {
-                        Thread.currentThread().join(); // и зависаем
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    Thread.currentThread().join(); // и зависаем
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }).start();

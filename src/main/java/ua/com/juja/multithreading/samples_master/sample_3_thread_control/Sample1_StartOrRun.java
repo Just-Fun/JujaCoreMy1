@@ -5,15 +5,12 @@ import static ua.com.juja.multithreading.samples_master.ThreadUtils.*;
 public class Sample1_StartOrRun {
 
     public static void main(String[] args) throws InterruptedException {
-        Thread thread1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int count = 10;
-                while (--count > 0) {
-                    print("Thread1");
+        Thread thread1 = new Thread(() -> {
+            int count = 10;
+            while (--count > 0) {
+                print("Thread1");
 
-                    sleep(10);
-                }
+                sleep(10);
             }
         });
 
@@ -32,13 +29,13 @@ public class Sample1_StartOrRun {
 
         print("Running 1");
 
-//        thread1.run();
-        thread1.start();
+        thread1.run();
+//        thread1.start();
 
         print("Running 2");
 
-//        thread2.run();
-        thread2.start();
+        thread2.run();
+//        thread2.start();
 
         print("Finish");
     }

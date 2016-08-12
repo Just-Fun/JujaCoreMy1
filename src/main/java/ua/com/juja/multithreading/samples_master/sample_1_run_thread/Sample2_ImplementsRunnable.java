@@ -1,7 +1,5 @@
 package ua.com.juja.multithreading.samples_master.sample_1_run_thread;
 
-import ua.com.juja.multithreading.samples_master.ThreadUtils;
-
 import static ua.com.juja.multithreading.samples_master.ThreadUtils.*;
 
 
@@ -18,9 +16,9 @@ public class Sample2_ImplementsRunnable {
         @Override
         public void run() {
             while (true) {
-                ThreadUtils.print(message);
+                print(message);
 
-                ThreadUtils.sleepRandom(2000);
+                sleepRandom(2000);
             }
         }
     }

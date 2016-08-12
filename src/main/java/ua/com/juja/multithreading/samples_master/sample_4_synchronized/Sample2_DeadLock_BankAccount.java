@@ -29,8 +29,10 @@ public class Sample2_DeadLock_BankAccount {
 
         public static void transfer(BankAccount from, BankAccount to, double amount) {
             synchronized (from) {
+                System.out.println("Изымаем from");
                 from.withdraw(amount);
                 synchronized (to) {
+                    System.out.println("Добавляем to");
                     to.deposit(amount);
                 }
             }
@@ -41,19 +43,22 @@ public class Sample2_DeadLock_BankAccount {
         final BankAccount fooAccount = new BankAccount(1, 100d);
         final BankAccount barAccount = new BankAccount(2, 100d);
 
-        new Thread() {
+        new Thread(() -> {
+            BankAccount.transfer(fooAccount, barAccount, 10d);
+            print(String.format("Foo: %s, Bar: %s\n", fooAccount.balance, barAccount.balance));
+        }).start();
+
+        /*new Thread() {
             public void run() {
                 BankAccount.transfer(fooAccount, barAccount, 10d);
-                print(String.format("Foo: %s, Bar: %s\n",
-                        fooAccount.balance, barAccount.balance));
+                print(String.format("Foo: %s, Bar: %s\n", fooAccount.balance, barAccount.balance));
             }
-        }.start();
+        }.start();*/
 
         new Thread() {
             public void run() {
                 BankAccount.transfer(barAccount, fooAccount, 10d);
-                print(String.format("Foo: %s, Bar: %s\n",
-                        fooAccount.balance, barAccount.balance));
+                print(String.format("Foo: %s, Bar: %s\n", fooAccount.balance, barAccount.balance));
             }
         }.start();
 

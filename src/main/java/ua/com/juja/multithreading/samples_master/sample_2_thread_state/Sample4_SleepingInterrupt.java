@@ -7,21 +7,18 @@ import static ua.com.juja.multithreading.samples_master.ThreadUtils.*;
 public class Sample4_SleepingInterrupt {
 
     public static void main(String[] args) {
-        final Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    print("Sleeping");
-                    long time = now();
-                    try {
+        final Thread thread = new Thread(() -> {
+            while (true) {
+                print("Sleeping");
+                long time = now();
+                try {
 
-                        Thread.sleep(10000);
+                    Thread.sleep(10000);
 
-                    } catch (InterruptedException e) {
-                        print("Sleep interrupted: " + (now() - time) + "ms");
-                    }
-                    print("Running");
+                } catch (InterruptedException e) {
+                    print("Sleep interrupted: " + (now() - time) + "ms");
                 }
+                print("Running");
             }
         });
 
