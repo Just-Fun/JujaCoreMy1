@@ -5,3 +5,8 @@ jujaCoreMy.iml
 target/
 vcs.xml 
 .idea/vcs.xml 
+.DS_Store
+1.txt
+src/.DS_Store
+src/main/java/ua/com/juja/InputOutput/.DS_Store
+src/main/java/ua/com/juja/multithreading/echuprina/.DS_Store
