@@ -94,7 +94,7 @@ public class LinkedListTest {
             list.get(9);
             fail("Expected Exceptions");
         } catch (IllegalArgumentException e) {
-        assertEquals("Index can't be more than list size. Size: , index: 9", e.getMessage());
+        assertEquals("Index can't be more than list size. Size: 5, index: 9", e.getMessage());
         }
     }
 
@@ -123,7 +123,7 @@ public class LinkedListTest {
             list.set(10, "10");
             fail("Expected Exceptions");
         } catch (IllegalArgumentException e) {
-            assertEquals("Index can't be more than list size. Size: , index: 10", e.getMessage());
+            assertEquals("Index can't be more than list size. Size: 5, index: 10", e.getMessage());
         }
     }
 
@@ -145,7 +145,7 @@ public class LinkedListTest {
             list.add(10, "10");
             fail("Expected Exceptions");
         } catch (IllegalArgumentException e) {
-            assertEquals("Index can't be more than list size. Size: , index: 10", e.getMessage());
+            assertEquals("Index can't be more than list size. Size: 5, index: 10", e.getMessage());
         }
     }
 

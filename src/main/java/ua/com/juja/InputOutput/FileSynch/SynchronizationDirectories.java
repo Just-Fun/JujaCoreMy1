@@ -17,8 +17,8 @@ public class SynchronizationDirectories {
     }
 
     public static void synchronization(File src, File dest) throws IOException {
-        IfPathDoesntExist(src);
-        IfPathDoesntExist(new File(dest.getParent()));
+        CheckIfPathExist(src);
+        CheckIfPathExist(new File(dest.getParent()));
         IfScrNotDirectory(src);
         dest = makeDirectoryIfNotExist(dest);
 //        File[] srcFiles = src.listFiles();
@@ -102,7 +102,7 @@ public class SynchronizationDirectories {
         }
     }
 
-    private static void IfPathDoesntExist(File file) {
+    private static void CheckIfPathExist(File file) {
         if (!file.exists()) {
             throw new RuntimeException("Путь '" + file.getAbsolutePath() + "' не существует...");
         }

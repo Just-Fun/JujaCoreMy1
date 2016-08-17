@@ -30,10 +30,10 @@ public class Main3 {
     }
 
     public static void main(String[] args) {
-//        Thread thread = new Thread(() -> stat());
-//        Thread thread1 = new Thread(() -> stat());
-        Thread thread = new Thread(() -> new Main3().nonStatic());
-        Thread thread1 = new Thread(() -> new Main3().nonStatic());
+        Thread thread = new Thread(() -> stat());
+        Thread thread1 = new Thread(() -> stat());
+//        Thread thread = new Thread(() -> new Main3().nonStatic());
+//        Thread thread1 = new Thread(() -> new Main3().nonStatic());
 
         thread.start();
         thread1.start();

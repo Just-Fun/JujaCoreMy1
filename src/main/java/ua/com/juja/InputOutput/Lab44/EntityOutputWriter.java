@@ -125,28 +125,6 @@ class EntityInputReader implements EntityInput {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-/*
-        char[] chars = s.toCharArray();
-
-        String age = "";
-        String name = "";
-        int countBegin = 0;
-        int countEnd = 0;
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == '<') {
-                countEnd++;
-            }
-            if (countBegin > 1 && countEnd < 3) {
-                age += Character.toString(chars[i]);
-            }
-            if (countBegin > 3 && countEnd < 5) {
-                name += Character.toString(chars[i]);
-            }
-            if (chars[i] == '>') {
-                countBegin++;
-            }
-        }
-        int age1 = Integer.valueOf(age);*/
 
         String ageP = "(\\D+)(\\d+)(\\D+)";
         String nameP = "(<name>)(\\w*)(</name>n)";
@@ -204,35 +182,6 @@ class EntityInputReader implements EntityInput {
             x = Integer.valueOf(matcher.group(2));
             y = Integer.valueOf(matcher.group(4));
         }
-       /* char[] chars = s.toCharArray();
-
-
-        String x = "";
-        String y = "";
-        int countEq = 0;
-        int countSpace = 0;
-        boolean rightUgol = false;
-        //<point x=1 y=2></point>n
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] == ' ') {
-                countSpace++;
-            }
-            if (chars[i] == '>') {
-                rightUgol = true;
-            }
-            if (countEq > 0 && countSpace < 2) {
-                x += Character.toString(chars[i]);
-            }
-            if (countEq > 1 && !rightUgol) {
-                y += Character.toString(chars[i]);
-            }
-            if (chars[i] == '=') {
-                countEq++;
-            }
-        }*/
-//        int x1 = Integer.valueOf(x);
-//        int y1 = Integer.valueOf(y);
-//        point= new Point(x1, y1);
         Point point = new Point(x, y);
 
         return point;
