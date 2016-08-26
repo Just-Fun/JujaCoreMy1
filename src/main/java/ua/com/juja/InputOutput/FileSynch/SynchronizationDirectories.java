@@ -8,37 +8,45 @@ import java.io.IOException;
 /**
  * Created by Serzh on 8/2/16.
  */
-// TODO обработать исключения
 public class SynchronizationDirectories {
     public static void main(String[] args) throws IOException {
         File src = new File("/Users/Serzh/Prog/TempFileAndDirs");
         File dest = new File("/Users/Serzh/Prog/test");
-        synchronization(src, dest);
+
+        new SynchronizationDirectories().run(src, dest);
     }
 
-    public static void synchronization(File src, File dest) throws IOException {
+    public void run(File src, File dest) {
         CheckIfPathExist(src);
         CheckIfPathExist(new File(dest.getParent()));
-        IfScrNotDirectory(src);
+        IfScrIsNotADirectory(src);
         dest = makeDirectoryIfNotExist(dest);
-//        File[] srcFiles = src.listFiles();
-        File[] srcFiles = src.listFiles((dir, name) -> !name.equals(".DS_Store")); // для мака :)
-        File[] destFiles = dest.listFiles(); // listFiles() возвращает null, если это не директория, а файл
+        synchronization(src, dest);
+        System.out.println("Синхронизация завершена успешно!");
+    }
+
+    public void synchronization(File src, File dest) {
+
+        File[] srcFiles = src.listFiles((file) -> !file.isHidden());
+        File[] destFiles = dest.listFiles();
 
         if (srcFiles.length == 0) { // если папка src пуста
             if (dest.length() != 0) {
-                FileUtils.cleanDirectory(dest);
+                try {
+                    FileUtils.cleanDirectory(dest);
+                } catch (IOException e) {
+                    throw new RuntimeException(String.format("Не удалось очистить папку %s, ", dest.getName()), e.getCause());
+                }
                 System.out.println("Очищена директория " + dest.getAbsolutePath());
-
             }
         } else {
             deleteIfNotInSource(srcFiles, destFiles);
+
             CheckIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
         }
-        System.out.println("Синфронизация завершена успешно!");
     }
 
-    private static void CheckIfHaveSameNameFoldersOrFiles(File dest, File[] srcFiles, File[] destFiles) throws IOException {
+    private void CheckIfHaveSameNameFoldersOrFiles(File dest, File[] srcFiles, File[] destFiles) {
         first:
         for (File from : srcFiles) {
             for (File to : destFiles) {
@@ -55,24 +63,36 @@ public class SynchronizationDirectories {
         }
     }
 
-    private static void copyFileOrDirInDir(File src, File dest) throws IOException {
+    private void copyFileOrDirInDir(File src, File dest) {
         if (src.isDirectory()) {
-            FileUtils.copyDirectoryToDirectory(src, dest);
-            System.out.println("Скопирована папка " + src.getName() + " в директорию: " + dest.getParent());
+            try {
+                FileUtils.copyDirectoryToDirectory(src, dest);
+            } catch (IOException e) {
+                throw new RuntimeException(String.format("Не удалось скопировать папку %s в папку %s, ", src.getName(), dest.getName()), e.getCause());
+            }
+            System.out.println("Скопирована папка " + src.getName() + " в директорию: " + dest.getPath());
         } else {
-            FileUtils.copyFileToDirectory(src, dest);
-            System.out.println("Скопирован файл " + src.getName() + " в директорию: " + dest.getParent());
+            try {
+                FileUtils.copyFileToDirectory(src, dest);
+            } catch (IOException e) {
+                throw new RuntimeException(String.format("Не удалось скопировать файл %s в папку %s, ", src.getName(), dest.getName()), e.getCause());
+            }
+            System.out.println("Скопирован файл " + src.getName() + " в директорию: " + dest.getPath());
         }
     }
 
-    private static void replaceIfFilesDifferent(File source, File dest) throws IOException {
+    private void replaceIfFilesDifferent(File source, File dest) {
         if (source.length() != dest.length()) {
-            FileUtils.copyFile(source, dest, Boolean.TRUE);
+            try {
+                FileUtils.copyFile(source, dest, Boolean.TRUE);
+            } catch (IOException e) {
+                throw new RuntimeException(String.format("Не удалось заменить файл %s, ", dest.getName()), e.getCause());
+            }
             System.out.println("Заменен файл " + dest.getName() + " в директории: " + dest.getParent());
         }
     }
 
-    private static void deleteIfNotInSource(File[] filesFrom, File[] filesTo) throws IOException {
+    private void deleteIfNotInSource(File[] filesFrom, File[] filesTo) {
         first:
         for (File dest : filesTo) {
             for (File source : filesFrom) {
@@ -82,13 +102,15 @@ public class SynchronizationDirectories {
             }
             String dirToRemove = dest.getAbsolutePath();
             FileUtils.deleteQuietly(dest);
-            System.out.println("Удалена директория: " + dirToRemove);
+            System.out.println("Удалено: " + dirToRemove);
         }
     }
 
-    private static File makeDirectoryIfNotExist(File dest) {
+    private File makeDirectoryIfNotExist(File dest) {
         if (!dest.exists() || !dest.isDirectory() || dest.getName().equals(".DS_Store")) {
-            File destNew = new File(dest.getParent() + "//dest");
+            File destNew = new File(String.format("%s//dest", dest.getParent()));
+            // если создавать папку с таким же именем как  входной dest:
+//            File destNew = new File(String.format("%s//%s", dest.getParent(), dest.getName()));
             destNew.mkdir();
             dest = destNew;
             System.out.println("Создана папка 'dest' в директории: " + dest.getParent());
@@ -96,13 +118,13 @@ public class SynchronizationDirectories {
         return dest;
     }
 
-    private static void IfScrNotDirectory(File src) {
+    private void IfScrIsNotADirectory(File src) {
         if (!src.isDirectory()) {
             throw new RuntimeException("Путь '" + src.getAbsolutePath() + "' ведет к файлу, а должен вести к папке.");
         }
     }
 
-    private static void CheckIfPathExist(File file) {
+    private void CheckIfPathExist(File file) {
         if (!file.exists()) {
             throw new RuntimeException("Путь '" + file.getAbsolutePath() + "' не существует...");
         }

@@ -8,28 +8,19 @@ import java.io.IOException;
  */
 public class MainMac {
     public static void main(String[] args) throws IOException {
-        File temp1File = new File("/Users/Serzh/Prog/Temp1File");
-        File file = new File("/Users/Serzh/Prog/Temp1File/Test1.rtf");
-        File tempDir = new File("/Users/Serzh/Prog/TempDir");
-        File tempFileAndDirs = new File("/Users/Serzh/Prog/TempFileAndDirs");
-        File testEmpty = new File("/Users/Serzh/Prog/testEmpty");
+        File testEmpty = new File("/Users/Serzh/Prog/Practice/testEmpty");
+        File test1File = new File("/Users/Serzh/Prog/Practice/test1File");
+        File DS_Store = new File("/Users/Serzh/Prog/Practice/.DS_Store");
+        File testFilesAndDirs = new File("/Users/Serzh/Prog/Practice/testFilesAndDirs");
 
-        File test = new File("/Users/Serzh/Prog/test");
-        File dsTest = new File("/Users/Serzh/Prog/test/.DS_Store");
-        File ds = new File("/Users/Serzh/Prog/Temp1File/.DS_Store");
-
-        File tempFileAndDirsTest1_rtf = new File("/Users/Serzh/Prog/TempFileAndDirs/Test1.rtf");
-        File testTest1_rtf = new File("/Users/Serzh/Prog/test/Test1.rtf");
+        File out = new File("/Users/Serzh/Prog/Practice/testOut");
 
         File test1 = new File("/Users/Serzh/Prog/test/1");
-//        File test2 = new File(test1.getParent() + "//2");
-//        test2.mkdir();
 
-//        System.out.println(test.getAbsolutePath());
-        SynchronizationDirectories.synchronization(tempFileAndDirs, test);
-//        SynchronizationDirectories.synchronization(tempFileAndDirs, test1);
-//        System.out.println(tempFileAndDirsTest1_rtf.getName());
-//        System.out.println(ds.getName().equals(".DS_Store"));
+//        new SynchronizationDirectories().run(testEmpty, out);
+        new SynchronizationDirectories().run(testFilesAndDirs, out);
+//        new SynchronizationDirectories().run(DS_Store, out);
+//        new SynchronizationDirectories().run(test1File, out);
 
 //        File[] list = dsTest.listFiles();
 //        System.out.println(Arrays.asList(list).toString());
