@@ -1,7 +1,5 @@
 package ua.com.juja.leetcode.A_13_Roman_to_Integer;
 
-import ua.com.juja.patterns.Strategy.Game.Character;
-
 /**
  * Created by serzh on 3/16/16.
  */
