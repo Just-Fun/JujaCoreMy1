@@ -26,7 +26,7 @@ public class Sample2_DataRace {
              /*   Thread thread = Thread.currentThread();
                 System.out.println("id: " + thread.getId());
                 System.out.println("name: " + thread.getName());
-                System.out.println("stacktrace: " + Arrays.toString(thread.getStackTrace()));*/
+                System.out.println("stacktrace: " + arrays.toString(thread.getStackTrace()));*/
 
             print("Read: " + y);
 

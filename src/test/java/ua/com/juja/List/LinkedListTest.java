@@ -2,8 +2,8 @@ package ua.com.juja.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import ua.com.juja.Collections.List.LinkedList;
-import ua.com.juja.Collections.List.MyList;
+import ua.com.juja.collections.List.LinkedList;
+import ua.com.juja.collections.List.MyList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
