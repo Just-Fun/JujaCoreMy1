@@ -1,4 +1,6 @@
-package ua.com.juja.inputOutput.fileSynch;
+package ua.com.juja.inputOutput.fileSynch.tests;
+
+import ua.com.juja.inputOutput.fileSynch.SynchronizationDirectories;
 
 import java.io.File;
 import java.io.IOException;

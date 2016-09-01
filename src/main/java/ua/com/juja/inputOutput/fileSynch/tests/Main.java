@@ -1,4 +1,6 @@
-package ua.com.juja.inputOutput.fileSynch;
+package ua.com.juja.inputOutput.fileSynch.tests;
+
+import ua.com.juja.inputOutput.fileSynch.SynchronizationDirectories;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +19,6 @@ public class Main {
         File test = new File("H:\\TestIn");
 //        System.out.println(test.length());
 
-        new SynchronizationDirectories().synchronization(tempFileAndDirs, test);
+        new SynchronizationDirectories().run(tempFileAndDirs, test);
     }
 }

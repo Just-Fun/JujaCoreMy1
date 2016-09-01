@@ -26,7 +26,6 @@ public class SynchronizationDirectories {
     }
 
     private void synchronization(File src, File dest) {
-
         File[] srcFiles = src.listFiles((file) -> !file.isHidden());
         File[] destFiles = dest.listFiles();
 
@@ -42,7 +41,6 @@ public class SynchronizationDirectories {
             }
         } else {
             deleteIfNotInSource(srcFiles, destFiles);
-
             checkIfHaveSameNameFoldersOrFiles(dest, srcFiles, destFiles);
         }
     }
