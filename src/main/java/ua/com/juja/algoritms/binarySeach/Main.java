@@ -5,7 +5,7 @@ package ua.com.juja.algoritms.binarySeach;
  */
 public class Main {
     public static void main(String[] args) {
-        int[] array = {1,4,7};
+        int[] array = {1, 2, 3, 4, 7};
 
         System.out.println(f(array, 4));
     }
@@ -14,7 +14,7 @@ public class Main {
         int low = 0;
         int high = array.length - 1;
         while (low <= high) {
-            int mid = (low + high) >>> 1;
+            int mid = (low + high) >>> 1; // equals int mid = (low + high) / 2 ?;
             int midVal = array[mid];
             if (midVal < x)
                 low = mid + 1;
