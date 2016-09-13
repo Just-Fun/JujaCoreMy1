@@ -4,6 +4,7 @@ package ua.com.juja.algoritms.binarySeach;
  * Created by serzh on 14.02.16.
  */
 public class Main {
+
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 7};
 
