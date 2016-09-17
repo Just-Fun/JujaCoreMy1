@@ -8,16 +8,25 @@ import java.util.Arrays;
 public class Permutator {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4};
-        permutation(arr);
+        permutation(arr, 4);
         System.out.println(Arrays.toString(arr));
     }
 
-    public static void permutation(int[] list) {
-        int length = list.length;
-        for (int i = 0; i < length / 2; i++) {
-            int tmp = list[i];
-            list[i] = list[length - 1 - i];
-            list[length - 1 - i] = tmp;
+    public static void permutation(int[] list, int size) {
+        if (size == 1) {
+            System.out.println(Arrays.toString(list));
+        } else {
+            for (int k = 0; k < size; k++) {
+                swap(list, k, size - 1);
+                permutation(list, size - 1);
+                swap(list, k, size - 1);
+            }
         }
+    }
+
+    private static void swap(int[] list, int index0, int index1) {
+        int tmp = list[index0];
+        list[index0] = list[index1];
+        list[index1] = tmp;
     }
 }

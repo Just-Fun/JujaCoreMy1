@@ -1,4 +1,4 @@
-package ua.com.juja.arrays.Matrix.Lab21;
+package ua.com.juja.algoritms.Lab21_MatrixUtils;
 
 /**
  * Created by serzh on 07.02.16.

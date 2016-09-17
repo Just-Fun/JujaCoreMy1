@@ -1,4 +1,4 @@
-package ua.com.juja.arrays;
+package ua.com.juja.algoritms.LAB20_Permutator;
 
 import java.util.Arrays;
 
