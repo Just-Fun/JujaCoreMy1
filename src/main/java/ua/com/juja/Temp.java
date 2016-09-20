@@ -9,8 +9,6 @@ import java.util.List;
  */
 public class Temp {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<>(Arrays.asList("Fist", "Second", "Third"));
-        String s = String.join("+", list);
-        System.out.println(s);
+
     }
 }
