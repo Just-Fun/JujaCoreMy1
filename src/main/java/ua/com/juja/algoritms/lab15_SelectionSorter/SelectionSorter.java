@@ -1,4 +1,4 @@
-package ua.com.juja.algoritms.Lab15;
+package ua.com.juja.algoritms.lab15_SelectionSorter;
 
 import java.util.Arrays;
 

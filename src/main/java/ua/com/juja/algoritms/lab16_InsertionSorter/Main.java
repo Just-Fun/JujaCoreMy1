@@ -1,4 +1,4 @@
-package ua.com.juja.algoritms.Lab16;
+package ua.com.juja.algoritms.lab16_InsertionSorter;
 
 import java.util.Arrays;
 

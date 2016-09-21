@@ -1,4 +1,4 @@
-package ua.com.juja.algoritms.Lab16;
+package ua.com.juja.algoritms.lab16_InsertionSorter;
 
 import java.util.Random;
 
@@ -13,8 +13,8 @@ public class App {
             array[k] = rnd.nextInt();
         }
         long t1 = System.nanoTime();
-//        InsertionSorter.sort(array);
-        InsertionSorterPlusBinarySeach.sort(array);
-        System.out.println("A:" + (System.nanoTime() - t1) / 1);
+        InsertionSorter.sort(array);
+//        InsertionSorterPlusBinarySeach.sort(array);
+        System.out.println("A:" + (System.nanoTime() - t1) / 1_000_000);
     }
 }

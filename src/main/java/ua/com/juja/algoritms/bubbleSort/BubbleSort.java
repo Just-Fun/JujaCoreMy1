@@ -1,4 +1,4 @@
-package ua.com.juja.algoritms.AlgoritmsExample;
+package ua.com.juja.algoritms.bubbleSort;
 
 
 import java.util.ArrayList;
