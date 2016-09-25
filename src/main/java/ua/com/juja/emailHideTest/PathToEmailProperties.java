@@ -18,6 +18,7 @@ public class PathToEmailProperties {
             properties.load(fileInputStream);
             email = properties.getProperty("email", "example@mail.com");
         } catch (FileNotFoundException e) {
+            email = "example@mail.com";
             e.printStackTrace();
         }
 

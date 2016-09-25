@@ -7,22 +7,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-
-        /*Cello cello = new Cello();
-        cello.getString()[0] = "F";
-        System.out.println(cello.getString()[0]);*/
-
-   /*     String s1 = " 6 2 6 ";
-        System.out.println(s1.trim());*/
-
         String string = "1\2\3^5\4>6<7";
+        System.out.println(string);
         System.out.println(string.length());
-        String s = reverseByArray(string);
+//        String s = reverseByArray(string);
+        String s = reverseSimple(string);
         System.out.println(s.length());
         boolean b = s.contains("\\");
+        System.out.println(b);
         System.out.println(s);
+
 
         /*String s2 = "RT ";
         System.out.println(reverseByArray(s2.trim()));
@@ -34,6 +28,11 @@ public class Main {
         String b = new StringBuffer(a).reverse().toString();
         System.out.println(b);
 */
+    }
+
+    public static String reverseSimple(String input) {
+        StringBuilder builder = new StringBuilder(input);
+        return String.valueOf(builder.reverse());
     }
 
     public static String reverseByArray(String s) {
