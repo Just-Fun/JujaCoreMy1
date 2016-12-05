@@ -1,6 +1,7 @@
 package ua.com.juja.presentations.oop.modificators;
 
-import presentations.oop.ModificatorsDemo;
+
+import ua.com.juja.presentations.oop.ModificatorsDemo;
 
 public class OverridingModificatorsDemo extends ModificatorsDemo {
 

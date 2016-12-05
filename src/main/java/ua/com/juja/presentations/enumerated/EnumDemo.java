@@ -2,7 +2,9 @@ package ua.com.juja.presentations.enumerated;
 
 import java.util.Arrays;
 
-import static presentations.enumerated.EnumDemo.Seasons.AUTUMN;
+import static ua.com.juja.presentations.enumerated.EnumDemo.Seasons.AUTUMN;
+
+//import static presentations.enumerated.EnumDemo.Seasons.AUTUMN;
 
 /**
  * Created with IntelliJ IDEA.

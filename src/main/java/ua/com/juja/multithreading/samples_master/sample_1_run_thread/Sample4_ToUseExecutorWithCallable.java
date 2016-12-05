@@ -23,7 +23,7 @@ public class Sample4_ToUseExecutorWithCallable {
 
         @Override
         public Object call() throws Exception {
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < 5; i++) {
                 print(message);
 
                sleep(1000);

@@ -37,7 +37,7 @@ public class WhiteCeow1 {
                 return i;
             }
         //test
-        //test2
+        //stopExample
         }
         return ERROR_CODE;
     }

@@ -1,6 +1,7 @@
 package ua.com.juja.presentations.reflection;
 
-import presentations.annotations.Juja;
+
+import ua.com.juja.presentations.annotations.Juja;
 
 /**
  * Created with IntelliJ IDEA.
