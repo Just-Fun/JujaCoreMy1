@@ -1,0 +1,9 @@
+package ua.com.juja.multithreading.hazelcast.jpoint.executor;
+
+import com.hazelcast.core.Hazelcast;
+
+public class SlaveMember {
+    public static void main(String[] args) {
+        Hazelcast.newHazelcastInstance();
+    }
+}
