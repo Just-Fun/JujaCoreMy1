@@ -3,6 +3,7 @@ package ua.com.juja.presentations.enumerated;
 import java.util.Arrays;
 
 import static ua.com.juja.presentations.enumerated.EnumDemo.Seasons.AUTUMN;
+import static ua.com.juja.presentations.enumerated.EnumDemo.Seasons.SUMMER;
 
 //import static presentations.enumerated.EnumDemo.Seasons.AUTUMN;
 
@@ -25,5 +26,8 @@ public class EnumDemo {
         Seasons summer = Seasons.valueOf("SUMMER");
         System.out.println(summer);
         System.out.println(summer.getClass().getSuperclass().getName());
+        System.out.println("SUMMER" == (SUMMER.name()));
+        System.out.println("SUMMER".equals(SUMMER.name()));
+
     }
 }
